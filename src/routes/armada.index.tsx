@@ -101,8 +101,7 @@ function ArmadaCatalogPage() {
 
   const filteredVehicles = useMemo(() => {
     return VEHICLES.filter((v) => {
-      const matchCat =
-        selectedCategory === "Semua" || v.category === selectedCategory;
+      const matchCat = selectedCategory === "Semua" || v.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchQuery =
         !q ||
@@ -135,7 +134,8 @@ function ArmadaCatalogPage() {
               </h1>
               <div className="gold-rule mx-auto mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Menyediakan 28+ pilihan unit mobil mewah, sedan eksekutif, SUV tangguh, MPV keluarga, hingga mobil listrik bebas ganjil-genap di Jakarta.
+                Menyediakan 28+ pilihan unit mobil mewah, sedan eksekutif, SUV tangguh, MPV
+                keluarga, hingga mobil listrik bebas ganjil-genap di Jakarta.
               </p>
             </Reveal>
 
@@ -223,131 +223,132 @@ function ArmadaCatalogPage() {
                     </button>
                   </div>
                 ) : (
-                  filteredVehicles.map((vehicle) => (
-                  <article
-                    key={vehicle.slug}
-                    className="glass group flex flex-col justify-between overflow-hidden rounded-2xl border border-gold/20 p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-[var(--shadow-gold)]"
-                  >
-                    <div>
-                      {/* Top Header & Badges */}
-                      <div className="flex flex-wrap items-center justify-between gap-3">
-                        <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
-                          {vehicle.category}
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {vehicle.badges.map((b) => (
-                            <span
-                              key={b}
-                              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[0.55rem] text-muted-foreground"
-                            >
-                              {b}
+                  filteredVehicles.map((vehicle) => {
+                    return (
+                      <article
+                        key={vehicle.slug}
+                        className="glass group flex flex-col justify-between overflow-hidden rounded-2xl border border-gold/20 p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-[var(--shadow-gold)]"
+                      >
+                        <div>
+                          {/* Top Header & Badges */}
+                          <div className="flex flex-wrap items-center justify-between gap-3">
+                            <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
+                              {vehicle.category}
                             </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Image Preview with 3D hint */}
-                      <div className="relative my-6 flex h-48 sm:h-56 items-center justify-center overflow-hidden rounded-xl bg-[radial-gradient(70%_60%_at_50%_60%,color-mix(in_oklab,var(--navy-deep)_80%,transparent),transparent)] p-4">
-                        <img
-                          src={vehicle.image}
-                          alt={`${vehicle.name} — ${vehicle.tagline}`}
-                          className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
-                          loading="lazy"
-                        />
-                        <Link
-                          to="/armada/$slug"
-                          params={{ slug: vehicle.slug }}
-                          className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md border border-gold/30 px-3 py-1.5 text-[0.6rem] tracking-wider text-gold hover:bg-gold hover:text-primary-foreground transition-all"
-                        >
-                          <Eye className="h-3 w-3" />
-                          <span>{vehicle.model ? "Inspeksi 3D" : "Detail Unit"}</span>
-                        </Link>
-                      </div>
-
-                      {/* Title & Tagline */}
-                      <div>
-                        <h2 className="text-2xl sm:text-3xl font-normal text-foreground">
-                          {vehicle.name}
-                        </h2>
-                        <p className="mt-1 text-xs tracking-[0.2em] text-gold uppercase">
-                          {vehicle.tagline}
-                        </p>
-                        <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                          {vehicle.description}
-                        </p>
-                      </div>
-
-                      {/* Spec Grid */}
-                      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-gold/15 pt-5 text-xs text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <Users className="h-4 w-4 text-gold shrink-0" />
-                            <span>{vehicle.capacity}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Briefcase className="h-4 w-4 text-gold shrink-0" />
-                            <span>{vehicle.luggage}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Settings2 className="h-4 w-4 text-gold shrink-0" />
-                          <span>{vehicle.transmission}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Fuel className="h-4 w-4 text-gold shrink-0" />
-                          <span>{vehicle.fuel}</span>
-                        </div>
-                      </div>
-
-                      {/* Pricing Packages Preview */}
-                      {vehicle.rates && (
-                        <div className="mt-6 rounded-xl border border-gold/15 bg-gold/5 p-4">
-                          <div className="flex items-center justify-between mb-2">
-                            <p className="text-[0.65rem] tracking-[0.2em] text-gold uppercase font-medium">
-                              Pilihan Paket Layanan:
-                            </p>
-                            <span className="text-[0.6rem] text-gold/80">Best Deal</span>
-                          </div>
-                          <div className="space-y-2 text-xs">
-                            {vehicle.rates.slice(0, 2).map((rate) => (
-                              <div
-                                key={rate.package}
-                                className="flex items-center justify-between border-b border-gold/10 pb-1.5 last:border-0"
-                              >
-                                <span className="text-muted-foreground">{rate.package}</span>
-                                <span className="text-[0.65rem] font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-full">
-                                  Tanya Promo WA &rarr;
+                            <div className="flex flex-wrap gap-1.5">
+                              {vehicle.badges.map((b) => (
+                                <span
+                                  key={b}
+                                  className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[0.55rem] text-muted-foreground"
+                                >
+                                  {b}
                                 </span>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
+
+                          {/* Image Preview with 3D hint */}
+                          <div className="relative my-6 flex h-48 sm:h-56 items-center justify-center overflow-hidden rounded-xl bg-[radial-gradient(70%_60%_at_50%_60%,color-mix(in_oklab,var(--navy-deep)_80%,transparent),transparent)] p-4">
+                            <img
+                              src={vehicle.image}
+                              alt={`${vehicle.name} — ${vehicle.tagline}`}
+                              className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
+                              loading="lazy" />
+                            <Link
+                              to="/armada/$slug"
+                              params={{ slug: vehicle.slug }}
+                              className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md border border-gold/30 px-3 py-1.5 text-[0.6rem] tracking-wider text-gold hover:bg-gold hover:text-primary-foreground transition-all"
+                            >
+                              <Eye className="h-3 w-3" />
+                              <span>{vehicle.model ? "Inspeksi 3D" : "Detail Unit"}</span>
+                            </Link>
+                          </div>
+
+                          {/* Title & Tagline */}
+                          <div>
+                            <h2 className="text-2xl sm:text-3xl font-normal text-foreground">
+                              {vehicle.name}
+                            </h2>
+                            <p className="mt-1 text-xs tracking-[0.2em] text-gold uppercase">
+                              {vehicle.tagline}
+                            </p>
+                            <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                              {vehicle.description}
+                            </p>
+                          </div>
+
+                          {/* Spec Grid */}
+                          <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-gold/15 pt-5 text-xs text-muted-foreground">
+                            <div className="flex items-center gap-2">
+                              <Users className="h-4 w-4 text-gold shrink-0" />
+                              <span>{vehicle.capacity}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Briefcase className="h-4 w-4 text-gold shrink-0" />
+                              <span>{vehicle.luggage}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Settings2 className="h-4 w-4 text-gold shrink-0" />
+                              <span>{vehicle.transmission}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Fuel className="h-4 w-4 text-gold shrink-0" />
+                              <span>{vehicle.fuel}</span>
+                            </div>
+                          </div>
+
+                          {/* Pricing Packages Preview */}
+                          {vehicle.rates && (
+                            <div className="mt-6 rounded-xl border border-gold/15 bg-gold/5 p-4">
+                              <div className="flex items-center justify-between mb-2">
+                                <p className="text-[0.65rem] tracking-[0.2em] text-gold uppercase font-medium">
+                                  Pilihan Paket Layanan:
+                                </p>
+                                <span className="text-[0.6rem] text-gold/80">Best Deal</span>
+                              </div>
+                              <div className="space-y-2 text-xs">
+                                {vehicle.rates.slice(0, 2).map((rate) => (
+                                  <div
+                                    key={rate.package}
+                                    className="flex items-center justify-between border-b border-gold/10 pb-1.5 last:border-0"
+                                  >
+                                    <span className="text-muted-foreground">{rate.package}</span>
+                                    <span className="text-[0.65rem] font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-full">
+                                      Tanya Promo WA &rarr;
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
 
-                    {/* Card Footer Actions */}
-                    <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-gold/15 pt-5">
-                      <Link
-                        to="/armada/$slug"
-                        params={{ slug: vehicle.slug }}
-                        className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 text-[0.65rem] tracking-[0.18em] text-gold uppercase hover:bg-gold/10 transition-colors"
-                      >
-                        <span>{vehicle.model ? "Lihat Detail & 3D" : "Lihat Detail"}</span>
-                        <ArrowRight className="h-3 w-3" />
-                      </Link>
+                        {/* Card Footer Actions */}
+                        <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-gold/15 pt-5">
+                          <Link
+                            to="/armada/$slug"
+                            params={{ slug: vehicle.slug }}
+                            className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 text-[0.65rem] tracking-[0.18em] text-gold uppercase hover:bg-gold/10 transition-colors"
+                          >
+                            <span>{vehicle.model ? "Lihat Detail & 3D" : "Lihat Detail"}</span>
+                            <ArrowRight className="h-3 w-3" />
+                          </Link>
 
-                      <a
-                        href={waLink(
-                          `Halo ${SITE.brand}, saya ingin memesan armada ${vehicle.name}. Mohon informasi ketersediaan.`,
-                        )}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-5 py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
-                      >
-                        <WhatsAppIcon className="h-3.5 w-3.5" />
-                        <span>Pesan via WhatsApp</span>
-                      </a>
-                    </div>
-                    </article>
-                  ))
+                          <a
+                            href={waLink(
+                              `Halo ${SITE.brand}, saya ingin memesan armada ${vehicle.name}. Mohon informasi ketersediaan.`
+                            )}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-5 py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                          >
+                            <WhatsAppIcon className="h-3.5 w-3.5" />
+                            <span>Pesan via WhatsApp</span>
+                          </a>
+                        </div>
+                      </article>
+                    );
+                  })
                 )}
               </motion.div>
             </AnimatePresence>
@@ -365,7 +366,7 @@ function ArmadaCatalogPage() {
                     Inspeksi 3D Model 360° Sebelum Memutuskan Sewa
                   </h2>
                   <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                    Anda dapat memutar sudut kamera 360°, memeriksa bodi mobil dari berbagai sudut, dan melihat foto interior asli secara detail sebelum melakukan pemesanan.
+                    Anda dapat memutar sudut kamera 360° dan memeriksa bodi mobil dari berbagai sudut sebelum melakukan pemesanan.
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
                     {VEHICLES.filter((v) => Boolean(v.model)).map((v) => (
@@ -458,4 +459,3 @@ function ArmadaCatalogPage() {
     </div>
   );
 }
-

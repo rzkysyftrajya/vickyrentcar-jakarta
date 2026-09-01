@@ -72,7 +72,7 @@ export const Route = createFileRoute("/armada/$slug")({
   component: VehicleDetail,
 });
 
-const TABS = ["Eksterior", "Interior", "Spesifikasi"] as const;
+const TABS = ["Eksterior", "Spesifikasi"] as const;
 
 function VehicleDetail() {
   const { vehicle } = Route.useLoaderData();
@@ -235,26 +235,7 @@ function VehicleDetail() {
                 </div>
               ) : null}
 
-              {tab === "Interior" ? (
-                <div className="grid gap-8 sm:grid-cols-2">
-                  {vehicle.interior.map((img) => (
-                    <figure
-                      key={img.src}
-                      className="glass group overflow-hidden rounded-xl"
-                    >
-                      <img
-                        src={img.src}
-                        alt={`Interior ${vehicle.name} — ${img.label}`}
-                        loading="lazy"
-                        className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-96"
-                      />
-                      <figcaption className="px-6 py-4 text-[0.6rem] tracking-[0.25em] text-gold uppercase">
-                        {img.label}
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ) : null}
+
 
               {tab === "Spesifikasi" ? (
                 <div className="grid gap-8 lg:grid-cols-2">

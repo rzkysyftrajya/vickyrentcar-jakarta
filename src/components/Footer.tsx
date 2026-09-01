@@ -8,15 +8,21 @@ export function Footer() {
   return (
     <footer className="border-t border-gold/15 bg-[color-mix(in_oklab,var(--navy)_35%,var(--background))] text-muted-foreground">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Info */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-block">
-              <span className="font-display text-2xl font-normal text-foreground">
-                Vicky <span className="gold-text">Rentcar</span>
-              </span>
-              <span className="block text-[0.55rem] tracking-[0.35em] text-gold uppercase mt-0.5">
-                Rental Mobil Jakarta
+            <Link to="/" className="inline-flex items-center gap-3 group">
+              <img
+                src="/logo.webp"
+                alt="Vicky Rentcar Logo"
+                className="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]"
+              />
+              <span className="flex flex-col">
+                <span className="font-display text-2xl font-normal text-foreground group-hover:text-gold transition-colors">
+                  Vicky <span className="gold-text">Rentcar</span>
+                </span>
+                <span className="block text-[0.55rem] tracking-[0.35em] text-gold uppercase mt-0.5">
+                  Rental Mobil Jakarta
+                </span>
               </span>
             </Link>
             <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
@@ -70,7 +76,7 @@ export function Footer() {
             </ul>
           </div>
 
-
+          {/* Sister City Rentals */}
           {/* Fleet Links */}
           <div>
             <p className="eyebrow text-gold">Pilihan Armada</p>

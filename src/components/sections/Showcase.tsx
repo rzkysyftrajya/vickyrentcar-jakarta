@@ -27,7 +27,7 @@ const SHOWCASE_3D_SLUGS = [
   "toyota-hiace-premio",
 ];
 
-type DetailTab = "Eksterior 3D" | "Interior" | "Spesifikasi";
+type DetailTab = "Eksterior 3D" | "Spesifikasi";
 
 export function Showcase() {
   const showcaseVehicles = SHOWCASE_3D_SLUGS.map((slug) =>
@@ -66,7 +66,7 @@ export function Showcase() {
         <SectionHeading
           eyebrow="Inspeksi 3D & Detail Unit"
           title="Detail 4 Armada Pilihan dalam 360°"
-          subtitle="Periksa interior, putar eksterior 3D 360°, dan lihat spesifikasi lengkap Alphard, Innova Reborn, Innova Zenix, dan Hiace Premio langsung di sini."
+          subtitle="Putar eksterior 3D 360° dan lihat spesifikasi lengkap Alphard, Innova Reborn, Innova Zenix, dan Hiace Premio langsung di sini."
         />
 
         {/* 4 Vehicle Quick Buttons */}
@@ -88,9 +88,8 @@ export function Showcase() {
           ))}
         </div>
 
-        {/* Detail Tabs */}
         <div className="mt-8 flex justify-center gap-2">
-          {(["Eksterior 3D", "Interior", "Spesifikasi"] as DetailTab[]).map((t) => (
+          {(["Eksterior 3D", "Spesifikasi"] as DetailTab[]).map((t) => (
             <button
               key={t}
               type="button"
@@ -152,26 +151,6 @@ export function Showcase() {
                 </div>
               )}
 
-              {tab === "Interior" && (
-                <div className="grid grid-cols-2 gap-3 h-[24rem] sm:h-[32rem] overflow-y-auto pr-1">
-                  {vehicle.interior.map((img) => (
-                    <div
-                      key={img.src}
-                      className="glass rounded-xl overflow-hidden group relative flex flex-col justify-end p-3 min-h-[14rem]"
-                    >
-                      <img
-                        src={img.src}
-                        alt={img.label}
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                      <span className="relative z-10 text-[0.65rem] tracking-wider text-gold font-medium">
-                        {img.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
 
               {tab === "Spesifikasi" && (
                 <div className="glass rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-between border border-gold/20">

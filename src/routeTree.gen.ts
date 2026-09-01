@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BandingkanRouteImport } from './routes/bandingkan'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as KontakRouteImport } from './routes/kontak'
 import { Route as KorporatRouteImport } from './routes/korporat'
@@ -21,6 +22,11 @@ import { Route as ArmadaSlugRouteImport } from './routes/armada.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BandingkanRoute = BandingkanRouteImport.update({
+  id: '/bandingkan',
+  path: '/bandingkan',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompareRoute = CompareRouteImport.update({
@@ -61,6 +67,7 @@ const ArmadaSlugRoute = ArmadaSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bandingkan': typeof BandingkanRoute
   '/compare': typeof CompareRoute
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bandingkan': typeof BandingkanRoute
   '/compare': typeof CompareRoute
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
@@ -82,6 +90,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bandingkan': typeof BandingkanRoute
   '/compare': typeof CompareRoute
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bandingkan'
     | '/compare'
     | '/kontak'
     | '/korporat'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bandingkan'
     | '/compare'
     | '/kontak'
     | '/korporat'
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/bandingkan'
     | '/compare'
     | '/kontak'
     | '/korporat'
@@ -125,6 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BandingkanRoute: typeof BandingkanRoute
   CompareRoute: typeof CompareRoute
   KontakRoute: typeof KontakRoute
   KorporatRoute: typeof KorporatRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bandingkan': {
+      id: '/bandingkan'
+      path: '/bandingkan'
+      fullPath: '/bandingkan'
+      preLoaderRoute: typeof BandingkanRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/compare': {
@@ -197,6 +217,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BandingkanRoute: BandingkanRoute,
   CompareRoute: CompareRoute,
   KontakRoute: KontakRoute,
   KorporatRoute: KorporatRoute,

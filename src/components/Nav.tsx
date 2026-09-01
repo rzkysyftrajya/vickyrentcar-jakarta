@@ -125,12 +125,19 @@ export function Nav() {
         className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8 sm:py-4"
         aria-label="Navigasi Utama"
       >
-        <Link to="/" className="group flex flex-col leading-none">
-          <span className="font-display text-2xl tracking-wide transition-colors group-hover:text-gold">
-            Vicky <span className="gold-text font-normal">Rentcar</span>
-          </span>
-          <span className="mt-1 text-[0.55rem] tracking-[0.38em] text-muted-foreground uppercase">
-            Rental Mobil Jakarta
+        <Link to="/" className="group flex items-center gap-2.5 leading-none">
+          <img
+            src="/logo.webp"
+            alt="Vicky Rentcar Logo"
+            className="h-9 w-auto object-contain drop-shadow-[0_0_8px_rgba(212,175,55,0.25)] transition-opacity group-hover:opacity-90"
+          />
+          <span className="flex flex-col">
+            <span className="font-display text-2xl tracking-wide transition-colors group-hover:text-gold">
+              Vicky <span className="gold-text font-normal">Rentcar</span>
+            </span>
+            <span className="mt-1 text-[0.55rem] tracking-[0.38em] text-muted-foreground uppercase">
+              Rental Mobil Jakarta
+            </span>
           </span>
         </Link>
 

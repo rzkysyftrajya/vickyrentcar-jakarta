@@ -1,21 +1,3 @@
-
-import alphardInt1 from "@/assets/interior-alphard-1.jpg";
-import alphardInt2 from "@/assets/interior-alphard-2.jpg";
-import alphardInt3 from "@/assets/interior-alphard-3.jpg";
-import alphardInt4 from "@/assets/interior-alphard-4.jpg";
-import zenixInt1 from "@/assets/interior-zenix-1.jpg";
-import zenixInt2 from "@/assets/interior-zenix-2.jpg";
-import zenixInt3 from "@/assets/interior-zenix-3.jpg";
-import zenixInt4 from "@/assets/interior-zenix-4.jpg";
-import rebornInt1 from "@/assets/interior-reborn-1.jpg";
-import rebornInt2 from "@/assets/interior-reborn-2.jpg";
-import rebornInt3 from "@/assets/interior-reborn-3.jpg";
-import rebornInt4 from "@/assets/interior-reborn-4.jpg";
-import hiaceInt1 from "@/assets/interior-hiace-1.jpg";
-import hiaceInt2 from "@/assets/interior-hiace-2.jpg";
-import hiaceInt3 from "@/assets/interior-hiace-3.jpg";
-import hiaceInt4 from "@/assets/interior-hiace-4.jpg";
-
 export type VehicleCategory =
   | "Executive MPV"
   | "Premium MPV"
@@ -48,7 +30,6 @@ export type Vehicle = {
   entertainment: string;
   services: string[];
   fitFor: string[];
-  interior: GalleryImage[];
   rates?: {
     package: string;
     price: string;
@@ -87,7 +68,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Kemewahan kasta tertinggi dengan partisi privasi kabin, kursi pijat Ottoman elektrik, sistem audio Mark Levinson, dan keheningan kabin sempurna untuk tamu kenegaraan & eksekutif puncak.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Lexus-LM350H-2025.webp",
     badges: ["Ultra VIP", "Ottoman Seat", "Hybrid Luxury"],
     capacity: "4–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -102,12 +83,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Sewa Harian (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Berpengalaman Khusus VIP" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard Mewah" },
-      { src: alphardInt2, label: "Kabin Depan" },
-      { src: alphardInt3, label: "Ottoman Captain Seat" },
-      { src: alphardInt4, label: "Partisi Privasi & Layara 48 Inci" },
-    ],
   },
   {
     slug: "alphard-hybrid-2025",
@@ -119,7 +94,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "All-New Alphard generasi 2025 dengan mesin Hybrid ramah lingkungan, kabin ekstra senyap, captain seat dengan penghangat & pendingin, serta panoramic glass roof ganda.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/alphard-hybrid-2025.webp",
     badges: ["All-New 2025", "Captain Seat", "Hybrid Eco"],
     capacity: "4–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -134,12 +109,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard Digital" },
-      { src: alphardInt2, label: "Kokpit Modern" },
-      { src: alphardInt3, label: "Executive Lounge Seat" },
-      { src: alphardInt4, label: "Panoramic Glass Roof" },
-    ],
   },
   {
     slug: "toyota-alphard",
@@ -151,7 +120,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Pilihan utama perjalanan nyaman di Jakarta. Captain seat lapang, kabin senyap dan sejuk, pas untuk perjalanan bisnis maupun keluarga dengan supir profesional.",
     model: "/models/Alphard.glb",
-    image: "/images/alphard.png",
+    image: "/armada/Toyota-Alphard-G-2018-2020.webp",
     badges: ["Executive", "Captain Seat", "Supir Ramah"],
     capacity: "4–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -166,12 +135,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard" },
-      { src: alphardInt2, label: "Setir & Baris Depan" },
-      { src: alphardInt3, label: "Kabin Tengah" },
-      { src: alphardInt4, label: "Baris Belakang & Bagasi" },
-    ],
   },
   {
     slug: "alphard-g-facelift",
@@ -183,7 +146,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Varian Alphard Facelift tipe G dengan captain seat fleksibel, power sliding door ganda, dan ruang kabin lega untuk mobilitas eksekutif dan keluarga di Jakarta.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Alphard-G-Facelift-2022-2023.webp",
     badges: ["Executive", "Captain Seat", "Favorit VIP"],
     capacity: "5–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -198,12 +161,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard" },
-      { src: alphardInt2, label: "Setir & Baris Depan" },
-      { src: alphardInt3, label: "Kabin Tengah" },
-      { src: alphardInt4, label: "Baris Belakang" },
-    ],
   },
   {
     slug: "toyota-alphard-g",
@@ -215,7 +172,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Armada Alphard tipe G dengan suspensi empuk, captain seat individual, dan supir beretika standar hotel bintang lima untuk perjalanan bisnis dan liburan.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Toyota-Alphard-G-2018-2020.webp",
     badges: ["Executive", "Nyaman", "Best Value VIP"],
     capacity: "5–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -230,47 +187,9 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard" },
-      { src: alphardInt2, label: "Kabin Depan" },
-      { src: alphardInt3, label: "Captain Seat" },
-      { src: alphardInt4, label: "Bagasi Belakang" },
-    ],
   },
 
   // ── 2. Luxury Sedan ──
-  {
-    slug: "mercedes-benz-e300",
-    name: "Mercedes-Benz E300",
-    tagline: "Kemewahan Bisnis Eksekutif Sejati",
-    category: "Luxury Sedan",
-    priceStarting: "Best Rate Guarantee",
-    priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
-    description:
-      "Standar emas sedan bisnis dunia. Ruang kaki lapang, suspensi agilitas tinggi, dan interior berkelas untuk perjalanan VIP, delegasi kenegaraan, dan pertemuan penting.",
-    model: "",
-    image: "/images/alphard.png",
-    badges: ["Business VIP", "Chauffeur Choice", "Prestige"],
-    capacity: "4 penumpang",
-    luggage: "2 koper besar + 2 kabin",
-    transmission: "9G-TRONIC Automatic",
-    fuel: "Bensin Turbo Mild Hybrid",
-    ac: "Thermotronic 3-Zone Climate Control",
-    entertainment: "MBUX Superscreen, Burmester Sound, Rear Seat Comfort Package",
-    services: ["Tamu VIP Bisnis", "Mobil Pengantin", "Airport Transfer VIP"],
-    fitFor: ["Direksi & CEO", "Pertemuan Bisnis", "Pernikahan Elegan", "Tamu Asing"],
-    rates: [
-      { package: "Airport Transfer VIP", price: "Tanya Promo", description: "Termasuk Supir Jas & Pantau Jadwal" },
-      { package: "12 Jam Dalam Kota", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
-    ],
-    interior: [
-      { src: alphardInt1, label: "Interior MBUX" },
-      { src: alphardInt2, label: "Setir Kemudi" },
-      { src: alphardInt3, label: "Jok Belakang Eksekutif" },
-      { src: alphardInt4, label: "Bagasi Luas" },
-    ],
-  },
   {
     slug: "mercedes-c300",
     name: "Mercedes-Benz C300",
@@ -279,9 +198,9 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "Sedan premium dengan desain sporty elegan, interior bertabur ambient light 64 warna, dan kenyamanan suspensi khas Mercedes-Benz untuk mobilitas prestisius.",
+      "Sedan premium dengan desain sporty elegan, ambient light 64 warna, dan kenyamanan suspensi khas Mercedes-Benz untuk mobilitas prestisius.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Mercedes-C300.webp",
     badges: ["Luxury Sedan", "Executive VIP", "Sporty"],
     capacity: "4 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -296,12 +215,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard Modern" },
-      { src: alphardInt2, label: "Cockpit" },
-      { src: alphardInt3, label: "Kursi Kulit Mewah" },
-      { src: alphardInt4, label: "Bagasi Belakang" },
-    ],
   },
   {
     slug: "new-accord-turbo",
@@ -313,7 +226,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Sedan berkelas dengan kabin senyap berkat Active Noise Cancellation, akselerasi responsif 1.5L VTEC Turbo, dan ruang kaki belakang yang sangat lega.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/New-Accord-Turbo-2024.webp",
     badges: ["Executive Sedan", "Honda Sensing", "Sunroof"],
     capacity: "4 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -328,12 +241,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Digital" },
-      { src: zenixInt2, label: "Kabin Depan" },
-      { src: zenixInt3, label: "Baris Kedua Lapang" },
-      { src: zenixInt4, label: "Bagasi Belakang" },
-    ],
   },
 
   // ── 3. Premium & Luxury SUV ──
@@ -347,7 +254,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "SUV flagship Toyota dengan kemampuan segala medan, kabin kedap suara mewah, suspensi adaptif, dan wibawa tak tertandingi untuk pengawalan dan tamu VVIP.",
     model: "",
-    image: "/images/reborn.png",
+    image: "/armada/Land-Cruiser-2020.png",
     badges: ["Flagship VVIP", "4x4 King", "Bulletproof Feel"],
     capacity: "5–7 penumpang",
     luggage: "4 koper besar + 3 kabin",
@@ -362,12 +269,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Khusus" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: rebornInt1, label: "Dashboard Flagship" },
-      { src: rebornInt2, label: "Cockpit Pengemudi" },
-      { src: rebornInt3, label: "Kabin Tengah Mewah" },
-      { src: rebornInt4, label: "Ruang Bagasi Jumbo" },
-    ],
   },
   {
     slug: "mercedes-glc300",
@@ -377,9 +278,9 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV mewah berkarakter elegan dengan interior modern MBUX, panoramic sunroof, suspensi halus, dan performa bertenaga untuk perjalanan berkelas di Jakarta.",
+      "SUV mewah berkarakter elegan dengan sistem modern MBUX, panoramic sunroof, suspensi halus, dan performa bertenaga untuk perjalanan berkelas di Jakarta.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Mercedes-GLC300.webp",
     badges: ["Luxury SUV", "Panoramic Roof", "German Luxury"],
     capacity: "4–5 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -394,12 +295,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard MBUX" },
-      { src: alphardInt2, label: "Cockpit" },
-      { src: alphardInt3, label: "Kabin Mewah" },
-      { src: alphardInt4, label: "Panoramic Roof & Bagasi" },
-    ],
   },
   {
     slug: "palisade-signature",
@@ -409,9 +304,9 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV 3-baris premium berdesain gagah dengan captain seat baris kedua, dual sunroof, dan interior kulit Nappa yang sangat lega dan nyaman untuk keluarga.",
+      "SUV 3-baris premium berdesain gagah dengan captain seat baris kedua, dual sunroof, dan jok kulit Nappa yang sangat lega dan nyaman untuk keluarga.",
     model: "",
-    image: "/images/reborn.png",
+    image: "/armada/Palisade-Signature-2023.webp",
     badges: ["Captain Seat SUV", "Dual Sunroof", "Gagah"],
     capacity: "6–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -426,12 +321,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: rebornInt1, label: "Dashboard Megah" },
-      { src: rebornInt2, label: "Shift-by-wire Cockpit" },
-      { src: rebornInt3, label: "Captain Seat Nappa" },
-      { src: rebornInt4, label: "Dual Sunroof & Bagasi" },
-    ],
   },
   {
     slug: "pajero-sport-dakar",
@@ -443,7 +332,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "SUV ladder-frame favorit dengan mesin MIVEC Diesel bertenaga, sunroof, dan ground clearance tinggi siap untuk mobilitas dalam kota maupun rute luar kota yang menantang.",
     model: "",
-    image: "/images/reborn.png",
+    image: "/armada/Pajero-Sport-Dakkar-2022-2023.webp",
     badges: ["Gagah", "Sunroof", "Diesel Bertenaga"],
     capacity: "6–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -458,12 +347,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: rebornInt1, label: "Dashboard Sporty" },
-      { src: rebornInt2, label: "Setir & Spidometer LCD" },
-      { src: rebornInt3, label: "Kabin 7-Seater" },
-      { src: rebornInt4, label: "Sunroof & Bagasi" },
-    ],
   },
   {
     slug: "fortuner-gr-sport",
@@ -475,7 +358,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "SUV gagah dengan sentuhan Gazoo Racing, suspensi kokoh, dan tenaga mesin 2.8L diesel yang luar biasa bertenaga untuk perjalanan dinas maupun keluarga.",
     model: "",
-    image: "/images/reborn.png",
+    image: "/armada/Fortuner-2.8-GR-2022-2023.webp",
     badges: ["GR Sport", "Mesin 2.8L", "Gagah"],
     capacity: "6–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -490,12 +373,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: rebornInt1, label: "Dashboard GR Sport" },
-      { src: rebornInt2, label: "Cockpit Kemudi" },
-      { src: rebornInt3, label: "Kabin Kulit Hitam" },
-      { src: rebornInt4, label: "Bagasi Fleksibel" },
-    ],
   },
   {
     slug: "cr-v-turbo-prestige",
@@ -507,7 +384,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "SUV prestisius dengan mesin VTEC Turbo responsif, panoramic sunroof megah, dan jok kulit elektrik berkelas untuk perjalanan bisnis dan keluarga.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/CRV-Turbo-Prestige-2020.webp",
     badges: ["Panoramic Sunroof", "Turbo Power", "7-Seater Mewah"],
     capacity: "5–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -522,25 +399,19 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Elegan" },
-      { src: zenixInt2, label: "Cockpit" },
-      { src: zenixInt3, label: "Kabin 7-Seater" },
-      { src: zenixInt4, label: "Panoramic Sunroof" },
-    ],
   },
   {
     slug: "mazda-cx-5-gt-kuro",
     name: "Mazda CX-5 GT Kuro",
-    tagline: "Desain KODO Eksklusif & Kualitas Interior Mewah",
+    tagline: "Desain KODO Eksklusif & Kemewahan Premium",
     category: "Premium SUV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV berdesain KODO anggun dengan kualitas interior sekelas mobil mewah Eropa, audio Bose 10-speaker, dan kenyamanan suspensi G-Vectoring Control.",
+      "SUV berdesain KODO anggun dengan kualitas kabin sekelas mobil mewah Eropa, audio Bose 10-speaker, dan kenyamanan suspensi G-Vectoring Control.",
     model: "",
-    image: "/images/zenix.png",
-    badges: ["Bose 10-Speaker", "Kuro Edition", "Interior Mewah"],
+    image: "/armada/Mazda-CX5-GT-Kuro-2023.webp",
+    badges: ["Bose 10-Speaker", "Kuro Edition", "Kabin Mewah"],
     capacity: "4–5 penumpang",
     luggage: "2 koper besar + 2 kabin",
     transmission: "6-Speed SKYACTIV-DRIVE Automatic",
@@ -553,12 +424,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
-    ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Minimalis Mewah" },
-      { src: zenixInt2, label: "Kokpit Driver-Centric" },
-      { src: zenixInt3, label: "Jok Kulit Nappa" },
-      { src: zenixInt4, label: "Bagasi Belakang" },
     ],
   },
 
@@ -573,7 +438,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Crossover listrik murni dengan akselerasi instan senyap, lantai kabin rata super lapang, relaxation seat, dan kebebasan melintasi seluruh jalan ganjil-genap di Jakarta.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/Hyundai-Ioniq-5-Signature-2024.webp",
     badges: ["100% Listrik", "Bebas Ganjil Genap", "Vision Roof"],
     capacity: "5 penumpang",
     luggage: "2 koper besar + Frunk depan",
@@ -588,12 +453,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir + Bebas Ganjil Genap" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Charging, Tol, & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Futuristik" },
-      { src: zenixInt2, label: "Dual Screen 12.3 Inci" },
-      { src: zenixInt3, label: "Relaxation Comfort Seat" },
-      { src: zenixInt4, label: "Vision Roof & Bagasi" },
-    ],
   },
 
   // ── 5. Compact SUV & Crossover ──
@@ -607,7 +466,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Crossover ringkas dengan panoramic glass roof, desain futuristik, dan kepraktisan ultra seat yang fleksibel untuk mobilitas lincah di tengah lalu lintas Jakarta.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/All-new-HRV-SE-2023.webp",
     badges: ["Panoramic Roof", "Stylish", "Lincah"],
     capacity: "4–5 penumpang",
     luggage: "2 koper besar + 1 kabin",
@@ -622,12 +481,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Horizontal" },
-      { src: zenixInt2, label: "Cockpit Kemudi" },
-      { src: zenixInt3, label: "Kabin Ultra Seat" },
-      { src: zenixInt4, label: "Panoramic Glass Roof" },
-    ],
   },
   {
     slug: "mitsubishi-xforce",
@@ -639,7 +492,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "SUV perkotaan terbaru dengan ground clearance tinggi 222mm, audio premium Dynamic Sound Yamaha, 4 mode berkendara, dan kabin ekstra nyaman.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/Mitsubishi-XForce-2024.webp",
     badges: ["Yamaha Premium Sound", "Unit Baru", "Futuristik"],
     capacity: "4–5 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -654,12 +507,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Modern" },
-      { src: zenixInt2, label: "Layar 12.3 Inci" },
-      { src: zenixInt3, label: "Kabin Yamaha Audio" },
-      { src: zenixInt4, label: "Bagasi Luas" },
-    ],
   },
   {
     slug: "city-hatchback-rs",
@@ -671,7 +518,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Hatchback sporty dengan mesin bertenaga, manuver gesit di jalanan ibu kota, serta fitur Ultra Seat yang bisa diatur dalam 4 mode ruang fleksibel.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/City-Hatchback-RS-2023.webp",
     badges: ["Ultra Seat", "Sporty RS", "Lincah Jakarta"],
     capacity: "4–5 penumpang",
     luggage: "2 koper sedang + 2 ransel",
@@ -686,12 +533,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Sporty RS" },
-      { src: zenixInt2, label: "Cockpit" },
-      { src: zenixInt3, label: "Kursi Kombinasi Suede" },
-      { src: zenixInt4, label: "Ultra Seat Bagasi" },
-    ],
   },
 
   // ── 6. Premium & Medium MPV ──
@@ -703,9 +544,9 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "Generasi terbaru Innova dengan platform TNGA kabin senyap, suspensi empuk, dan interior modern — pilihan favorit untuk keluarga dan mobilitas santai di Jakarta.",
+      "Generasi terbaru Innova dengan platform TNGA kabin senyap, suspensi empuk, dan desain modern — pilihan favorit untuk keluarga dan mobilitas santai di Jakarta.",
     model: "/models/innova-zenix.glb",
-    image: "/images/zenix.png",
+    image: "/armada/Zenix-Q-Hev-2024.webp",
     badges: ["Unit Baru", "Hybrid/Bensin", "Keluarga"],
     capacity: "5–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -720,12 +561,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Berpengalaman" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard" },
-      { src: zenixInt2, label: "Setir & Baris Depan" },
-      { src: zenixInt3, label: "Kabin Tengah" },
-      { src: zenixInt4, label: "Baris Belakang & Bagasi" },
-    ],
   },
   {
     slug: "toyota-voxy",
@@ -737,7 +572,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Boxy MPV modern dengan lantai rendah, captain seat long slide, dual sliding door otomatis, dan visibilitas kaca luas yang sangat ramah anak-anak dan lansia.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Voxy-2018-2019-(2-Sunroof).webp",
     badges: ["Baby Alphard", "Captain Seat", "Keluarga Nyaman"],
     capacity: "6–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -752,12 +587,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard Modern" },
-      { src: alphardInt2, label: "Cockpit Luas" },
-      { src: alphardInt3, label: "Long Slide Captain Seat" },
-      { src: alphardInt4, label: "Roof Monitor & Bagasi" },
-    ],
   },
   {
     slug: "nissan-serena-highway-star",
@@ -769,7 +598,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "MPV keluarga berdesain lapang dengan captain seat multi-fungsi, pintu bagasi dua arah (Dual Back Door), dan suspensi stabil untuk liburan keluarga nyaman.",
     model: "",
-    image: "/images/alphard.png",
+    image: "/armada/Nissan-Serena-Highway-Star-2020.webp",
     badges: ["Dual Back Door", "Captain Seat", "Lega & Praktis"],
     capacity: "6–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
@@ -784,12 +613,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: alphardInt1, label: "Dashboard Serena" },
-      { src: alphardInt2, label: "Cockpit" },
-      { src: alphardInt3, label: "Captain Seat Fleksibel" },
-      { src: alphardInt4, label: "Dual Back Door Bagasi" },
-    ],
   },
   {
     slug: "innova-venturer",
@@ -801,7 +624,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Varian flagship Innova Reborn dengan captain seat berbalut kulit hitam, body kit sporty elegan, ambient light kabin, dan ketangguhan mesin diesel legendaris.",
     model: "",
-    image: "/images/reborn.png",
+    image: "/armada/Innova-Venturer-2020-Diesel.webp",
     badges: ["Captain Seat", "Kulit Premium", "Diesel/Bensin"],
     capacity: "6 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -816,12 +639,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: rebornInt1, label: "Dashboard Venturer" },
-      { src: rebornInt2, label: "Setir Ornamen Kayu" },
-      { src: rebornInt3, label: "Captain Seat Kulit Hitam" },
-      { src: rebornInt4, label: "Ambient Lighting & Bagasi" },
-    ],
   },
   {
     slug: "toyota-innova-reborn",
@@ -833,7 +650,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Andalan perjalanan dalam kota maupun luar kota. Tangguh, nyaman, dan hemat untuk rute jauh bersama supir berpengalaman.",
     model: "/models/innova-reborn.glb",
-    image: "/images/reborn.png",
+    image: "/armada/innova-reborn-G-diesel-2024-2025.webp",
     badges: ["Hemat & Nyaman", "Luar Kota", "Diesel"],
     capacity: "6–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -848,12 +665,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Berpengalaman" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
-    interior: [
-      { src: rebornInt1, label: "Dashboard" },
-      { src: rebornInt2, label: "Setir & Baris Depan" },
-      { src: rebornInt3, label: "Kabin Tengah" },
-      { src: rebornInt4, label: "Baris Belakang & Bagasi" },
-    ],
   },
 
   // ── 7. Family MPV & Crossover ──
@@ -865,9 +676,9 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "MPV keluarga favorit berkat suspensi paling empuk di kelasnya, peredaman suara maksimal, dan tata letak interior yang ergonomis dan elegan.",
+      "MPV keluarga favorit berkat suspensi paling empuk di kelasnya, peredaman suara maksimal, dan tata letak kabin yang ergonomis dan elegan.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/Xpander-Ultimate-2024.webp",
     badges: ["Suspensi Empuk", "Kabin Senyap", "Keluarga"],
     capacity: "6–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -882,12 +693,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Xpander" },
-      { src: zenixInt2, label: "Cockpit" },
-      { src: zenixInt3, label: "Kabin 7-Seater" },
-      { src: zenixInt4, label: "Bagasi Fleksibel" },
-    ],
   },
   {
     slug: "xpander-cross",
@@ -899,7 +704,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Crossover MPV keluarga dengan suspensi empuk, kekedapan kabin terbaik di kelasnya, dan ground clearance tinggi untuk segala rute perjalanan.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/Xpander-Cross-2023.webp",
     badges: ["Keluarga", "Ground Clearance Tinggi", "Nyaman"],
     capacity: "6–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -914,12 +719,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Crossover" },
-      { src: zenixInt2, label: "Setir 4-Spoke" },
-      { src: zenixInt3, label: "Kabin 7 Penumpang" },
-      { src: zenixInt4, label: "Bagasi Luas" },
-    ],
   },
   {
     slug: "toyota-veloz-q",
@@ -931,7 +730,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Tipe tertinggi Veloz dengan rem parkir elektrik, wireless charger, ambient light, dan mode sofa seat untuk istirahat santai di perjalanan.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/Veloz-Q-2022.webp",
     badges: ["TSS Safety", "Wireless Charger", "Sofa Mode"],
     capacity: "6–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -946,12 +745,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Veloz Q" },
-      { src: zenixInt2, label: "TFT Digital Cluster" },
-      { src: zenixInt3, label: "Kabin Long Sofa Mode" },
-      { src: zenixInt4, label: "Roof Monitor & Bagasi" },
-    ],
   },
   {
     slug: "stargazer-x-prime",
@@ -963,7 +756,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "Crossover MPV dengan desain futuristik Starlight horizontal, opsi captain seat, meja lipat baris kedua, dan fitur Hyundai Smartsense terlengkap.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/Stargazer-X-Prime-2024.webp",
     badges: ["Futuristik", "Captain Seat", "Bose Audio"],
     capacity: "6–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -978,12 +771,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard Futuristik" },
-      { src: zenixInt2, label: "Cockpit" },
-      { src: zenixInt3, label: "Captain Seat & Meja Lipat" },
-      { src: zenixInt4, label: "Bagasi Fleksibel" },
-    ],
   },
   {
     slug: "br-v-prestige",
@@ -995,7 +782,7 @@ export const VEHICLES: Vehicle[] = [
     description:
       "SUV keluarga 7-seater dengan tenaga terbesar di kelasnya (121 PS), kabin ergonomis, dan fitur keselamatan Honda Sensing untuk keamanan ekstra.",
     model: "",
-    image: "/images/zenix.png",
+    image: "/armada/BRV-Prestige-2022.webp",
     badges: ["Honda Sensing", "7-Seater", "Bertenaga"],
     capacity: "6–7 penumpang",
     luggage: "2 koper besar + 2 kabin",
@@ -1009,12 +796,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
-    ],
-    interior: [
-      { src: zenixInt1, label: "Dashboard BR-V" },
-      { src: zenixInt2, label: "Setir Kemudi" },
-      { src: zenixInt3, label: "Kabin 7-Seater" },
-      { src: zenixInt4, label: "Bagasi Belakang" },
     ],
   },
 
@@ -1043,12 +824,6 @@ export const VEHICLES: Vehicle[] = [
       { package: "Airport Transfer Rombongan", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir Bandara" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Berpengalaman" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
-    ],
-    interior: [
-      { src: hiaceInt1, label: "Dashboard" },
-      { src: hiaceInt2, label: "Setir & Baris Depan" },
-      { src: hiaceInt3, label: "Kabin Tengah" },
-      { src: hiaceInt4, label: "Baris Belakang & Bagasi" },
     ],
   },
 ];

@@ -1,8 +1,8 @@
 export const SITE = {
   company: "PT. Vicky Rental Nusantara",
   brand: "Vicky Rentcar Jakarta",
-  phone: "+62 812-8888-0199",
-  whatsappNumber: "6281288880199",
+  phone: "+62 823-6338-9893",
+  whatsappNumber: "6282363389893",
   city: "Jakarta, Indonesia",
   address: "Sudirman Central Business District (SCBD) Lot 28, Senayan, Jakarta Selatan, DKI Jakarta 12190",
   poolAddress: "Pool Bandara Soekarno-Hatta & Pool TB Simatupang, Jakarta",
@@ -12,7 +12,8 @@ export const SITE = {
 };
 
 export function waLink(message: string) {
-  return `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${SITE.whatsappNumber}?text=${encodedMessage}`;
 }
 
 export function createBookingWaLink(data: {
