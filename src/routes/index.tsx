@@ -8,6 +8,7 @@ import { Fleet } from "@/components/sections/Fleet";
 import { Services } from "@/components/sections/Services";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { GalleryTestimonials } from "@/components/sections/GalleryTestimonials";
 import { CTA } from "@/components/sections/CTA";
 import { SITE_URL, serializeSchema, buildLocalBusinessSchema, buildWebSiteSchema } from "@/lib/schema";
 
@@ -50,6 +51,7 @@ function Index() {
         <Services />
         <WhyUs />
         <Testimonials />
+        <GalleryTestimonials />
         <CTA />
       </main>
       <Footer />
@@ -57,3 +59,4 @@ function Index() {
     </div>
   );
 }
+

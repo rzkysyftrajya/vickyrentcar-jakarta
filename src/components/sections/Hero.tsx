@@ -18,6 +18,15 @@
  *   - Frame pertama preload duluan lalu ditampilkan; sisanya preload di
  *     background (idle time) agar scroll berikutnya sudah instan.
  *   - Tidak ada redraw untuk frame yang sama; render sepenuhnya di canvas.
+ *   - Resolusi decode ADAPTIF: tiap frame di-resize saat decode
+ *     (createImageBitmap resizeWidth/resizeHeight) mengikuti lebar layar ×
+ *     devicePixelRatio, bukan selalu 1280×720 penuh. Di HP ini memangkas
+ *     memori decode secara signifikan tanpa mengurangi ketajaman visual,
+ *     sekaligus membuat drawImage per-frame lebih ringan → transisi lebih
+ *     konsisten halus.
+ *   - Interpolasi lerp berbasis DELTA-TIME (bukan faktor tetap per-tick),
+ *     jadi kecepatan/kehalusan transisi tetap konsisten walau frame rate
+ *     device turun (mis. HP yang throttle ke ~30fps saat sibuk).
  *   - rAF loop otomatis berhenti saat section di luar viewport / tab tidak
  *     aktif (IntersectionObserver + visibilitychange), agar tidak membebani
  *     CPU/GPU HP terus-menerus.
@@ -39,21 +48,28 @@ const FRAME_PATHS = Array.from({ length: TOTAL }, (_, i) => {
   return `/hero-section/frame_${num}.webp`;
 });
 
-const LERP_FACTOR = 0.15;
+const LERP_FACTOR = 0.18; // dinormalisasi ke baseline 60fps (lihat tick())
 const SETTLE_EPSILON = 0.02;
+const REFERENCE_FRAME_MS = 1000 / 60;
+const MAX_DECODE_WIDTH = 1280; // jangan pernah decode lebih besar dari source asli
+const SUPPORTS_RESIZED_BITMAP =
+  typeof createImageBitmap === "function"; // fitur resize dicek per-panggilan di try/catch
 
 export function Hero() {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Gambar yang berhasil dimuat (null = belum/gagal dimuat, di-skip saat draw)
-  const imagesRef = useRef<(HTMLImageElement | null)[]>(new Array(TOTAL).fill(null));
+  // Gambar yang berhasil dimuat (null = belum/gagal dimuat, di-skip saat draw).
+  // ImageBitmap dipakai saat browser mendukung resize-on-decode; HTMLImageElement sebagai fallback.
+  type FrameSource = HTMLImageElement | ImageBitmap;
+  const imagesRef = useRef<(FrameSource | null)[]>(new Array(TOTAL).fill(null));
   const lastDrawnFrameRef = useRef<number>(-1);
   const lastGoodFrameRef = useRef<number>(0); // fallback jika frame target hilang
   const rafIdRef = useRef<number | null>(null);
   const targetFrameRef = useRef(0);
   const smoothFrameRef = useRef(0);
+  const lastTickTimeRef = useRef<number | null>(null);
   const canvasSizeRef = useRef({ width: 0, height: 0, dpr: 1 });
   const lastWidthRef = useRef(0);
   const isActiveRef = useRef(true); // false saat section di luar viewport / tab hidden
@@ -102,6 +118,12 @@ export function Hero() {
     lastDrawnFrameRef.current = -1; // paksa redraw setelah resize
   }, []);
 
+  // ImageBitmap pakai width/height; HTMLImageElement pakai naturalWidth/naturalHeight.
+  const getDims = (img: HTMLImageElement | ImageBitmap) =>
+    "naturalWidth" in img
+      ? { w: img.naturalWidth, h: img.naturalHeight }
+      : { w: img.width, h: img.height };
+
   // ─── Menggambar satu frame ke canvas dengan efek "cover" (object-fit: cover) ───
   const drawFrame = useCallback((index: number) => {
     const canvas = canvasRef.current;
@@ -129,7 +151,8 @@ export function Hero() {
     ctx.clearRect(0, 0, width, height);
 
     const canvasRatio = width / height;
-    const imgRatio = img.naturalWidth / img.naturalHeight;
+    const { w: imgW, h: imgH } = getDims(img);
+    const imgRatio = imgW / imgH;
 
     let drawWidth = width;
     let drawHeight = height;
@@ -150,24 +173,39 @@ export function Hero() {
     lastDrawnFrameRef.current = clamped;
   }, []);
 
-  // ─── Loop animasi: interpolasi halus menuju target frame (lerp, bukan jump) ───
+  // ─── Loop animasi: interpolasi halus menuju target frame (lerp berbasis delta-time) ───
   // Berhenti otomatis saat sudah settle DAN section tidak aktif (di luar layar / tab hidden).
-  const tick = useCallback(() => {
-    const target = targetFrameRef.current;
-    const current = smoothFrameRef.current;
-    const diff = target - current;
-    const settled = Math.abs(diff) <= SETTLE_EPSILON;
+  const tick = useCallback(
+    (now: number) => {
+      const lastTime = lastTickTimeRef.current;
+      lastTickTimeRef.current = now;
+      // Delta-time dibatasi (mis. saat tab baru aktif lagi setelah lama idle)
+      // supaya tidak melompat jauh dalam satu tick.
+      const dt = lastTime === null ? REFERENCE_FRAME_MS : Math.min(now - lastTime, 100);
 
-    smoothFrameRef.current = settled ? target : current + diff * LERP_FACTOR;
-    drawFrame(Math.round(smoothFrameRef.current));
+      // Normalisasi faktor lerp ke delta waktu asli: di 30fps (dt≈33ms) frame
+      // "mengejar" dua kali lebih jauh per-tick dibanding 60fps, jadi kecepatan
+      // transisi terasa sama, bukan lebih lambat/tersendat.
+      const factor = 1 - Math.pow(1 - LERP_FACTOR, dt / REFERENCE_FRAME_MS);
 
-    if (!isActiveRef.current && settled) {
-      // Section tidak terlihat & frame sudah settle → hentikan loop, hemat baterai/CPU
-      rafIdRef.current = null;
-      return;
-    }
-    rafIdRef.current = requestAnimationFrame(tick);
-  }, [drawFrame]);
+      const target = targetFrameRef.current;
+      const current = smoothFrameRef.current;
+      const diff = target - current;
+      const settled = Math.abs(diff) <= SETTLE_EPSILON;
+
+      smoothFrameRef.current = settled ? target : current + diff * factor;
+      drawFrame(Math.round(smoothFrameRef.current));
+
+      if (!isActiveRef.current && settled) {
+        // Section tidak terlihat & frame sudah settle → hentikan loop, hemat baterai/CPU
+        rafIdRef.current = null;
+        lastTickTimeRef.current = null;
+        return;
+      }
+      rafIdRef.current = requestAnimationFrame(tick);
+    },
+    [drawFrame],
+  );
 
   const ensureLoopRunning = useCallback(() => {
     if (rafIdRef.current === null) {
@@ -179,22 +217,55 @@ export function Hero() {
   useEffect(() => {
     let cancelled = false;
 
-    const loadImage = (index: number) =>
-      new Promise<void>((resolve) => {
+    // Target lebar decode: mengikuti viewport × DPR, dibatasi resolusi asli
+    // (1280). Di HP kecil ini memangkas memori decode jauh dibanding selalu
+    // decode full 1280×720, tanpa terlihat bedanya di layar HP itu sendiri.
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const decodeWidth = Math.min(MAX_DECODE_WIDTH, Math.round(window.innerWidth * dpr));
+    const decodeHeight = Math.round(decodeWidth * (720 / 1280));
+
+    const loadViaFetch = async (src: string): Promise<Blob | null> => {
+      try {
+        const res = await fetch(src);
+        if (!res.ok) return null;
+        return await res.blob();
+      } catch {
+        return null;
+      }
+    };
+
+    const loadImage = async (index: number): Promise<void> => {
+      const src = FRAME_PATHS[index];
+      if (!src) return;
+
+      if (SUPPORTS_RESIZED_BITMAP && decodeWidth < MAX_DECODE_WIDTH) {
+        // Jalur adaptif: fetch blob lalu decode+resize sekaligus via createImageBitmap.
+        try {
+          const blob = await loadViaFetch(src);
+          if (!blob) return; // frame hilang → skip tanpa error
+          const bitmap = await createImageBitmap(blob, {
+            resizeWidth: decodeWidth,
+            resizeHeight: decodeHeight,
+            resizeQuality: "high",
+          });
+          if (!cancelled) imagesRef.current[index] = bitmap;
+          return;
+        } catch {
+          // Fallback ke <img> biasa jika createImageBitmap gagal untuk frame ini
+        }
+      }
+
+      await new Promise<void>((resolve) => {
         const img = new Image();
         img.decoding = "async";
         img.onload = () => {
           if (!cancelled) imagesRef.current[index] = img;
           resolve();
         };
-        img.onerror = () => {
-          // Frame hilang → skip tanpa error, tetap resolve agar tidak memblokir
-          resolve();
-        };
-        const src = FRAME_PATHS[index];
-        if (src) img.src = src;
-        else resolve();
+        img.onerror = () => resolve(); // frame hilang → skip tanpa error
+        img.src = src;
       });
+    };
 
     const idle = (cb: () => void) => {
       if (typeof (window as any).requestIdleCallback === "function") {
@@ -328,7 +399,7 @@ export function Hero() {
             </p>
             <div className="mt-8">
               <a
-                href={waLink("Halo, saya ingin menyewa armada premium.")}
+                href={waLink("Halo Vickyrentcar Jakarta, saya ingin menyewa armada premium.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-black transition-transform duration-200 hover:scale-[1.03]"

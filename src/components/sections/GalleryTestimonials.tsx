@@ -1,33 +1,11 @@
-import fs from 'fs';
-import path from 'path';
-
-const galeriDir = 'public/galeri';
-const files = fs.readdirSync(galeriDir).filter(f => f.endsWith('.webp') || f.endsWith('.png') || f.endsWith('.jpg'));
-
-// Rename files sequentially to galeri-1.webp, galeri-2.webp, etc.
-files.forEach((file, index) => {
-  const oldPath = path.join(galeriDir, file);
-  const newName = `galeri-${index + 1}.webp`;
-  const newPath = path.join(galeriDir, newName);
-  
-  // Temporary rename if already existing to avoid collision
-  if (oldPath !== newPath) {
-    fs.renameSync(oldPath, newPath);
-    console.log(`Renamed: "${file}" -> "${newName}"`);
-  }
-});
-
-const totalImages = files.length;
-console.log(`Total images renamed: ${totalImages}`);
-
-const componentContent = `import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
-// Total ${totalImages} foto dokumentasi & testimoni pelanggan nyata
+// Total 39 foto dokumentasi & testimoni pelanggan nyata
 const GALLERY_IMAGES: string[] = Array.from(
-  { length: ${totalImages} },
-  (_, i) => \`/galeri/galeri-\${i + 1}.webp\`
+  { length: 39 },
+  (_, i) => `/galeri/galeri-${i + 1}.webp`
 );
 
 const HALF = Math.ceil(GALLERY_IMAGES.length / 2);
@@ -98,7 +76,7 @@ export function GalleryTestimonials() {
               const originalIndex = idx % ROW_1.length;
               return (
                 <GalleryCard
-                  key={\`r1-\${idx}\`}
+                  key={`r1-${idx}`}
                   src={src}
                   index={originalIndex}
                   onSelect={() => setSelectedIdx(originalIndex)}
@@ -115,7 +93,7 @@ export function GalleryTestimonials() {
               const originalIndex = HALF + (idx % ROW_2.length);
               return (
                 <GalleryCard
-                  key={\`r2-\${idx}\`}
+                  key={`r2-${idx}`}
                   src={src}
                   index={originalIndex}
                   onSelect={() => setSelectedIdx(originalIndex)}
@@ -192,7 +170,7 @@ export function GalleryTestimonials() {
             >
               <img
                 src={GALLERY_IMAGES[selectedIdx]}
-                alt={\`Foto Testimoni Pelanggan Vicky Rentcar \${selectedIdx + 1}\`}
+                alt={`Foto Testimoni Pelanggan Vicky Rentcar ${selectedIdx + 1}`}
                 className="max-h-[85vh] max-w-[90vw] object-contain"
                 loading="eager"
               />
@@ -218,11 +196,11 @@ function GalleryCard({
       type="button"
       onClick={onSelect}
       className="group relative h-48 w-64 sm:h-64 sm:w-80 md:h-72 md:w-96 flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gold/20 bg-card/40 transition-all duration-500 hover:z-20 hover:scale-[1.03] hover:border-gold/60 hover:shadow-[0_12px_40px_-10px_rgba(212,175,55,0.35)]"
-      aria-label={\`Buka foto testimoni #\${index + 1}\`}
+      aria-label={`Buka foto testimoni #${index + 1}`}
     >
       <img
         src={src}
-        alt={\`Foto Testimoni Vicky Rentcar \${index + 1}\`}
+        alt={`Foto Testimoni Vicky Rentcar ${index + 1}`}
         loading="lazy"
         decoding="async"
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
@@ -235,11 +213,3 @@ function GalleryCard({
     </button>
   );
 }
-`;
-
-fs.writeFileSync('src/components/sections/GalleryTestimonials.tsx', componentContent);
-console.log('Successfully written GalleryTestimonials.tsx with clean formatting!');
-
-
-
-
