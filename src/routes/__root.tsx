@@ -17,6 +17,7 @@ import {
   serializeSchema,
   SITE_URL,
 } from "../lib/schema";
+import { LanguageProvider } from "../lib/i18n";
 
 
 function NotFoundComponent() {
@@ -142,8 +143,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <LanguageProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

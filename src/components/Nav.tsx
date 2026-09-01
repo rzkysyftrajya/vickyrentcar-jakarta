@@ -1,22 +1,23 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ShieldCheck } from "lucide-react";
+import { Menu, X, Phone, ShieldCheck, Globe } from "lucide-react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
+import { useLanguage } from "@/lib/i18n";
 
 const navLinks = [
-  { label: "Beranda", to: "/" },
-  { label: "Tentang Kami", to: "/tentang-kami" },
-  { label: "Layanan", to: "/layanan" },
-  { label: "Armada", to: "/armada" },
-  { label: "Bandingkan", to: "/bandingkan" },
-  { label: "Korporat", to: "/korporat" },
-  { label: "Kontak", to: "/kontak" },
+  { idLabel: "Beranda", enLabel: "Home", to: "/" },
+  { idLabel: "Tentang Kami", enLabel: "About Us", to: "/tentang-kami" },
+  { idLabel: "Layanan", enLabel: "Services", to: "/layanan" },
+  { idLabel: "Armada", enLabel: "Fleet", to: "/armada" },
+  { idLabel: "Bandingkan", enLabel: "Compare", to: "/bandingkan" },
+  { idLabel: "Korporat", enLabel: "Corporate", to: "/korporat" },
+  { idLabel: "Kontak", enLabel: "Contact", to: "/kontak" },
 ] as const;
 
-
 export function Nav() {
+  const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   /**
@@ -103,10 +104,10 @@ export function Nav() {
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-gold">
-              <ShieldCheck className="h-3 w-3" /> Rental Mobil Jakarta 24/7
+              <ShieldCheck className="h-3 w-3" /> {t("Rental Mobil Jakarta 24/7", "Jakarta Car Rental 24/7")}
             </span>
             <span className="text-muted-foreground/60">•</span>
-            <span>Antar Jemput Bandara Soetta &amp; Halim</span>
+            <span>{t("Antar Jemput Bandara Soetta & Halim", "Soetta & Halim Airport Transfer")}</span>
           </div>
           <div className="flex items-center gap-5">
             <a
@@ -136,7 +137,7 @@ export function Nav() {
               Vicky <span className="gold-text font-normal">Rentcar</span>
             </span>
             <span className="mt-1 text-[0.55rem] tracking-[0.38em] text-muted-foreground uppercase">
-              Rental Mobil Jakarta
+              {t("Rental Mobil Jakarta", "Jakarta Car Rental")}
             </span>
           </span>
         </Link>
@@ -159,7 +160,7 @@ export function Nav() {
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  {item.label}
+                  {t(item.idLabel, item.enLabel)}
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
@@ -175,6 +176,18 @@ export function Nav() {
 
         {/* Action Button */}
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setLanguage(language === "id" ? "en" : "id")}
+            className="flex items-center gap-1.5 rounded-full border border-gold/40 px-3 py-1.5 text-[0.65rem] tracking-[0.1em] font-medium transition-colors hover:bg-gold/10"
+            aria-label="Toggle Language"
+          >
+            <Globe className="h-3.5 w-3.5 text-gold" />
+            <span className={language === "id" ? "text-gold" : "text-muted-foreground"}>ID</span>
+            <span className="text-muted-foreground/40">/</span>
+            <span className={language === "en" ? "text-gold" : "text-muted-foreground"}>EN</span>
+          </button>
+
           <a
             href={waLink(`Halo ${SITE.brand}, saya ingin menanyakan ketersediaan armada dan reservasi.`)}
             target="_blank"
@@ -182,7 +195,7 @@ export function Nav() {
             className="hidden items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-[0.65rem] tracking-[0.2em] text-gold uppercase transition-all duration-300 hover:bg-gold hover:text-primary-foreground sm:inline-flex"
           >
             <WhatsAppIcon className="h-3.5 w-3.5" />
-            <span>Booking Cepat</span>
+            <span>{t("Booking Cepat", "Fast Booking")}</span>
           </a>
 
           {/* Mobile Menu Trigger */}
@@ -226,7 +239,7 @@ export function Nav() {
                           : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
                       }`}
                     >
-                      <span>{item.label}</span>
+                      <span>{t(item.idLabel, item.enLabel)}</span>
                       {isActive && <span className="h-1.5 w-1.5 rounded-full bg-gold" />}
                     </Link>
                   </li>
@@ -242,7 +255,7 @@ export function Nav() {
                 className="flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-gold)] py-3 text-xs tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-md"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                <span>WhatsApp 24 Jam</span>
+                <span>{t("WhatsApp 24 Jam", "24/7 WhatsApp")}</span>
               </a>
 
               <a

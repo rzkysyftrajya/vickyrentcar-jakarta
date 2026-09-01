@@ -16,13 +16,21 @@
  *   - Interpolasi frame halus (lerp) via requestAnimationFrame, bukan
  *     perpindahan kasar — terasa seperti video, bukan slideshow.
  *   - Frame pertama preload duluan lalu ditampilkan; sisanya preload di
- *     background agar scroll berikutnya sudah instan.
+ *     background (idle time) agar scroll berikutnya sudah instan.
  *   - Tidak ada redraw untuk frame yang sama; render sepenuhnya di canvas.
+ *   - rAF loop otomatis berhenti saat section di luar viewport / tab tidak
+ *     aktif (IntersectionObserver + visibilitychange), agar tidak membebani
+ *     CPU/GPU HP terus-menerus.
+ *   - Resize hanya dihitung ulang saat LEBAR berubah — perubahan tinggi
+ *     akibat address bar browser mobile muncul/hilang saat scroll diabaikan,
+ *     supaya canvas tidak di-reset di tengah scroll (penyebab utama "berat"
+ *     di HP).
  */
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
+import { useLanguage } from "@/lib/i18n";
 
 // ─── Generator frame otomatis (tidak hardcode) ───
 const TOTAL = 46;
@@ -35,6 +43,7 @@ const LERP_FACTOR = 0.15;
 const SETTLE_EPSILON = 0.02;
 
 export function Hero() {
+  const { t } = useLanguage();
   const containerRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -46,6 +55,8 @@ export function Hero() {
   const targetFrameRef = useRef(0);
   const smoothFrameRef = useRef(0);
   const canvasSizeRef = useRef({ width: 0, height: 0, dpr: 1 });
+  const lastWidthRef = useRef(0);
+  const isActiveRef = useRef(true); // false saat section di luar viewport / tab hidden
 
   const [firstLoaded, setFirstLoaded] = useState(false);
 
@@ -66,16 +77,21 @@ export function Hero() {
     [0.7, 0.45, 0.2, 0.2, 0.55],
   );
 
-  // ─── Resize canvas mengikuti device pixel ratio, cover full-bleed ───
-  const resizeCanvas = useCallback(() => {
+  // ─── Resize canvas — HANYA saat lebar berubah (abaikan address bar mobile) ───
+  const resizeCanvas = useCallback((force = false) => {
     const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
+    if (!canvas) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rect = container.getBoundingClientRect();
     const width = Math.round(window.innerWidth);
     const height = Math.round(window.innerHeight);
+
+    // Di mobile, address bar muncul/hilang saat scroll memicu 'resize' dengan
+    // lebar TETAP tapi tinggi berubah. Abaikan supaya canvas tidak di-reset
+    // di tengah scroll (penyebab utama jank/berat di HP).
+    if (!force && width === lastWidthRef.current) return;
+    lastWidthRef.current = width;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     canvas.width = width * dpr;
     canvas.height = height * dpr;
@@ -135,22 +151,31 @@ export function Hero() {
   }, []);
 
   // ─── Loop animasi: interpolasi halus menuju target frame (lerp, bukan jump) ───
+  // Berhenti otomatis saat sudah settle DAN section tidak aktif (di luar layar / tab hidden).
   const tick = useCallback(() => {
     const target = targetFrameRef.current;
     const current = smoothFrameRef.current;
     const diff = target - current;
+    const settled = Math.abs(diff) <= SETTLE_EPSILON;
 
-    if (Math.abs(diff) > SETTLE_EPSILON) {
-      smoothFrameRef.current = current + diff * LERP_FACTOR;
-    } else {
-      smoothFrameRef.current = target;
-    }
-
+    smoothFrameRef.current = settled ? target : current + diff * LERP_FACTOR;
     drawFrame(Math.round(smoothFrameRef.current));
+
+    if (!isActiveRef.current && settled) {
+      // Section tidak terlihat & frame sudah settle → hentikan loop, hemat baterai/CPU
+      rafIdRef.current = null;
+      return;
+    }
     rafIdRef.current = requestAnimationFrame(tick);
   }, [drawFrame]);
 
-  // ─── Preload: frame pertama duluan → tampil → sisanya di background ───
+  const ensureLoopRunning = useCallback(() => {
+    if (rafIdRef.current === null) {
+      rafIdRef.current = requestAnimationFrame(tick);
+    }
+  }, [tick]);
+
+  // ─── Preload: frame pertama duluan → tampil → sisanya di background (idle) ───
   useEffect(() => {
     let cancelled = false;
 
@@ -171,15 +196,26 @@ export function Hero() {
         else resolve();
       });
 
+    const idle = (cb: () => void) => {
+      if (typeof (window as any).requestIdleCallback === "function") {
+        (window as any).requestIdleCallback(cb, { timeout: 200 });
+      } else {
+        setTimeout(cb, 32);
+      }
+    };
+
     (async () => {
-      resizeCanvas();
+      resizeCanvas(true);
       await loadImage(0);
       if (cancelled) return;
       drawFrame(0);
       setFirstLoaded(true);
 
-      // Preload sisa frame secara background, tanpa memblokir interaksi
+      // Preload sisa frame di background pakai idle time, tidak mengganggu
+      // scroll/input yang sedang berjalan di thread utama.
       for (let i = 1; i < TOTAL; i++) {
+        if (cancelled) return;
+        await new Promise<void>((r) => idle(r));
         if (cancelled) return;
         await loadImage(i);
       }
@@ -191,28 +227,63 @@ export function Hero() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ─── Resize listener ───
+  // ─── Resize listener (throttled via rAF; filter lebar-saja ada di resizeCanvas) ───
   useEffect(() => {
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    return () => window.removeEventListener("resize", resizeCanvas);
+    let ticking = false;
+    const onResize = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        resizeCanvas();
+        ticking = false;
+      });
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, [resizeCanvas]);
 
-  // ─── Mulai/hentikan rAF loop sekali saja ───
+  // ─── IntersectionObserver + visibilitychange: pause/resume rAF loop ───
   useEffect(() => {
-    rafIdRef.current = requestAnimationFrame(tick);
+    const section = containerRef.current;
+    if (!section) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        isActiveRef.current = entry.isIntersecting && !document.hidden;
+        if (isActiveRef.current) ensureLoopRunning();
+      },
+      { threshold: 0 },
+    );
+    io.observe(section);
+
+    const onVisibility = () => {
+      isActiveRef.current = !document.hidden && isActiveRef.current;
+      if (!document.hidden) ensureLoopRunning();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [ensureLoopRunning]);
+
+  // ─── Mulai rAF loop sekali di awal ───
+  useEffect(() => {
+    ensureLoopRunning();
     return () => {
       if (rafIdRef.current !== null) cancelAnimationFrame(rafIdRef.current);
     };
-  }, [tick]);
+  }, [ensureLoopRunning]);
 
   // ─── Update target frame dari scroll progress (tanpa trigger re-render React) ───
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (progress) => {
       targetFrameRef.current = Math.round(progress * (TOTAL - 1));
+      ensureLoopRunning(); // scroll saat loop sedang idle (settled+hidden) harus membangunkannya lagi
     });
     return () => unsubscribe();
-  }, [scrollYProgress]);
+  }, [scrollYProgress, ensureLoopRunning]);
 
   return (
     <section
@@ -247,11 +318,13 @@ export function Hero() {
         >
           <div className="mx-auto max-w-3xl">
             <h1 className="text-3xl font-light leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-              Armada Premium untuk Setiap Perjalanan
+              {t("Armada Premium untuk Setiap Perjalanan", "Premium Fleet for Every Journey")}
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-              Toyota Alphard, Hiace Premio, dan Innova Zenix — siap mengantar Anda dengan kenyamanan
-              dan ketepatan waktu kelas atas.
+              {t(
+                "Toyota Alphard, Hiace Premio, dan Innova Zenix — siap mengantar Anda dengan kenyamanan dan ketepatan waktu kelas atas.",
+                "Toyota Alphard, Hiace Premio, and Innova Zenix — ready to escort you with top-class comfort and punctuality.",
+              )}
             </p>
             <div className="mt-8">
               <a
@@ -261,7 +334,7 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-black transition-transform duration-200 hover:scale-[1.03]"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                Chat via WhatsApp
+                {t("Chat via WhatsApp", "Chat on WhatsApp")}
               </a>
             </div>
           </div>
