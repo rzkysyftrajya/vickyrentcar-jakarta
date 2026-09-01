@@ -156,6 +156,32 @@
   color: var(--gold);
 }
 
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #d4af37 0%,
+    #ffffff 25%,
+    #d4af37 50%,
+    #a9832a 75%,
+    #d4af37 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShimmer 5s linear infinite;
+}
+
+
 @keyframes marquee {
   0% {
     transform: translate3d(0, 0, 0);

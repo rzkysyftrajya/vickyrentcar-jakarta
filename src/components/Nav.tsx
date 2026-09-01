@@ -20,53 +20,20 @@ export function Nav() {
   const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  /**
-   * inHeroZone: true selama user masih dalam area scroll hero section (homepage only).
-   * Saat inHeroZone = true → nav tersembunyi (fullscreen immersive experience).
-   * Saat inHeroZone = false → nav slide-in dari atas.
-   */
-  const [inHeroZone, setInHeroZone] = useState(false);
 
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
-  const isHomePage = currentPath === "/";
 
-  // Track scroll untuk background nav & hero zone
+  // Track scroll for background nav glass styling
   useEffect(() => {
     const onScroll = () => {
-      const sy = window.scrollY;
-      setScrolled(sy > 20);
-
-      if (isHomePage) {
-        // Hero section: h-[280vh] sm:h-[320vh]
-        // Sticky berakhir saat scrollY >= heroHeight - innerHeight
-        // Mobile: 280vh - 100vh = 180vh
-        // SM+: 320vh - 100vh = 220vh
-        // Gunakan #hero-section element agar akurat
-        const heroEl = document.getElementById("hero-section");
-        if (heroEl) {
-          // bottom > window.innerHeight → masih dalam scroll zone hero
-          const { bottom } = heroEl.getBoundingClientRect();
-          setInHeroZone(bottom > window.innerHeight + 40);
-        } else {
-          // Fallback jika element belum mount
-          setInHeroZone(sy < window.innerHeight * 1.7);
-        }
-      } else {
-        setInHeroZone(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
-    // Inisialisasi langsung
-    // Pada homepage, mulai sebagai hidden (inHeroZone = true)
-    if (isHomePage) {
-      setInHeroZone(true);
-    }
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isHomePage]);
+  }, []);
 
   // Tutup mobile menu saat route berubah
   useEffect(() => {
@@ -74,28 +41,10 @@ export function Nav() {
   }, [currentPath]);
 
   return (
-    <motion.header
-      /**
-       * inHeroZone = true  → tersembunyi di atas (y: -100, opacity: 0)
-       * inHeroZone = false → slide-in dari atas (y: 0, opacity: 1)
-       *
-       * Tidak pakai initial animate supaya tidak ada flash saat SSR hydrate.
-       * Kita langsung set dari state yang sudah benar.
-       */
-      animate={{
-        y: inHeroZone ? -120 : 0,
-        opacity: inHeroZone ? 0 : 1,
-      }}
-      initial={{
-        // Homepage: mulai tersembunyi. Page lain: langsung visible
-        y: isHomePage ? -120 : 0,
-        opacity: isHomePage ? 0 : 1,
-      }}
-      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-      style={{ pointerEvents: inHeroZone ? "none" : "auto" }}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[oklch(0.1431_0.0201_255.76_/_88%)] backdrop-blur-xl border-b border-gold/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+          ? "bg-[oklch(0.1431_0.0201_255.76_/_90%)] backdrop-blur-xl border-b border-gold/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
           : "bg-transparent"
       }`}
     >
@@ -269,6 +218,7 @@ export function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
+

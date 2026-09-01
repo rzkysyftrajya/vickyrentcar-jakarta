@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { LuxuryIntro } from "@/components/LuxuryIntro";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -43,6 +44,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background">
+      <LuxuryIntro />
       <Nav />
       <main>
         <Hero />
@@ -59,4 +61,5 @@ function Index() {
     </div>
   );
 }
+
 
