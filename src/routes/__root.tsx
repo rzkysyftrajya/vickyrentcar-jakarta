@@ -108,6 +108,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "canonical", href: SITE_URL },
     ],
     scripts: [
+      // Google Tag (gtag.js) External Script
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=AW-18421801061",
+        async: true,
+      },
+      // Google Tag Inline Config Script
+      {
+        children: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18421801061');
+        `,
+      },
       {
         type: "application/ld+json",
         children: serializeSchema(buildLocalBusinessSchema()),
