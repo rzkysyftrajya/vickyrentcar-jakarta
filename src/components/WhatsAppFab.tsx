@@ -2,13 +2,30 @@ import { motion } from "motion/react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
 
+// Deklarasi tipe global agar TypeScript tidak komplain
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export function WhatsAppFab() {
+  const handleClick = () => {
+    // Pemicu Event Konversi Google Ads saat tombol diklik
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: "AW-18421801061/eDb6CN_CiuwcEOXAmdBE",
+      });
+    }
+  };
+
   return (
     <motion.a
       href={waLink(`Halo ${SITE.brand}, saya ingin memesan armada.`)}
       target="_blank"
       rel="noreferrer"
       aria-label="Pesan via WhatsApp"
+      onClick={handleClick}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1.1, type: "spring", stiffness: 220, damping: 18 }}
