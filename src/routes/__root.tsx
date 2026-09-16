@@ -152,11 +152,20 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        {/* VRN TRACK ADS Tracking SDK (Static /track.js) */}
+        {/* VRN TRACK ADS Tracking SDK */}
+        <script src="https://vrnadvertiser.vercel.app/track.js" />
         <script
-          src="/track.js"
-          data-tracking-id="9ab5c620-00fb-4833-88cb-6172a7028f7a"
-          async
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('DOMContentLoaded', function() {
+                if (window.VRNTrack) {
+                  window.VRNTrack.init({
+                    tracking_key: "9ab5c620-00fb-4833-88cb-6172a7028f7a"
+                  });
+                }
+              });
+            `,
+          }}
         />
       </head>
       <body>
