@@ -30,6 +30,7 @@ export function CTA() {
               href={waLink(`Halo ${SITE.brand}, saya ingin melakukan reservasi sewa mobil.`)}
               target="_blank"
               rel="noreferrer"
+              onClick={() => window.VRNTrack?.trackClick?.({ target: "cta_section_whatsapp" })}
               className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-8 py-4 text-[0.65rem] tracking-[0.22em] text-primary-foreground uppercase transition-transform duration-300 hover:scale-105 shadow-[var(--shadow-gold)] font-medium"
             >
               <WhatsAppIcon className="h-4 w-4" />
@@ -37,6 +38,7 @@ export function CTA() {
             </a>
             <Link
               to="/kontak"
+              onClick={() => window.VRNTrack?.trackClick?.({ target: "cta_section_form" })}
               className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-8 py-4 text-[0.65rem] tracking-[0.22em] text-gold uppercase transition-all duration-300 hover:bg-gold hover:text-primary-foreground font-medium"
             >
               <CalendarCheck className="h-4 w-4" />
@@ -44,6 +46,7 @@ export function CTA() {
             </Link>
             <a
               href={`tel:${SITE.phone.replace(/\s/g, "")}`}
+              onClick={() => window.VRNTrack?.trackClick?.({ target: "cta_section_phone" })}
               className="inline-flex items-center gap-2 rounded-full border border-gold/25 px-6 py-4 text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase transition-colors duration-300 hover:text-gold hover:border-gold/50"
             >
               <Phone className="h-3.5 w-3.5" /> {SITE.phone}

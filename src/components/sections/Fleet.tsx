@@ -100,6 +100,7 @@ export function Fleet() {
                       href={waLink(`Halo ${SITE.brand}, saya ingin reservasi mobil ${v.name}. Mohon info ketersediaan.`)}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => window.VRNTrack?.trackClick?.({ target: `fleet_order_${v.slug || v.name}` })}
                       className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-[image:var(--gradient-gold)] py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                     >
                       <WhatsAppIcon className="h-3.5 w-3.5" />

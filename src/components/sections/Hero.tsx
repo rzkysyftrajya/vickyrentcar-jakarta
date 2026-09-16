@@ -139,6 +139,7 @@ export function Hero() {
                 href={waLink("Halo Vickyrentcar Jakarta, saya ingin reservasi armada.")}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => window.VRNTrack?.trackClick?.({ target: "hero_whatsapp" })}
                 className="group relative inline-flex items-center gap-2.5 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3.5 text-sm font-medium tracking-wide text-primary-foreground shadow-[0_10px_35px_-10px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_40px_-8px_rgba(212,175,55,0.7)] cursor-pointer"
               >
                 <WhatsAppIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
@@ -147,6 +148,7 @@ export function Hero() {
 
               <Link
                 to="/armada"
+                onClick={() => window.VRNTrack?.trackClick?.({ target: "hero_explore_fleet" })}
                 className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-card/40 px-6 py-3.5 text-sm font-medium text-foreground backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-gold/10 hover:text-gold cursor-pointer"
               >
                 <span>{t("Lihat Pilihan Armada", "Explore Fleet")}</span>
@@ -155,6 +157,7 @@ export function Hero() {
 
               <a
                 href={`tel:${SITE.phone.replace(/\s+/g, "")}`}
+                onClick={() => window.VRNTrack?.trackClick?.({ target: "hero_phone" })}
                 className="inline-flex items-center gap-2 px-3 py-2 text-xs tracking-wider text-muted-foreground transition-colors hover:text-gold"
               >
                 <Phone className="h-3.5 w-3.5 text-gold" />
