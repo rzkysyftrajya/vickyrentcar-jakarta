@@ -152,15 +152,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        {/*
-          Catatan VRN TRACK ADS:
-          Ganti domain URL di bawah ini jika sudah memiliki domain server tracking VRN yang aktif:
-          <script
-            src="https://DOMAIN-VRN-TRACK-ADS-KAMU/track.js"
-            data-tracking-id="9ab5c620-00fb-4833-88cb-6172a7028f7a"
-            async
-          />
-        */}
+        {/* VRN TRACK ADS Tracking SDK (Static /track.js) */}
+        <script
+          src="/track.js"
+          data-tracking-id="9ab5c620-00fb-4833-88cb-6172a7028f7a"
+          async
+        />
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
