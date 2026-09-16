@@ -56,7 +56,7 @@
     }
   };
 
-  // Auto-init jika tag script menyertakan data-tracking-id atau data-tracking-key
+  // Auto-init dari atribut data-tracking-key pada script tag
   try {
     const currentScript = document.currentScript;
     if (currentScript) {

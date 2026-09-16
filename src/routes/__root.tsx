@@ -153,7 +153,11 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
         {/* VRN TRACK ADS Tracking SDK */}
-        <script src="https://vrnadvertiser.vercel.app/track.js" />
+        <script
+          src="https://vrnadvertiser.vercel.app/track.js"
+          data-tracking-key="9ab5c620-00fb-4833-88cb-6172a7028f7a"
+          async
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

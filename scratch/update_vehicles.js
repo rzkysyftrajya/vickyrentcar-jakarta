@@ -111,6 +111,7 @@ export function LuxuryIntro() {
 `;
 
 const heroContent = `import { motion } from "motion/react";
+import { ShieldCheck, Clock, Sparkles, UserCheck, ArrowRight, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { ShieldCheck, Clock, Sparkles, UserCheck, ArrowRight, Phone, Star } from "lucide-react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
@@ -160,24 +161,30 @@ export function Hero() {
   return (
     <section
       id="hero-section"
+      className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-28 pb-16 sm:pt-36 sm:pb-24"
       className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-28 pb-16 sm:pt-36 sm:pb-24"
       aria-label="Hero — Rental Mobil Mewah Jakarta"
     >
+      {/* ─── Background Visual with Luxury Gradients ─── */}
       {/* ─── Layer 1: Luxury Background Visual with Ken-Burns subtle zoom ─── */}
       <div className="absolute inset-0 z-0 select-none overflow-hidden">
         <img
           src="/hero-section/frame_046.webp"
           alt="Armada Mewah Vicky Rentcar Jakarta"
+          className="h-full w-full object-cover object-center opacity-35 scale-105 transition-transform duration-1000 ease-out"
           className="h-full w-full object-cover object-center opacity-40 scale-105 transition-transform duration-[12000ms] ease-out animate-[pulse_10s_ease-in-out_infinite]"
           loading="eager"
         />
         
         {/* Deep luxury ambient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
         
+        {/* Soft Gold Ambient Glows */}
         {/* ─── Layer 2: Interactive Dynamic Gold Showroom Spotlight ─── */}
         <div
+          className="pointer-events-none absolute top-1/4 left-1/2 h-[450px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-[140px]"
           className="pointer-events-none absolute -inset-full opacity-60 transition-all duration-700 ease-out"
           style={{
             background: \`radial-gradient(650px circle at \${mousePos.x}% \${mousePos.y}%, rgba(212, 175, 55, 0.14), transparent 70%)\`,
@@ -194,6 +201,19 @@ export function Hero() {
 
       {/* ─── Main Hero Content ─── */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 w-full">
+        <div className="max-w-3xl">
+          {/* Top VIP Pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 backdrop-blur-md"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
+            <span className="text-[0.7rem] font-medium tracking-[0.2em] text-gold uppercase">
+              {t("Rental Mobil Mewah & Terpercaya Jakarta", "Luxury & Trusted Car Rental Jakarta")}
+            </span>
+          </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           {/* Left Column: Headline, Subtitle, CTAs */}
@@ -214,6 +234,18 @@ export function Hero() {
               </span>
             </motion.div>
 
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 font-display text-4xl leading-[1.1] sm:text-6xl lg:text-7xl font-light text-foreground"
+          >
+            {t("Perjalanan Eksklusif,", "Exclusive Travel,")}{" "}
+            <span className="gold-text font-normal block sm:inline">
+              {t("Kenyamanan Tanpa Kompromi", "Uncompromised Comfort")}
+            </span>
+          </motion.h1>
             {/* Headline with metallic gold shimmer */}
             <motion.h1
               initial={{ opacity: 0, y: 22 }}
@@ -227,6 +259,18 @@ export function Hero() {
               </span>
             </motion.h1>
 
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+          >
+            {t(
+              "Sewa mobil premium di Jakarta dengan supir profesional & armada terawat. Alphard, Zenix, Hiace Premio & armada terbaik siap 24 jam untuk kebutuhan bisnis, keluarga, atau pernikahan.",
+              "Premium car rental in Jakarta with professional chauffeurs & prime fleet. Alphard, Zenix, Hiace Premio & more ready 24/7 for business, family, or weddings.",
+            )}
+          </motion.p>
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -240,6 +284,7 @@ export function Hero() {
               )}
             </motion.p>
 
+          {/* CTA Buttons */}
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -277,11 +322,24 @@ export function Hero() {
 
           {/* Right Column: Floating VIP Live Card */}
           <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 flex flex-wrap items-center gap-4"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="hidden lg:flex lg:col-span-4 justify-end"
           >
+            <a
+              href={waLink("Halo Vickyrentcar Jakarta, saya ingin reservasi armada.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3.5 text-sm font-medium tracking-wide text-primary-foreground shadow-[0_10px_30px_-10px_rgba(212,175,55,0.5)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_35px_-8px_rgba(212,175,55,0.6)] cursor-pointer"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              <span>{t("Reservasi via WhatsApp", "Book via WhatsApp")}</span>
+            </a>
             <div className="glass relative rounded-2xl p-6 border border-gold/25 max-w-sm w-full shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl">
               <div className="flex items-center justify-between border-b border-gold/15 pb-4">
                 <div className="flex items-center gap-2">
@@ -297,6 +355,13 @@ export function Hero() {
                 </span>
               </div>
 
+            <Link
+              to="/armada"
+              className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-card/40 px-6 py-3.5 text-sm font-medium text-foreground backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-gold/10 hover:text-gold cursor-pointer"
+            >
+              <span>{t("Lihat Pilihan Armada", "Explore Fleet")}</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
               <div className="mt-4 space-y-3">
                 <div className="flex justify-between items-center text-xs">
                   <span className="text-muted-foreground">{t("Status Unit", "Fleet Status")}</span>
@@ -312,6 +377,13 @@ export function Hero() {
                 </div>
               </div>
 
+            <a
+              href={\`tel:\${SITE.phone.replace(/\\s+/g, "")}\`}
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs tracking-wider text-muted-foreground transition-colors hover:text-gold"
+            >
+              <Phone className="h-3.5 w-3.5 text-gold" />
+              <span>{SITE.phone}</span>
+            </a>
               <div className="mt-5 pt-4 border-t border-gold/15">
                 <p className="text-[0.72rem] text-muted-foreground leading-relaxed italic">
                   “{t("Pelayanan selalu tepat waktu, unit wangi dan supir sangat profesional.", "Always on time, clean cars and very professional chauffeurs.")}”
@@ -330,6 +402,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 sm:mt-20 pt-8 border-t border-gold/15 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6"
           className="mt-14 sm:mt-18 pt-8 border-t border-gold/15 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6"
         >
           {trustPoints.map((item, idx) => {
@@ -337,6 +410,7 @@ export function Hero() {
             return (
               <div
                 key={idx}
+                className="flex items-start gap-3 rounded-xl border border-gold/10 bg-card/20 p-3.5 backdrop-blur-sm transition-colors hover:border-gold/30"
                 className="flex items-start gap-3 rounded-xl border border-gold/10 bg-card/20 p-3.5 backdrop-blur-sm transition-all duration-300 hover:border-gold/40 hover:bg-card/40 hover:-translate-y-0.5"
               >
                 <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-gold/10 text-gold">
@@ -360,9 +434,229 @@ fs.writeFileSync('src/components/LuxuryIntro.tsx', introContent);
 console.log('Successfully written LuxuryIntro.tsx');
 
 fs.writeFileSync('src/components/sections/Hero.tsx', heroContent);
+console.log('Successfully written new non-sticky Hero.tsx');
 console.log('Successfully written enhanced Hero.tsx');
 
 
+const componentContent = `import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+
+// Total ${totalImages} foto dokumentasi & testimoni pelanggan nyata
+const GALLERY_IMAGES: string[] = Array.from(
+  { length: ${totalImages} },
+  (_, i) => \`/galeri/galeri-\${i + 1}.webp\`
+);
+
+const HALF = Math.ceil(GALLERY_IMAGES.length / 2);
+const ROW_1: string[] = GALLERY_IMAGES.slice(0, HALF);
+const ROW_2: string[] = GALLERY_IMAGES.slice(HALF);
+
+export function GalleryTestimonials() {
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+
+  const handlePrev = useCallback(() => {
+    setSelectedIdx((prev) =>
+      prev !== null ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null
+    );
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setSelectedIdx((prev) =>
+      prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null
+    );
+  }, []);
+
+  useEffect(() => {
+    if (selectedIdx === null) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedIdx(null);
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selectedIdx, handlePrev, handleNext]);
+
+  return (
+    <section
+      id="galeri-testimoni"
+      className="relative overflow-hidden py-16 sm:py-24"
+      aria-label="Galeri Testimoni Pelanggan"
+    >
+      {/* Ambient background glow */}
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 h-[350px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/5 blur-[120px]"
+        aria-hidden="true"
+      />
+
+      {/* Side gradient edge fades */}
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-32 md:w-48 bg-gradient-to-r from-background via-background/80 to-transparent"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-32 md:w-48 bg-gradient-to-l from-background via-background/80 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="flex flex-col gap-4 sm:gap-6">
+        {/* Row 1: Leftward Stream */}
+        <div className="flex overflow-hidden select-none">
+          <div className="animate-marquee-smooth flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6">
+            {[...ROW_1, ...ROW_1].map((src, idx) => {
+              const originalIndex = idx % ROW_1.length;
+              return (
+                <GalleryCard
+                  key={\`r1-\${idx}\`}
+                  src={src}
+                  index={originalIndex}
+                  onSelect={() => setSelectedIdx(originalIndex)}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Row 2: Rightward (Reverse) Stream */}
+        <div className="flex overflow-hidden select-none">
+          <div className="animate-marquee-reverse-smooth flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6">
+            {[...ROW_2, ...ROW_2].map((src, idx) => {
+              const originalIndex = HALF + (idx % ROW_2.length);
+              return (
+                <GalleryCard
+                  key={\`r2-\${idx}\`}
+                  src={src}
+                  index={originalIndex}
+                  onSelect={() => setSelectedIdx(originalIndex)}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive Lightbox Modal */}
+      <AnimatePresence>
+        {selectedIdx !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setSelectedIdx(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-xl"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Pratinjau Foto Testimoni"
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setSelectedIdx(null)}
+              className="absolute top-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 bg-black/60 text-foreground backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-gold hover:text-black cursor-pointer"
+              aria-label="Tutup foto"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Counter Badge */}
+            <div className="absolute top-6 left-6 z-50 rounded-full border border-gold/25 bg-black/60 px-4 py-1.5 text-xs tracking-widest text-gold/90 uppercase backdrop-blur-md">
+              {selectedIdx + 1} / {GALLERY_IMAGES.length}
+            </div>
+
+            {/* Prev / Next Navigation */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrev();
+              }}
+              className="absolute left-4 sm:left-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 bg-black/60 text-gold backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-gold hover:text-black sm:h-14 sm:w-14 cursor-pointer"
+              aria-label="Foto sebelumnya"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNext();
+              }}
+              className="absolute right-4 sm:right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 bg-black/60 text-gold backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-gold hover:text-black sm:h-14 sm:w-14 cursor-pointer"
+              aria-label="Foto selanjutnya"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+
+            {/* Image Container */}
+            <motion.div
+              key={selectedIdx}
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[85vh] max-w-[90vw] overflow-hidden rounded-2xl border border-gold/30 bg-card/60 shadow-2xl"
+            >
+              <img
+                src={GALLERY_IMAGES[selectedIdx]}
+                alt={\`Foto Testimoni Pelanggan Vicky Rentcar \${selectedIdx + 1}\`}
+                className="max-h-[85vh] max-w-[90vw] object-contain"
+                loading="eager"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
+
+function GalleryCard({
+  src,
+  index,
+  onSelect,
+}: {
+  src: string;
+  index: number;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className="group relative h-48 w-64 sm:h-64 sm:w-80 md:h-72 md:w-96 flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gold/20 bg-card/40 transition-all duration-500 hover:z-20 hover:scale-[1.03] hover:border-gold/60 hover:shadow-[0_12px_40px_-10px_rgba(212,175,55,0.35)]"
+      aria-label={\`Buka foto testimoni #\${index + 1}\`}
+    >
+      <img
+        src={src}
+        alt={\`Foto Testimoni Vicky Rentcar \${index + 1}\`}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end justify-end p-4">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 bg-black/60 text-gold backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+          <Maximize2 className="h-4 w-4" />
+        </div>
+      </div>
+    </button>
+  );
+}
+`;
+
+fs.writeFileSync('src/components/sections/GalleryTestimonials.tsx', componentContent);
+console.log('Successfully written GalleryTestimonials.tsx with clean formatting!');
 
 
 
