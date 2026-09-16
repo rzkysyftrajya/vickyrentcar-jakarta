@@ -51,7 +51,7 @@ export function GoogleAdsTracker() {
           window.VRNTrack.init({
             tracking_key:
               (import.meta as any).env?.VITE_VRN_TRACKING_KEY ||
-              "e57b21be-4bef-40...",
+              "9ab5c620-00fb-4833-88cb-6172a7028f7a",
           });
         } catch (e) {
           console.warn("[VRNTrack] Error during initialization:", e);

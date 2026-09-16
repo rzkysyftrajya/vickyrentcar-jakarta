@@ -154,10 +154,10 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
         {/*
           Catatan VRN TRACK ADS:
-          Ganti URL di bawah ini jika sudah memiliki domain server tracking VRN yang aktif:
+          Ganti domain URL di bawah ini jika sudah memiliki domain server tracking VRN yang aktif:
           <script
             src="https://DOMAIN-VRN-TRACK-ADS-KAMU/track.js"
-            data-tracking-id="e57b21be-4bef-40..."
+            data-tracking-id="9ab5c620-00fb-4833-88cb-6172a7028f7a"
             async
           />
         */}
