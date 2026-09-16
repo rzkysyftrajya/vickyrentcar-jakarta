@@ -152,6 +152,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* VRN TRACK ADS Tracking SDK */}
+        <script
+          src="https://DOMAIN-VRN-TRACK-ADS-KAMU/track.js"
+          data-tracking-id="e57b21be-4bef-40..."
+          async
+        />
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
