@@ -152,12 +152,15 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        {/* VRN TRACK ADS Tracking SDK */}
-        <script
-          src="https://DOMAIN-VRN-TRACK-ADS-KAMU/track.js"
-          data-tracking-id="e57b21be-4bef-40..."
-          async
-        />
+        {/*
+          Catatan VRN TRACK ADS:
+          Ganti URL di bawah ini jika sudah memiliki domain server tracking VRN yang aktif:
+          <script
+            src="https://DOMAIN-VRN-TRACK-ADS-KAMU/track.js"
+            data-tracking-id="e57b21be-4bef-40..."
+            async
+          />
+        */}
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
@@ -170,12 +173,6 @@ function RootShell({ children }: { children: ReactNode }) {
           />
         </noscript>
         {children}
-        {/* AdTrackPro SDK Script */}
-        <script
-          src="https://tracker.adtrackpro.com/sdk.js"
-          data-client-id="ATP-7QF3-XZ91"
-          async
-        />
         <Scripts />
       </body>
     </html>
