@@ -6,16 +6,24 @@ import { SITE, waLink } from "@/lib/site";
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
+    adtrack?: (...args: any[]) => void;
   }
 }
 
 export function WhatsAppFab() {
   const handleClick = () => {
-    // Pemicu Event Konversi Google Ads saat tombol diklik
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "conversion", {
-        send_to: "AW-18421801061/eDb6CN_CiuwcEOXAmdBE",
-      });
+    if (typeof window !== "undefined") {
+      // Pemicu Event Konversi Google Ads saat tombol diklik
+      if (window.gtag) {
+        window.gtag("event", "conversion", {
+          send_to: "AW-18421801061/eDb6CN_CiuwcEOXAmdBE",
+        });
+      }
+
+      // Pemicu Event Konversi AdTrackPro
+      if (window.adtrack) {
+        window.adtrack("conversion", { event: "whatsapp_click" });
+      }
     }
   };
 

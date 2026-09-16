@@ -164,6 +164,12 @@ function RootShell({ children }: { children: ReactNode }) {
           />
         </noscript>
         {children}
+        {/* AdTrackPro SDK Script */}
+        <script
+          src="https://tracker.adtrackpro.com/sdk.js"
+          data-client-id="ATP-7QF3-XZ91"
+          async
+        />
         <Scripts />
       </body>
     </html>
