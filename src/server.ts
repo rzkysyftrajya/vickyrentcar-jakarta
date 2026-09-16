@@ -44,11 +44,7 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
-const GOOGLE_APPS_SCRIPT_URL =
-  process.env.GOOGLE_APPS_SCRIPT_URL ||
-  "https://script.google.com/macros/s/AKfycbx.../exec";
-
-async function handleTrackApi(request: Request): Promise<Response> {
+async function handleTrackApi(request: Request, env?: unknown): Promise<Response> {
   if (request.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
@@ -88,12 +84,14 @@ async function handleTrackApi(request: Request): Promise<Response> {
       server_timestamp: new Date().toISOString(),
     };
 
+    // Ambil endpoint Google Apps Script dari Environment Variables (support Node.js & Cloudflare/Nitro env)
+    const targetUrl =
+      (env && typeof env === "object" && (env as Record<string, string>).GOOGLE_APPS_SCRIPT_URL) ||
+      process.env.GOOGLE_APPS_SCRIPT_URL;
+
     // Forward ke Google Apps Script Web App Endpoint secara asynchronous
-    if (
-      GOOGLE_APPS_SCRIPT_URL &&
-      !GOOGLE_APPS_SCRIPT_URL.includes("AKfycbx...")
-    ) {
-      fetch(GOOGLE_APPS_SCRIPT_URL, {
+    if (targetUrl) {
+      fetch(targetUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -102,7 +100,9 @@ async function handleTrackApi(request: Request): Promise<Response> {
         console.error("[Tracking API] Error forwarding to Google Apps Script:", err);
       });
     } else {
-      console.log("[Tracking API] Mock forward payload (Google Apps Script URL is placeholder):", payload);
+      console.warn(
+        "[Tracking API] Warning: GOOGLE_APPS_SCRIPT_URL is not set. Please configure it in your environment variables."
+      );
     }
 
     return new Response(
@@ -131,7 +131,7 @@ export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     const url = new URL(request.url);
     if (url.pathname === "/api/track") {
-      return handleTrackApi(request);
+      return handleTrackApi(request, env);
     }
 
     try {
