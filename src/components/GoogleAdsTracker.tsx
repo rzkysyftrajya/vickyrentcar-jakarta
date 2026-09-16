@@ -25,11 +25,86 @@ export interface GoogleAdsTrackingPayload {
   timestamp?: string;
 }
 
+export interface VRNTrackInstance {
+  init?: (options: { tracking_key: string; [key: string]: any }) => void;
+  trackClick?: (data?: any) => void;
+  track?: (event: string, data?: any) => void;
+  [key: string]: any;
+}
+
+declare global {
+  interface Window {
+    VRNTrack?: VRNTrackInstance;
+    gtag?: (...args: any[]) => void;
+    adtrack?: (...args: any[]) => void;
+  }
+}
+
 export function GoogleAdsTracker() {
   useEffect(() => {
-    // Pastikan berjalan hanya di client browser
     if (typeof window === "undefined") return;
 
+    // 1. Inisialisasi Otomatis VRNTrack saat halaman dimuat
+    const initVRNTrack = () => {
+      if (window.VRNTrack && typeof window.VRNTrack.init === "function") {
+        try {
+          window.VRNTrack.init({
+            tracking_key:
+              (import.meta as any).env?.VITE_VRN_TRACKING_KEY ||
+              "e57b21be-4bef-40...",
+          });
+        } catch (e) {
+          console.warn("[VRNTrack] Error during initialization:", e);
+        }
+        return true;
+      }
+      return false;
+    };
+
+    // Jika track.js dimuat secara async, cek ulang hingga terinisialisasi
+    if (!initVRNTrack()) {
+      const interval = setInterval(() => {
+        if (initVRNTrack()) {
+          clearInterval(interval);
+        }
+      }, 300);
+      setTimeout(() => clearInterval(interval), 3000);
+    }
+
+    // 2. Pasang Event Listener Global untuk Tombol CTA (WhatsApp, Tel, Booking Link)
+    const handleGlobalCtaClick = (event: MouseEvent) => {
+      try {
+        const target = (event.target as HTMLElement | null)?.closest("a, button");
+        if (!target) return;
+
+        const href = target.getAttribute("href") || "";
+        const isWhatsApp = href.includes("wa.me") || href.includes("whatsapp");
+        const isTel = href.startsWith("tel:");
+        const isBooking =
+          target.getAttribute("data-cta") === "booking" ||
+          href.includes("kontak") ||
+          target.textContent?.toLowerCase().includes("pesan") ||
+          target.textContent?.toLowerCase().includes("booking") ||
+          target.textContent?.toLowerCase().includes("sewa");
+
+        if (isWhatsApp || isTel || isBooking) {
+          if (window.VRNTrack && typeof window.VRNTrack.trackClick === "function") {
+            window.VRNTrack.trackClick({
+              type: isWhatsApp ? "whatsapp" : isTel ? "phone" : "cta_booking",
+              href: href || undefined,
+              text: target.textContent?.trim() || "",
+              timestamp: new Date().toISOString(),
+            });
+          }
+        }
+      } catch (err) {
+        console.warn("[VRNTrack] Error capturing click event:", err);
+      }
+    };
+
+    document.addEventListener("click", handleGlobalCtaClick, { capture: true });
+
+    // 3. Tangkap Parameter Google Ads & Kirim ke /api/track
     try {
       const urlParams = new URLSearchParams(window.location.search);
 
@@ -50,7 +125,6 @@ export function GoogleAdsTracker() {
       const network = urlParams.get("network");
       const creative = urlParams.get("creative");
 
-      // Cek apakah ada parameter iklan / UTM yang masuk
       const hasAdsParam = Boolean(
         gclid ||
         wbraid ||
@@ -64,59 +138,56 @@ export function GoogleAdsTracker() {
         keyword
       );
 
-      if (!hasAdsParam) return;
+      if (hasAdsParam) {
+        const trackingKey = `tracked_gads_${gclid || utmCampaign || window.location.search}`;
+        if (!sessionStorage.getItem(trackingKey)) {
+          const payload: GoogleAdsTrackingPayload = {
+            gclid: gclid || null,
+            wbraid: wbraid || null,
+            gbraid: gbraid || null,
+            gad_source: gadSource || null,
+            utm_source: utmSource || null,
+            utm_medium: utmMedium || null,
+            utm_campaign: utmCampaign || null,
+            utm_content: utmContent || null,
+            utm_term: utmTerm || null,
+            campaign_id: campaignId || null,
+            adgroup_id: adgroupId || null,
+            keyword: keyword || null,
+            device: device || null,
+            matchtype: matchtype || null,
+            network: network || null,
+            creative: creative || null,
+            landing_page: window.location.href,
+            referrer: document.referrer || "direct",
+            user_agent: navigator.userAgent || "",
+            timestamp: new Date().toISOString(),
+          };
 
-      // Cegah duplikasi pengiriman berulang untuk gclid / session yang sama
-      const trackingKey = `tracked_gads_${gclid || utmCampaign || window.location.search}`;
-      if (sessionStorage.getItem(trackingKey)) {
-        return;
+          sessionStorage.setItem(trackingKey, "true");
+
+          fetch("/api/track", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+            keepalive: true,
+          }).catch((err) => {
+            console.warn("[GoogleAdsTracker] Tracking request failed:", err);
+          });
+        }
       }
-
-      const payload: GoogleAdsTrackingPayload = {
-        gclid: gclid || null,
-        wbraid: wbraid || null,
-        gbraid: gbraid || null,
-        gad_source: gadSource || null,
-        utm_source: utmSource || null,
-        utm_medium: utmMedium || null,
-        utm_campaign: utmCampaign || null,
-        utm_content: utmContent || null,
-        utm_term: utmTerm || null,
-        campaign_id: campaignId || null,
-        adgroup_id: adgroupId || null,
-        keyword: keyword || null,
-        device: device || null,
-        matchtype: matchtype || null,
-        network: network || null,
-        creative: creative || null,
-        landing_page: window.location.href,
-        referrer: document.referrer || "direct",
-        user_agent: navigator.userAgent || "",
-        timestamp: new Date().toISOString(),
-      };
-
-      // Tandai sudah ditrack di session
-      sessionStorage.setItem(trackingKey, "true");
-
-      // Kirim data ke API Route /api/track secara non-blocking (asynchronous)
-      fetch("/api/track", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-        keepalive: true, // Memastikan request tetap terkirim meski user berpindah halaman
-      }).catch((err) => {
-        // Jangan ganggu UI jika terjadi kesalahan jaringan
-        console.warn("[GoogleAdsTracker] Tracking request failed:", err);
-      });
     } catch (e) {
       console.warn("[GoogleAdsTracker] Error capturing tracking params:", e);
     }
+
+    return () => {
+      document.removeEventListener("click", handleGlobalCtaClick, { capture: true });
+    };
   }, []);
 
   return null;
 }
 
 export default GoogleAdsTracker;
-

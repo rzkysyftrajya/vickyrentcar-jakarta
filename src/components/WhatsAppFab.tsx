@@ -24,6 +24,15 @@ export function WhatsAppFab() {
       if (window.adtrack) {
         window.adtrack("conversion", { event: "whatsapp_click" });
       }
+
+      // Pemicu Event Konversi VRNTrack
+      if (window.VRNTrack && typeof window.VRNTrack.trackClick === "function") {
+        window.VRNTrack.trackClick({
+          type: "whatsapp_fab",
+          target: "floating_whatsapp",
+          timestamp: new Date().toISOString(),
+        });
+      }
     }
   };
 
