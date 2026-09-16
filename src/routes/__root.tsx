@@ -18,6 +18,7 @@ import {
   SITE_URL,
 } from "../lib/schema";
 import { LanguageProvider } from "../lib/i18n";
+import { GoogleAdsTracker } from "../components/GoogleAdsTracker";
 
 
 function NotFoundComponent() {
@@ -144,6 +145,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
+        <GoogleAdsTracker />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </LanguageProvider>
