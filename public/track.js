@@ -4,7 +4,8 @@
     tracking_key: null,
     _initialized: false,
     lastClickTime: 0,
-    endpoint: 'https://qtgbuacxiuntczeaqlqi.supabase.co/functions/v1/track',
+    endpoint: 'https://vrnadvertiser.vercel.app/api/public/track',
+    legacyEndpoint: 'https://qtgbuacxiuntczeaqlqi.supabase.co/functions/v1/track',
 
     init: function(config) {
       if (!config || !config.tracking_key) {
@@ -23,11 +24,12 @@
 
     // Canonical page_view event (sends 'page_view' to the backend)
     trackPageView: function() {
-      if (sessionStorage.getItem('vrn_impression_sent')) {
+      const sentKey = 'vrn_page_view_sent_' + this.tracking_key + '_' + window.location.href;
+      if (sessionStorage.getItem(sentKey)) {
         console.log('[VRNTrack] page_view already sent for this session.');
         return;
       }
-      sessionStorage.setItem('vrn_impression_sent', 'true');
+      sessionStorage.setItem(sentKey, 'true');
       this.send('page_view');
     },
 
@@ -63,13 +65,44 @@
         utm_content: urlParams.get('utm_content') || null,
         utm_term: urlParams.get('utm_term') || null,
         keyword: urlParams.get('keyword') || null,
-        device: urlParams.get('device') || null,
+        device: /iPad|Tablet/i.test(navigator.userAgent)
+          ? 'Tablet'
+          : /Mobile|Android|iPhone|iPod/i.test(navigator.userAgent)
+            ? 'Mobile'
+            : 'Desktop',
+        browser: /Edg\//i.test(navigator.userAgent)
+          ? 'Edge'
+          : /OPR\//i.test(navigator.userAgent)
+            ? 'Opera'
+            : /Chrome\//i.test(navigator.userAgent)
+              ? 'Chrome'
+              : /Firefox\//i.test(navigator.userAgent)
+                ? 'Firefox'
+                : /Safari\//i.test(navigator.userAgent)
+                  ? 'Safari'
+                  : 'Unknown',
+        page_url: window.location.href,
+        session_id: getSessionId(),
         user_agent: navigator.userAgent || '',
         timestamp: new Date().toISOString(),
         ...(extra || {})
       };
 
-      fetch(this.endpoint, {
+      function getSessionId() {
+        const key = 'vrn_session_id';
+        try {
+          const existing = sessionStorage.getItem(key);
+          if (existing) return existing;
+          const generated = `sess_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
+          sessionStorage.setItem(key, generated);
+          return generated;
+        } catch {
+          return '';
+        }
+      }
+
+      const targetEndpoint = event === 'click' ? this.legacyEndpoint : this.endpoint;
+      fetch(targetEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
