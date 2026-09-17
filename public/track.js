@@ -1,26 +1,37 @@
 (function() {
-  var trackingId = null;
-  
-  try {
-    var currentScript = document.currentScript || document.querySelector('script[src*="track.js"]');
-    if (currentScript) {
-      trackingId = currentScript.getAttribute('data-tracking-id') || currentScript.getAttribute('data-tracking-key');
-    }
-  } catch (e) {}
+  function getTrackingId() {
+    try {
+      var currentScript = document.currentScript || document.querySelector('script[src*="track.js"]');
+      if (currentScript) {
+        return currentScript.getAttribute('data-tracking-id') || 
+               currentScript.getAttribute('data-tracking-key') || 
+               '9ab5c620-00fb-4833-88cb-6172a7028f7a';
+      }
+    } catch (e) {}
+    return '9ab5c620-00fb-4833-88cb-6172a7028f7a';
+  }
+
+  var trackingId = getTrackingId();
 
   function sendEvent(eventName, extraData) {
-    if (!trackingId) return;
+    var idToUse = trackingId || getTrackingId();
+    if (!idToUse) {
+      console.error('[VRNTrack] Tracking ID not found');
+      return;
+    }
 
     var payload = {
       event: eventName,
-      tracking_key: trackingId,
+      tracking_key: idToUse,
       landing_page: window.location.href,
       referrer: document.referrer || '',
       user_agent: navigator.userAgent || ''
     };
 
     if (extraData) {
-      for (var attrname in extraData) { payload[attrname] = extraData[attrname]; }
+      for (var attrname in extraData) { 
+        payload[attrname] = extraData[attrname]; 
+      }
     }
 
     fetch('https://vrnadvertiser.vercel.app/api/public/track', {
@@ -30,16 +41,14 @@
       keepalive: true
     })
     .then(function(res) { return res.json(); })
-    .then(function(data) { console.log('[VRNTrack] Logged:', data); })
-    .catch(function(err) { console.error('[VRNTrack] Error:', err); });
+    .then(function(data) { console.log('[VRNTrack] Logged successfully:', data); })
+    .catch(function(err) { console.error('[VRNTrack] Fetch error:', err); });
   }
 
-  // Auto Send Page View begitu script dimuat
-  if (trackingId) {
-    sendEvent('page_view');
-  }
+  // Auto-send page_view
+  sendEvent('page_view');
 
-  // Simpan ke window agar bisa dipanggil manual jika perlu
+  // Register ke window object
   window.VRNTrack = {
     send: sendEvent,
     tracking_key: trackingId
