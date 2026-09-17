@@ -130,7 +130,8 @@ async function handleTrackApi(request: Request, env?: unknown): Promise<Response
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     const url = new URL(request.url);
-    if (url.pathname === "/api/track") {
+    // Accept both /api/track and /api/public/track for backward + forward compat
+    if (url.pathname === "/api/track" || url.pathname === "/api/public/track") {
       return handleTrackApi(request, env);
     }
 

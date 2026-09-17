@@ -47,33 +47,11 @@ export function GoogleAdsTracker() {
     if (typeof window === "undefined" || isInitializedRef.current) return;
     isInitializedRef.current = true;
 
-    // 1. Inisialisasi Otomatis VRNTrack saat halaman dimuat
-    const initVRNTrack = () => {
-      if (window.VRNTrack && typeof window.VRNTrack.init === "function") {
-        try {
-          window.VRNTrack.init({
-            tracking_key:
-              (import.meta as any).env?.VITE_VRN_TRACKING_KEY ||
-              "9ab5c620-00fb-4833-88cb-6172a7028f7a",
-          });
-        } catch (e) {
-          console.warn("[VRNTrack] Error during initialization:", e);
-        }
-        return true;
-      }
-      return false;
-    };
+    // NOTE: VRNTrack is auto-initialised by the <script data-tracking-key="..."> tag
+    // in __root.tsx → RootShell. Do NOT call VRNTrack.init() here; doing so would fire
+    // a second page_view event on every route mount.
 
-    if (!initVRNTrack()) {
-      const interval = setInterval(() => {
-        if (initVRNTrack()) {
-          clearInterval(interval);
-        }
-      }, 300);
-      setTimeout(() => clearInterval(interval), 3000);
-    }
-
-    // 2. Pasang Event Listener Global untuk Tombol CTA (WhatsApp, Tel, Booking Link)
+    // 1. Pasang Event Listener Global untuk Tombol CTA (WhatsApp, Tel, Booking Link)
     const handleGlobalCtaClick = (event: MouseEvent) => {
       try {
         const target = (event.target as HTMLElement | null)?.closest("a, button");
@@ -106,7 +84,7 @@ export function GoogleAdsTracker() {
 
     document.addEventListener("click", handleGlobalCtaClick, { capture: true });
 
-    // 3. Tangkap Parameter Google Ads & Kirim ke /api/track
+    // 2. Tangkap Parameter Google Ads & Kirim ke /api/track
     try {
       const urlParams = new URLSearchParams(window.location.search);
 

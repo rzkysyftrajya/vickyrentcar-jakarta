@@ -2,29 +2,41 @@
   // 1. Inisialisasi awal ke window object secara langsung
   const VRNTrack = {
     tracking_key: null,
-    endpoint: 'https://qtgbuacxiuntczeaqlqi.supabase.co/functions/v1/track',
+    _initialized: false,
     lastClickTime: 0,
+    endpoint: 'https://qtgbuacxiuntczeaqlqi.supabase.co/functions/v1/track',
 
     init: function(config) {
       if (!config || !config.tracking_key) {
         console.error('[VRNTrack] Missing tracking_key');
         return;
       }
+      // Guard: prevent double page_view if init is called more than once
+      if (this._initialized && this.tracking_key === config.tracking_key) {
+        console.warn('[VRNTrack] Already initialized with this tracking_key — skipping duplicate init');
+        return;
+      }
       this.tracking_key = config.tracking_key;
-      this.trackImpression();
+      this._initialized = true;
+      this.trackPageView();
     },
 
-    // 2. Anti-Spam Impression: Hanya kirim 1x per sesi browser
-    trackImpression: function() {
+    // Canonical page_view event (sends 'page_view' to the backend)
+    trackPageView: function() {
       if (sessionStorage.getItem('vrn_impression_sent')) {
-        console.log('[VRNTrack] Impression already sent for this session.');
+        console.log('[VRNTrack] page_view already sent for this session.');
         return;
       }
       sessionStorage.setItem('vrn_impression_sent', 'true');
-      this.send('impression');
+      this.send('page_view');
     },
 
-    // 3. Anti-Spam Click: Jeda minimal 3 detik antar klik (Debounce)
+    // Backward-compat alias — kept so existing callers don't break
+    trackImpression: function() {
+      this.trackPageView();
+    },
+
+    // Anti-Spam Click: Jeda minimal 3 detik antar klik (Debounce)
     trackClick: function(extraData) {
       const now = Date.now();
       if (now - this.lastClickTime < 3000) {
@@ -37,7 +49,7 @@
 
     send: function(event, extra) {
       if (!this.tracking_key) return;
-      
+
       const urlParams = new URLSearchParams(window.location.search);
       const payload = {
         event: event,
