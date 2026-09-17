@@ -20,7 +20,6 @@ import {
 import { LanguageProvider } from "../lib/i18n";
 import { GoogleAdsTracker } from "../components/GoogleAdsTracker";
 
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -109,7 +108,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "canonical", href: SITE_URL },
     ],
     scripts: [
-      // Google Tag Manager Script
       {
         children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -117,12 +115,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-KZVDSBWN');`,
       },
-      // Google Tag (gtag.js) External Script
       {
         src: "https://www.googletagmanager.com/gtag/js?id=AW-18421801061",
         async: true,
       },
-      // Google Tag Inline Config Script
       {
         children: `
           window.dataLayer = window.dataLayer || [];
@@ -158,22 +154,8 @@ function RootShell({ children }: { children: ReactNode }) {
           data-tracking-key="9ab5c620-00fb-4833-88cb-6172a7028f7a"
           async
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener('DOMContentLoaded', function() {
-                if (window.VRNTrack) {
-                  window.VRNTrack.init({
-                    tracking_key: "9ab5c620-00fb-4833-88cb-6172a7028f7a"
-                  });
-                }
-              });
-            `,
-          }}
-        />
       </head>
       <body>
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KZVDSBWN"
@@ -196,7 +178,6 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <GoogleAdsTracker />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </LanguageProvider>
     </QueryClientProvider>

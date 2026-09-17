@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export interface GoogleAdsTrackingPayload {
   gclid?: string | null;
@@ -41,8 +41,11 @@ declare global {
 }
 
 export function GoogleAdsTracker() {
+  const isInitializedRef = useRef(false);
+
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || isInitializedRef.current) return;
+    isInitializedRef.current = true;
 
     // 1. Inisialisasi Otomatis VRNTrack saat halaman dimuat
     const initVRNTrack = () => {
@@ -61,7 +64,6 @@ export function GoogleAdsTracker() {
       return false;
     };
 
-    // Jika track.js dimuat secara async, cek ulang hingga terinisialisasi
     if (!initVRNTrack()) {
       const interval = setInterval(() => {
         if (initVRNTrack()) {
