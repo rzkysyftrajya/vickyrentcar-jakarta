@@ -7,6 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Analytics } from "@vercel/analytics/react";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -164,6 +165,7 @@ function RootShell({ children }: { children: ReactNode }) {
           />
         </noscript>
         {children}
+        <Analytics />
         <Scripts />
       </body>
     </html>
