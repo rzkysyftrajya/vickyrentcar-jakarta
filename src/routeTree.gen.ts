@@ -15,6 +15,7 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as KontakRouteImport } from './routes/kontak'
 import { Route as KorporatRouteImport } from './routes/korporat'
 import { Route as LayananRouteImport } from './routes/layanan'
+import { Route as SewaMobilJakartaRouteImport } from './routes/sewa-mobil-jakarta'
 import { Route as TentangKamiRouteImport } from './routes/tentang-kami'
 import { Route as ArmadaIndexRouteImport } from './routes/armada.index'
 import { Route as ArmadaSlugRouteImport } from './routes/armada.$slug'
@@ -49,6 +50,11 @@ const LayananRoute = LayananRouteImport.update({
   path: '/layanan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SewaMobilJakartaRoute = SewaMobilJakartaRouteImport.update({
+  id: '/sewa-mobil-jakarta',
+  path: '/sewa-mobil-jakarta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TentangKamiRoute = TentangKamiRouteImport.update({
   id: '/tentang-kami',
   path: '/tentang-kami',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
   '/armada/$slug': typeof ArmadaSlugRoute
   '/armada/': typeof ArmadaIndexRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
   '/armada/$slug': typeof ArmadaSlugRoute
   '/armada': typeof ArmadaIndexRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
   '/armada/$slug': typeof ArmadaSlugRoute
   '/armada/': typeof ArmadaIndexRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-mobil-jakarta'
     | '/tentang-kami'
     | '/armada/$slug'
     | '/armada/'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-mobil-jakarta'
     | '/tentang-kami'
     | '/armada/$slug'
     | '/armada'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-mobil-jakarta'
     | '/tentang-kami'
     | '/armada/$slug'
     | '/armada/'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   KontakRoute: typeof KontakRoute
   KorporatRoute: typeof KorporatRoute
   LayananRoute: typeof LayananRoute
+  SewaMobilJakartaRoute: typeof SewaMobilJakartaRoute
   TentangKamiRoute: typeof TentangKamiRoute
   ArmadaSlugRoute: typeof ArmadaSlugRoute
   ArmadaIndexRoute: typeof ArmadaIndexRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayananRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sewa-mobil-jakarta': {
+      id: '/sewa-mobil-jakarta'
+      path: '/sewa-mobil-jakarta'
+      fullPath: '/sewa-mobil-jakarta'
+      preLoaderRoute: typeof SewaMobilJakartaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tentang-kami': {
       id: '/tentang-kami'
       path: '/tentang-kami'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   KontakRoute: KontakRoute,
   KorporatRoute: KorporatRoute,
   LayananRoute: LayananRoute,
+  SewaMobilJakartaRoute: SewaMobilJakartaRoute,
   TentangKamiRoute: TentangKamiRoute,
   ArmadaSlugRoute: ArmadaSlugRoute,
   ArmadaIndexRoute: ArmadaIndexRoute,
