@@ -6,7 +6,7 @@ export const SITE = {
   city: "Jakarta, Indonesia",
   address: "Sudirman Central Business District (SCBD) Lot 28, Senayan, Jakarta Selatan, DKI Jakarta 12190",
   poolAddress: "Pool Bandara Soekarno-Hatta & Pool TB Simatupang, Jakarta",
-  email: "reservasi@vickyrentcar.id",
+  email: "vickyrentcarjakarta@gmail.com",
   hours: "24 Jam Setiap Hari (Layanan 24/7)",
   instagram: "@vickyrentcar_jakarta",
 };

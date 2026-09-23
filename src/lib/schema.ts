@@ -1,7 +1,7 @@
 import { SITE } from "./site";
 import type { Vehicle } from "./vehicles";
 
-export const SITE_URL = "https://vickyrentcar.id";
+export const SITE_URL = "https://www.vickyrentcarjakarta.com";
 
 // ─── LocalBusiness ────────────────────────────────────────────────────────────
 

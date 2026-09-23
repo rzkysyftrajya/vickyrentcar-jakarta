@@ -15,6 +15,7 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as KontakRouteImport } from './routes/kontak'
 import { Route as KorporatRouteImport } from './routes/korporat'
 import { Route as LayananRouteImport } from './routes/layanan'
+import { Route as SewaMobilDenganDriverJakartaRouteImport } from './routes/sewa-mobil-dengan-driver-jakarta'
 import { Route as SewaMobilJakartaRouteImport } from './routes/sewa-mobil-jakarta'
 import { Route as TentangKamiRouteImport } from './routes/tentang-kami'
 import { Route as ArmadaIndexRouteImport } from './routes/armada.index'
@@ -50,6 +51,12 @@ const LayananRoute = LayananRouteImport.update({
   path: '/layanan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SewaMobilDenganDriverJakartaRoute =
+  SewaMobilDenganDriverJakartaRouteImport.update({
+    id: '/sewa-mobil-dengan-driver-jakarta',
+    path: '/sewa-mobil-dengan-driver-jakarta',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SewaMobilJakartaRoute = SewaMobilJakartaRouteImport.update({
   id: '/sewa-mobil-jakarta',
   path: '/sewa-mobil-jakarta',
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-mobil-dengan-driver-jakarta': typeof SewaMobilDenganDriverJakartaRoute
   '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
   '/armada/$slug': typeof ArmadaSlugRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-mobil-dengan-driver-jakarta': typeof SewaMobilDenganDriverJakartaRoute
   '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
   '/armada/$slug': typeof ArmadaSlugRoute
@@ -103,6 +112,7 @@ export interface FileRoutesById {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-mobil-dengan-driver-jakarta': typeof SewaMobilDenganDriverJakartaRoute
   '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
   '/armada/$slug': typeof ArmadaSlugRoute
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-mobil-dengan-driver-jakarta'
     | '/sewa-mobil-jakarta'
     | '/tentang-kami'
     | '/armada/$slug'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-mobil-dengan-driver-jakarta'
     | '/sewa-mobil-jakarta'
     | '/tentang-kami'
     | '/armada/$slug'
@@ -141,6 +153,7 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-mobil-dengan-driver-jakarta'
     | '/sewa-mobil-jakarta'
     | '/tentang-kami'
     | '/armada/$slug'
@@ -154,6 +167,7 @@ export interface RootRouteChildren {
   KontakRoute: typeof KontakRoute
   KorporatRoute: typeof KorporatRoute
   LayananRoute: typeof LayananRoute
+  SewaMobilDenganDriverJakartaRoute: typeof SewaMobilDenganDriverJakartaRoute
   SewaMobilJakartaRoute: typeof SewaMobilJakartaRoute
   TentangKamiRoute: typeof TentangKamiRoute
   ArmadaSlugRoute: typeof ArmadaSlugRoute
@@ -204,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayananRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sewa-mobil-dengan-driver-jakarta': {
+      id: '/sewa-mobil-dengan-driver-jakarta'
+      path: '/sewa-mobil-dengan-driver-jakarta'
+      fullPath: '/sewa-mobil-dengan-driver-jakarta'
+      preLoaderRoute: typeof SewaMobilDenganDriverJakartaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sewa-mobil-jakarta': {
       id: '/sewa-mobil-jakarta'
       path: '/sewa-mobil-jakarta'
@@ -242,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   KontakRoute: KontakRoute,
   KorporatRoute: KorporatRoute,
   LayananRoute: LayananRoute,
+  SewaMobilDenganDriverJakartaRoute: SewaMobilDenganDriverJakartaRoute,
   SewaMobilJakartaRoute: SewaMobilJakartaRoute,
   TentangKamiRoute: TentangKamiRoute,
   ArmadaSlugRoute: ArmadaSlugRoute,

@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://vickyrentcar.id/sitemap.xml
+Sitemap: https://www.vickyrentcarjakarta.com/sitemap.xml

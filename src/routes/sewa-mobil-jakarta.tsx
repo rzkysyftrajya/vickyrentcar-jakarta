@@ -82,7 +82,8 @@ const SUPPORT_SERVICES = [
 const TRUST_POINTS = [
   {
     title: "Layanan 24 Jam",
-    description: "Reservasi dan penjemputan tersedia setiap hari.",
+    description:
+      "Layanan reservasi tersedia 24 jam setiap hari. Jadwal penjemputan dikonfirmasi sesuai kebutuhan perjalanan dan ketersediaan armada.",
     icon: Clock3,
   },
   {
@@ -92,7 +93,7 @@ const TRUST_POINTS = [
   },
   {
     title: "Mobil Bersih dan AC",
-    description: "Kabin dibersihkan dan dipastikan nyaman sebelum perjalanan.",
+    description: "Kabin dibersihkan dan dilengkapi AC untuk mendukung kenyamanan perjalanan.",
     icon: Check,
   },
   {
@@ -168,6 +169,12 @@ const faqSchema = {
 
 export const Route = createFileRoute("/sewa-mobil-jakarta")({
   head: () => ({
+    links: [
+      {
+        rel: "canonical",
+        href: `${SITE_URL}/sewa-mobil-jakarta`,
+      },
+    ],
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
