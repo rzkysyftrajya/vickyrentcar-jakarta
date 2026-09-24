@@ -117,7 +117,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         })(window,document,'script','dataLayer','GTM-KZVDSBWN');`,
       },
       {
-        src: "https://www.googletagmanager.com/gtag/js?id=AW-18421801061",
+        src: "https://www.googletagmanager.com/gtag/js?id=AW-18452315188",
         async: true,
       },
       {
@@ -126,6 +126,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'AW-18421801061');
+          gtag('config', 'AW-18452315188');
         `,
       },
       {
