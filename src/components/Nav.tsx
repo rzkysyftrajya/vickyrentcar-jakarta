@@ -1,28 +1,43 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ShieldCheck, Globe } from "lucide-react";
+import { Menu, X, Phone, ShieldCheck, Globe, ChevronDown } from "lucide-react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
 import { useLanguage } from "@/lib/i18n";
 
 const navLinks = [
   { idLabel: "Beranda", enLabel: "Home", to: "/" },
-  { idLabel: "Tentang Kami", enLabel: "About Us", to: "/tentang-kami" },
-  { idLabel: "Layanan", enLabel: "Services", to: "/layanan" },
   { idLabel: "Armada", enLabel: "Fleet", to: "/armada" },
-  { idLabel: "Bandingkan", enLabel: "Compare", to: "/bandingkan" },
-  { idLabel: "Korporat", enLabel: "Corporate", to: "/korporat" },
+  { idLabel: "Layanan", enLabel: "Services", to: "/layanan" },
+  { idLabel: "Tentang Kami", enLabel: "About Us", to: "/tentang-kami" },
   { idLabel: "Kontak", enLabel: "Contact", to: "/kontak" },
+] as const;
+
+const rentalLinks = [
+  { idLabel: "Sewa Mobil Jakarta", enLabel: "Car Rental Jakarta", to: "/sewa-mobil-jakarta" },
+  {
+    idLabel: "Sewa Mobil + Driver",
+    enLabel: "Car Rental + Driver",
+    to: "/sewa-mobil-dengan-driver-jakarta",
+  },
+  { idLabel: "Sewa Hiace Jakarta", enLabel: "Hiace Rental Jakarta", to: "/sewa-hiace-jakarta" },
+  {
+    idLabel: "Sewa Alphard Jakarta",
+    enLabel: "Alphard Rental Jakarta",
+    to: "/sewa-alphard-jakarta",
+  },
 ] as const;
 
 export function Nav() {
   const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [rentalOpen, setRentalOpen] = useState(false);
 
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const isRentalActive = rentalLinks.some((item) => currentPath.startsWith(item.to));
 
   // Track scroll for background nav glass styling
   useEffect(() => {
@@ -53,10 +68,13 @@ export function Nav() {
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 text-gold">
-              <ShieldCheck className="h-3 w-3" /> {t("Rental Mobil Jakarta 24/7", "Jakarta Car Rental 24/7")}
+              <ShieldCheck className="h-3 w-3" />{" "}
+              {t("Rental Mobil Jakarta 24/7", "Jakarta Car Rental 24/7")}
             </span>
             <span className="text-muted-foreground/60">•</span>
-            <span>{t("Antar Jemput Bandara Soetta & Halim", "Soetta & Halim Airport Transfer")}</span>
+            <span>
+              {t("Antar Jemput Bandara Soetta & Halim", "Soetta & Halim Airport Transfer")}
+            </span>
           </div>
           <div className="flex items-center gap-5">
             <a
@@ -93,11 +111,87 @@ export function Nav() {
 
         {/* Desktop Navigation */}
         <ul className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((item) => {
+          {navLinks.slice(0, 2).map((item) => {
             const isActive =
-              item.to === "/"
-                ? currentPath === "/"
-                : currentPath.startsWith(item.to);
+              item.to === "/" ? currentPath === "/" : currentPath.startsWith(item.to);
+
+            return (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className={`relative text-xs tracking-[0.18em] uppercase transition-all duration-300 ${
+                    isActive
+                      ? "text-gold font-medium"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {t(item.idLabel, item.enLabel)}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavIndicator"
+                      className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[image:var(--gradient-gold)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
+          <li className="relative">
+            <button
+              type="button"
+              onClick={() => setRentalOpen((value) => !value)}
+              className={`flex items-center gap-1.5 text-xs tracking-[0.18em] uppercase transition-all duration-300 ${
+                isRentalActive || rentalOpen
+                  ? "text-gold font-medium"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+              aria-expanded={rentalOpen}
+              aria-haspopup="menu"
+            >
+              {t("Sewa Mobil", "Car Rental")}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform ${rentalOpen ? "rotate-180" : ""}`}
+              />
+              {isRentalActive && (
+                <motion.span
+                  layoutId="activeNavIndicator"
+                  className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[image:var(--gradient-gold)]"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
+
+            {rentalOpen && (
+              <div
+                className="absolute right-0 top-full z-50 mt-4 w-64 rounded-lg border border-gold/20 bg-[oklch(0.1431_0.0201_255.76_/_98%)] p-2 shadow-2xl backdrop-blur-xl"
+                role="menu"
+              >
+                {rentalLinks.map((item) => {
+                  const isActive = currentPath.startsWith(item.to);
+
+                  return (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setRentalOpen(false)}
+                      className={`block rounded-md px-3 py-2.5 text-xs tracking-[0.08em] transition-colors ${
+                        isActive
+                          ? "bg-gold/10 text-gold font-medium"
+                          : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                      }`}
+                      role="menuitem"
+                    >
+                      {t(item.idLabel, item.enLabel)}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </li>
+          {navLinks.slice(2).map((item) => {
+            const isActive =
+              item.to === "/" ? currentPath === "/" : currentPath.startsWith(item.to);
 
             return (
               <li key={item.to}>
@@ -138,7 +232,9 @@ export function Nav() {
           </button>
 
           <a
-            href={waLink(`Halo ${SITE.brand}, saya ingin menanyakan ketersediaan armada dan reservasi.`)}
+            href={waLink(
+              `Halo ${SITE.brand}, saya ingin menanyakan ketersediaan armada dan reservasi.`,
+            )}
             target="_blank"
             rel="noreferrer"
             className="hidden items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-[0.65rem] tracking-[0.2em] text-gold uppercase transition-all duration-300 hover:bg-gold hover:text-primary-foreground sm:inline-flex"
@@ -171,11 +267,9 @@ export function Nav() {
             className="border-b border-gold/20 bg-[oklch(0.1431_0.0201_255.76_/_98%)] px-6 py-6 shadow-2xl backdrop-blur-2xl lg:hidden"
           >
             <ul className="space-y-2">
-              {navLinks.map((item) => {
+              {navLinks.slice(0, 1).map((item) => {
                 const isActive =
-                  item.to === "/"
-                    ? currentPath === "/"
-                    : currentPath.startsWith(item.to);
+                  item.to === "/" ? currentPath === "/" : currentPath.startsWith(item.to);
 
                 return (
                   <li key={item.to}>
@@ -194,6 +288,75 @@ export function Nav() {
                   </li>
                 );
               })}
+              {navLinks.slice(1).map((item) => {
+                const isActive =
+                  item.to === "/" ? currentPath === "/" : currentPath.startsWith(item.to);
+
+                return (
+                  <li key={item.to}>
+                    <Link
+                      to={item.to}
+                      onClick={() => setOpen(false)}
+                      className={`flex items-center justify-between rounded-lg px-4 py-3 text-xs tracking-[0.2em] uppercase transition-all ${
+                        isActive
+                          ? "border border-gold/30 bg-gold/10 text-gold font-medium"
+                          : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                      }`}
+                    >
+                      <span>{t(item.idLabel, item.enLabel)}</span>
+                      {isActive && <span className="h-1.5 w-1.5 rounded-full bg-gold" />}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setRentalOpen((value) => !value)}
+                  className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-xs tracking-[0.2em] uppercase transition-all ${
+                    isRentalActive || rentalOpen
+                      ? "border border-gold/30 bg-gold/10 text-gold font-medium"
+                      : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                  }`}
+                  aria-expanded={rentalOpen}
+                >
+                  <span>{t("Sewa Mobil", "Car Rental")}</span>
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${rentalOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {rentalOpen && (
+                    <motion.ul
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="mt-1 space-y-1 overflow-hidden pl-4"
+                    >
+                      {rentalLinks.map((item) => {
+                        const isActive = currentPath.startsWith(item.to);
+
+                        return (
+                          <li key={item.to}>
+                            <Link
+                              to={item.to}
+                              onClick={() => setOpen(false)}
+                              className={`block rounded-lg px-4 py-2.5 text-xs tracking-[0.12em] transition-all ${
+                                isActive
+                                  ? "bg-gold/10 text-gold font-medium"
+                                  : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                              }`}
+                            >
+                              {t(item.idLabel, item.enLabel)}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </li>
             </ul>
 
             <div className="mt-6 border-t border-gold/15 pt-5 space-y-3">
@@ -221,4 +384,3 @@ export function Nav() {
     </header>
   );
 }
-

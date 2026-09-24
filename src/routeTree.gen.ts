@@ -15,6 +15,8 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as KontakRouteImport } from './routes/kontak'
 import { Route as KorporatRouteImport } from './routes/korporat'
 import { Route as LayananRouteImport } from './routes/layanan'
+import { Route as SewaAlphardJakartaRouteImport } from './routes/sewa-alphard-jakarta'
+import { Route as SewaHiaceJakartaRouteImport } from './routes/sewa-hiace-jakarta'
 import { Route as SewaMobilDenganDriverJakartaRouteImport } from './routes/sewa-mobil-dengan-driver-jakarta'
 import { Route as SewaMobilJakartaRouteImport } from './routes/sewa-mobil-jakarta'
 import { Route as TentangKamiRouteImport } from './routes/tentang-kami'
@@ -51,6 +53,16 @@ const LayananRoute = LayananRouteImport.update({
   path: '/layanan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SewaAlphardJakartaRoute = SewaAlphardJakartaRouteImport.update({
+  id: '/sewa-alphard-jakarta',
+  path: '/sewa-alphard-jakarta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SewaHiaceJakartaRoute = SewaHiaceJakartaRouteImport.update({
+  id: '/sewa-hiace-jakarta',
+  path: '/sewa-hiace-jakarta',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SewaMobilDenganDriverJakartaRoute =
   SewaMobilDenganDriverJakartaRouteImport.update({
     id: '/sewa-mobil-dengan-driver-jakarta',
@@ -85,6 +97,8 @@ export interface FileRoutesByFullPath {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-alphard-jakarta': typeof SewaAlphardJakartaRoute
+  '/sewa-hiace-jakarta': typeof SewaHiaceJakartaRoute
   '/sewa-mobil-dengan-driver-jakarta': typeof SewaMobilDenganDriverJakartaRoute
   '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
@@ -98,6 +112,8 @@ export interface FileRoutesByTo {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-alphard-jakarta': typeof SewaAlphardJakartaRoute
+  '/sewa-hiace-jakarta': typeof SewaHiaceJakartaRoute
   '/sewa-mobil-dengan-driver-jakarta': typeof SewaMobilDenganDriverJakartaRoute
   '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
@@ -112,6 +128,8 @@ export interface FileRoutesById {
   '/kontak': typeof KontakRoute
   '/korporat': typeof KorporatRoute
   '/layanan': typeof LayananRoute
+  '/sewa-alphard-jakarta': typeof SewaAlphardJakartaRoute
+  '/sewa-hiace-jakarta': typeof SewaHiaceJakartaRoute
   '/sewa-mobil-dengan-driver-jakarta': typeof SewaMobilDenganDriverJakartaRoute
   '/sewa-mobil-jakarta': typeof SewaMobilJakartaRoute
   '/tentang-kami': typeof TentangKamiRoute
@@ -127,6 +145,8 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-alphard-jakarta'
+    | '/sewa-hiace-jakarta'
     | '/sewa-mobil-dengan-driver-jakarta'
     | '/sewa-mobil-jakarta'
     | '/tentang-kami'
@@ -140,6 +160,8 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-alphard-jakarta'
+    | '/sewa-hiace-jakarta'
     | '/sewa-mobil-dengan-driver-jakarta'
     | '/sewa-mobil-jakarta'
     | '/tentang-kami'
@@ -153,6 +175,8 @@ export interface FileRouteTypes {
     | '/kontak'
     | '/korporat'
     | '/layanan'
+    | '/sewa-alphard-jakarta'
+    | '/sewa-hiace-jakarta'
     | '/sewa-mobil-dengan-driver-jakarta'
     | '/sewa-mobil-jakarta'
     | '/tentang-kami'
@@ -167,6 +191,8 @@ export interface RootRouteChildren {
   KontakRoute: typeof KontakRoute
   KorporatRoute: typeof KorporatRoute
   LayananRoute: typeof LayananRoute
+  SewaAlphardJakartaRoute: typeof SewaAlphardJakartaRoute
+  SewaHiaceJakartaRoute: typeof SewaHiaceJakartaRoute
   SewaMobilDenganDriverJakartaRoute: typeof SewaMobilDenganDriverJakartaRoute
   SewaMobilJakartaRoute: typeof SewaMobilJakartaRoute
   TentangKamiRoute: typeof TentangKamiRoute
@@ -218,6 +244,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayananRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sewa-alphard-jakarta': {
+      id: '/sewa-alphard-jakarta'
+      path: '/sewa-alphard-jakarta'
+      fullPath: '/sewa-alphard-jakarta'
+      preLoaderRoute: typeof SewaAlphardJakartaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sewa-hiace-jakarta': {
+      id: '/sewa-hiace-jakarta'
+      path: '/sewa-hiace-jakarta'
+      fullPath: '/sewa-hiace-jakarta'
+      preLoaderRoute: typeof SewaHiaceJakartaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sewa-mobil-dengan-driver-jakarta': {
       id: '/sewa-mobil-dengan-driver-jakarta'
       path: '/sewa-mobil-dengan-driver-jakarta'
@@ -263,6 +303,8 @@ const rootRouteChildren: RootRouteChildren = {
   KontakRoute: KontakRoute,
   KorporatRoute: KorporatRoute,
   LayananRoute: LayananRoute,
+  SewaAlphardJakartaRoute: SewaAlphardJakartaRoute,
+  SewaHiaceJakartaRoute: SewaHiaceJakartaRoute,
   SewaMobilDenganDriverJakartaRoute: SewaMobilDenganDriverJakartaRoute,
   SewaMobilJakartaRoute: SewaMobilJakartaRoute,
   TentangKamiRoute: TentangKamiRoute,
