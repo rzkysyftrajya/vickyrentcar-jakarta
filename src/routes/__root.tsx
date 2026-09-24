@@ -129,6 +129,70 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         `,
       },
       {
+        children: `
+          (function () {
+            var lastWhatsAppConversion = 0;
+
+            function gtag_report_conversion(url) {
+              var now = Date.now();
+
+              if (now - lastWhatsAppConversion < 2000) {
+                return false;
+              }
+
+              lastWhatsAppConversion = now;
+              var redirected = false;
+
+              var callback = function () {
+                if (!redirected && url) {
+                  redirected = true;
+                  window.location.href = url;
+                }
+              };
+
+              if (typeof window.gtag === "function") {
+                window.gtag("event", "conversion", {
+                  send_to: "AW-18452315188/3jLsCN_pv4MdELT4395E",
+                  event_callback: callback
+                });
+
+                setTimeout(callback, 1500);
+              } else {
+                callback();
+              }
+
+              return false;
+            }
+
+            window.gtag_report_conversion = gtag_report_conversion;
+
+            document.addEventListener(
+              "click",
+              function (event) {
+                var target =
+                  event.target instanceof Element ? event.target : null;
+
+                if (!target) return;
+
+                var link = target.closest(
+                  'a[href*="wa.me/"],' +
+                  'a[href*="api.whatsapp.com/"],' +
+                  'a[href*="web.whatsapp.com/"],' +
+                  'a[href*="wa.link/"],' +
+                  'a[href^="whatsapp://"]'
+                );
+
+                if (!link) return;
+
+                event.preventDefault();
+                gtag_report_conversion(link.href);
+              },
+              true
+            );
+          })();
+        `,
+      },
+      {
         type: "application/ld+json",
         children: serializeSchema(buildLocalBusinessSchema()),
       },
