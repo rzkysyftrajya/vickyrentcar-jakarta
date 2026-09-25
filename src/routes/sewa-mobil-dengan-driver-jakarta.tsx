@@ -31,12 +31,14 @@ const FEATURED_VEHICLES = [
 const JOURNEY_NEEDS = [
   {
     title: "Bandara",
-    description: "Antar jemput Soekarno-Hatta atau Halim dengan bantuan perjalanan yang sesuai kebutuhan.",
+    description:
+      "Antar jemput Soekarno-Hatta atau Halim dengan bantuan perjalanan yang sesuai kebutuhan.",
     icon: Plane,
   },
   {
     title: "Bisnis & Kantor",
-    description: "Operasional kantor, kunjungan kerja, tamu bisnis, dan kebutuhan invoice corporate.",
+    description:
+      "Operasional kantor, kunjungan kerja, tamu bisnis, dan kebutuhan invoice corporate.",
     icon: BriefcaseBusiness,
   },
   {
@@ -75,15 +77,18 @@ const SUPPORT_SERVICES = [
 const FAQS = [
   {
     question: "Apakah sewa mobil sudah termasuk driver?",
-    answer: "Ya. Fokus layanan Vicky Rentcar adalah sewa mobil dengan driver untuk kebutuhan perjalanan di Jakarta dan sekitarnya.",
+    answer:
+      "Ya. Fokus layanan Vicky Rentcar adalah sewa mobil dengan driver untuk kebutuhan perjalanan di Jakarta dan sekitarnya.",
   },
   {
     question: "Apakah bisa antar jemput bandara?",
-    answer: "Ya, tersedia layanan antar jemput bandara dengan kebutuhan perjalanan yang dikonfirmasi melalui WhatsApp.",
+    answer:
+      "Ya, tersedia layanan antar jemput bandara dengan kebutuhan perjalanan yang dikonfirmasi melalui WhatsApp.",
   },
   {
     question: "Apakah melayani Soekarno-Hatta dan Halim?",
-    answer: "Ya, layanan tersedia di Bandara Soekarno-Hatta Terminal 1, 2, dan 3 serta Bandara Halim Perdanakusuma.",
+    answer:
+      "Ya, layanan tersedia di Bandara Soekarno-Hatta Terminal 1, 2, dan 3 serta Bandara Halim Perdanakusuma.",
   },
   {
     question: "Apakah bisa untuk perjalanan luar kota?",
@@ -91,23 +96,28 @@ const FAQS = [
   },
   {
     question: "Mobil apa yang cocok untuk keluarga?",
-    answer: "Toyota Innova Zenix cocok untuk keluarga dan perjalanan harian. Toyota Alphard tersedia untuk kebutuhan dengan kabin executive.",
+    answer:
+      "Toyota Innova Zenix cocok untuk keluarga dan perjalanan harian. Toyota Alphard tersedia untuk kebutuhan dengan kabin executive.",
   },
   {
     question: "Mobil apa yang cocok untuk rombongan?",
-    answer: "Toyota Hiace Premio memiliki kapasitas 11–14 penumpang dan sesuai untuk perjalanan rombongan.",
+    answer:
+      "Toyota Hiace Premio memiliki kapasitas 11–14 penumpang dan sesuai untuk perjalanan rombongan.",
   },
   {
     question: "Informasi apa yang perlu dikirim saat reservasi?",
-    answer: "Kirim tanggal, waktu, lokasi penjemputan, tujuan atau rute, durasi perjalanan, jumlah penumpang, dan kebutuhan bagasi bila relevan.",
+    answer:
+      "Kirim tanggal, waktu, lokasi penjemputan, tujuan atau rute, durasi perjalanan, jumlah penumpang, dan kebutuhan bagasi bila relevan.",
   },
   {
     question: "Apakah tersedia layanan corporate atau invoice?",
-    answer: "Ya, tersedia kebutuhan operasional kantor, tamu bisnis, kunjungan kerja, dan invoice resmi corporate.",
+    answer:
+      "Ya, tersedia kebutuhan operasional kantor, tamu bisnis, kunjungan kerja, dan invoice resmi corporate.",
   },
   {
     question: "Apakah reservasi bisa dilakukan melalui WhatsApp?",
-    answer: "Ya, sampaikan detail perjalanan melalui WhatsApp untuk konfirmasi ketersediaan armada dan reservasi.",
+    answer:
+      "Ya, sampaikan detail perjalanan melalui WhatsApp untuk konfirmasi ketersediaan armada dan reservasi.",
   },
 ] as const;
 
@@ -135,7 +145,10 @@ export const Route = createFileRoute("/sewa-mobil-dengan-driver-jakarta")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.vickyrentcarjakarta.com/sewa-mobil-dengan-driver-jakarta" },
+      {
+        property: "og:url",
+        content: "https://www.vickyrentcarjakarta.com/sewa-mobil-dengan-driver-jakarta",
+      },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: OG_IMAGE },
@@ -184,11 +197,17 @@ function DriverJakartaPage() {
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Pilih mobil dengan driver untuk bandara, bisnis, keluarga, perjalanan luar kota,
                 atau rombongan. Kirim detail perjalanan melalui WhatsApp agar tim dapat membantu
-                menyesuaikan kendaraan dengan kebutuhan Anda.
+                menyesuaikan kendaraan dengan kebutuhan Anda. Lihat juga{" "}
+                <Link to="/sewa-mobil-jakarta" className="text-gold hover:underline">
+                  pilihan sewa mobil Jakarta
+                </Link>{" "}
+                untuk membandingkan kebutuhan perjalanan.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <a
-                  href={waLink(`Halo ${SITE.brand}, saya ingin menyewa mobil dengan driver di Jakarta.`)}
+                  href={waLink(
+                    `Halo ${SITE.brand}, saya ingin menyewa mobil dengan driver di Jakarta.`,
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
@@ -223,7 +242,9 @@ function DriverJakartaPage() {
                     <article className="glass h-full rounded-xl border border-gold/15 p-5 transition-colors hover:border-gold/45">
                       <Icon className="h-6 w-6 text-gold" aria-hidden="true" />
                       <h2 className="mt-5 text-xl font-normal">{need.title}</h2>
-                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{need.description}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                        {need.description}
+                      </p>
                     </article>
                   </StaggerItem>
                 );
@@ -274,9 +295,13 @@ function DriverJakartaPage() {
                       />
                     </div>
                     <div className="mt-5 flex flex-1 flex-col">
-                      <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">{vehicle.category}</p>
+                      <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">
+                        {vehicle.category}
+                      </p>
                       <h2 className="mt-2 text-2xl font-normal">{vehicle.name}</h2>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{vehicle.description}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {vehicle.description}
+                      </p>
                       <div className="mt-4 grid grid-cols-2 gap-3 border-t border-gold/15 pt-4 text-xs text-muted-foreground">
                         <span className="flex items-start gap-2">
                           <Users className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
@@ -338,7 +363,11 @@ function DriverJakartaPage() {
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <SectionHeading eyebrow="FAQ Driver" title="Pertanyaan tentang mobil dengan driver" />
-            <Accordion type="single" collapsible className="mt-8 rounded-xl border border-gold/15 px-5">
+            <Accordion
+              type="single"
+              collapsible
+              className="mt-8 rounded-xl border border-gold/15 px-5"
+            >
               {FAQS.map((faq, index) => (
                 <AccordionItem key={faq.question} value={`faq-${index}`}>
                   <AccordionTrigger>{faq.question}</AccordionTrigger>

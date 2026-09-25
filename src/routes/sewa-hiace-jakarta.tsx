@@ -9,13 +9,13 @@ import {
   Users,
 } from "lucide-react";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { Reveal, SectionHeading, Stagger, StaggerItem } from "@/components/Reveal";
-import { SITE, waLink } from "@/lib/site";
+import { waLink } from "@/lib/site";
 import { VEHICLES } from "@/lib/vehicles";
 import { SITE_URL, serializeSchema, buildBreadcrumbSchema } from "@/lib/schema";
 
@@ -119,30 +119,6 @@ function HiaceJakartaPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const whatsappUrl = waLink(WHATSAPP_MESSAGE);
 
-  useEffect(() => {
-    const normalizeHiaceLinks = () => {
-      document.querySelectorAll<HTMLLinkElement>('link[rel="canonical"]').forEach((link) => {
-        if (link.getAttribute("href") !== CANONICAL) link.remove();
-      });
-
-      document.querySelectorAll<HTMLAnchorElement>('a[href*="wa.me"]').forEach((link) => {
-        link.href = whatsappUrl;
-      });
-    };
-
-    normalizeHiaceLinks();
-    const observer = new MutationObserver(normalizeHiaceLinks);
-    observer.observe(document.head, { childList: true, subtree: true });
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["href"],
-    });
-
-    return () => observer.disconnect();
-  }, [whatsappUrl]);
-
   if (!vehicle) return null;
 
   const specifications = [
@@ -172,7 +148,11 @@ function HiaceJakartaPage() {
               <div className="gold-rule mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Toyota Hiace Premio untuk wisata, gathering, event, kantor, airport transfer, dan
-                perjalanan luar kota bersama rombongan.
+                perjalanan luar kota bersama rombongan. Untuk kebutuhan selain rombongan, lihat{" "}
+                <Link to="/sewa-mobil-jakarta" className="text-gold hover:underline">
+                  pilihan sewa mobil Jakarta
+                </Link>
+                .
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a

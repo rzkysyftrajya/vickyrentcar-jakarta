@@ -9,7 +9,7 @@ import {
   Plane,
   Users,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
@@ -136,28 +136,6 @@ function SewaAlphardJakartaPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const whatsappUrl = waLink(WHATSAPP_MESSAGE);
 
-  useEffect(() => {
-    const normalizePageLinks = () => {
-      document.querySelectorAll<HTMLLinkElement>('link[rel="canonical"]').forEach((link) => {
-        if (link.getAttribute("href") !== CANONICAL) link.remove();
-      });
-      document.querySelectorAll<HTMLAnchorElement>('a[href*="wa.me"]').forEach((link) => {
-        link.href = whatsappUrl;
-      });
-    };
-
-    normalizePageLinks();
-    const observer = new MutationObserver(normalizePageLinks);
-    observer.observe(document.head, { childList: true, subtree: true });
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["href"],
-    });
-    return () => observer.disconnect();
-  }, [whatsappUrl]);
-
   return (
     <div className="min-h-screen overflow-x-clip bg-background">
       <Nav />
@@ -176,7 +154,12 @@ function SewaAlphardJakartaPage() {
               <div className="gold-rule mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Toyota Alphard di Jakarta dengan driver untuk kebutuhan bisnis, keluarga, airport,
-                dan event sesuai pilihan kendaraan yang tersedia.
+                dan event sesuai pilihan kendaraan yang tersedia. Untuk perjalanan bersama
+                rombongan, lihat{" "}
+                <Link to="/sewa-hiace-jakarta" className="text-gold hover:underline">
+                  sewa Hiace Jakarta
+                </Link>
+                .
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a

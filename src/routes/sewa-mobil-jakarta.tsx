@@ -37,6 +37,8 @@ const RENTAL_NEEDS = [
     title: "Bisnis & Kantor",
     description: TRAVEL_NEEDS.find((need) => need.id === "corporate")!.desc,
     icon: BriefcaseBusiness,
+    link: "/sewa-mobil-dengan-driver-jakarta" as const,
+    linkLabel: "Sewa mobil Jakarta dengan driver",
   },
   {
     title: "Keluarga / Perjalanan Harian",
@@ -52,8 +54,48 @@ const RENTAL_NEEDS = [
     title: "Rombongan",
     description: TRAVEL_NEEDS.find((need) => need.id === "rombongan")!.desc,
     icon: Users,
+    link: "/sewa-hiace-jakarta" as const,
+    linkLabel: "Lihat pilihan kendaraan untuk rombongan",
   },
 ] as const;
+
+const GUIDE_GROUPS = [
+  {
+    title: "Jumlah Penumpang",
+    options: [
+      {
+        label: "1–6 penumpang",
+        slugs: ["toyota-innova-zenix", "toyota-innova-reborn", "toyota-alphard"],
+      },
+      { label: "7–14 penumpang", slugs: ["toyota-hiace-premio"] },
+    ],
+  },
+  {
+    title: "Kebutuhan Perjalanan",
+    options: [
+      { label: "Business / Meeting", slugs: ["toyota-innova-zenix", "toyota-alphard"] },
+      { label: "Executive / VIP", slugs: ["toyota-alphard", "lexus-lm350h-2025"] },
+      { label: "Rombongan / Group Travel", slugs: ["toyota-hiace-premio"] },
+      {
+        label: "Airport Transfer",
+        slugs: ["toyota-innova-zenix", "toyota-alphard", "toyota-hiace-premio"],
+      },
+      {
+        label: "Family Trip",
+        slugs: ["toyota-innova-zenix", "toyota-alphard", "xpander-ultimate"],
+      },
+      {
+        label: "Corporate Trip",
+        slugs: ["toyota-innova-zenix", "toyota-innova-reborn", "toyota-alphard"],
+      },
+    ],
+  },
+] as const;
+
+const GUIDE_LANDING_LINKS = {
+  "toyota-hiace-premio": "/sewa-hiace-jakarta",
+  "toyota-alphard": "/sewa-alphard-jakarta",
+} as const;
 
 const SUPPORT_SERVICES = [
   {
@@ -271,6 +313,14 @@ function SewaMobilJakartaPage() {
                       <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                         {need.description}
                       </p>
+                      {need.link && (
+                        <Link
+                          to={need.link}
+                          className="mt-4 inline-flex text-xs leading-relaxed text-gold hover:underline"
+                        >
+                          {need.linkLabel}
+                        </Link>
+                      )}
                     </article>
                   </StaggerItem>
                 );
@@ -386,6 +436,80 @@ function SewaMobilJakartaPage() {
                 </StaggerItem>
               ))}
             </Stagger>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <SectionHeading
+              eyebrow="Vehicle Decision Guide"
+              title="Pilih Kendaraan Sesuai Kebutuhan Anda"
+              subtitle="Tidak yakin kendaraan mana yang sesuai? Gunakan panduan berikut untuk mempersempit pilihan berdasarkan jumlah penumpang dan kebutuhan perjalanan."
+            />
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              {GUIDE_GROUPS.map((group) => (
+                <div key={group.title} className="grid gap-4 sm:grid-cols-2">
+                  {group.options.map((option) => {
+                    const vehicles = option.slugs
+                      .map((slug) => VEHICLES.find((vehicle) => vehicle.slug === slug))
+                      .filter((vehicle): vehicle is (typeof VEHICLES)[number] => Boolean(vehicle));
+
+                    return (
+                      <article
+                        key={option.label}
+                        className="glass rounded-xl border border-gold/15 p-5 transition-colors hover:border-gold/40"
+                      >
+                        <p className="text-xs uppercase tracking-[0.16em] text-gold">
+                          {group.title}
+                        </p>
+                        <h2 className="mt-3 text-xl font-normal">{option.label}</h2>
+                        <ul className="mt-4 space-y-3">
+                          {vehicles.map((vehicle) => {
+                            const landingLink =
+                              GUIDE_LANDING_LINKS[vehicle.slug as keyof typeof GUIDE_LANDING_LINKS];
+                            return (
+                              <li
+                                key={vehicle.slug}
+                                className="border-t border-gold/10 pt-3 text-sm"
+                              >
+                                {landingLink ? (
+                                  <Link to={landingLink} className="text-gold hover:underline">
+                                    {vehicle.name}
+                                  </Link>
+                                ) : (
+                                  <span>{vehicle.name}</span>
+                                )}
+                                <span className="mt-1 block text-xs text-muted-foreground">
+                                  {vehicle.category} · {vehicle.capacity}
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </article>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 rounded-xl border border-gold/25 bg-gold/5 p-6 text-center sm:p-8">
+              <h2 className="text-2xl font-normal">Masih belum yakin?</h2>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                Kirim jumlah penumpang, tujuan perjalanan, dan kebutuhan Anda. Tim Vicky Rentcar
+                akan membantu memilihkan kendaraan yang sesuai.
+              </p>
+              <a
+                href={waLink(
+                  `Halo ${SITE.brand}, saya ingin konsultasi kendaraan. Jumlah penumpang, tujuan perjalanan, dan kebutuhan saya akan saya kirimkan melalui WhatsApp.`,
+                )}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                Konsultasi via WhatsApp
+              </a>
+            </div>
           </div>
         </section>
 
