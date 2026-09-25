@@ -205,11 +205,36 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script
-          src="https://vrnadvertiser.vercel.app/track.js"
-          data-tracking-id="9ab5c620-00fb-4833-88cb-6172a7028f7a"
-          async
-        />
+        <script>
+          {`
+            (function () {
+              var trackingSrc = "https://vrnadvertiser.vercel.app/track.js";
+              var trackingId = "9ab5c620-00fb-4833-88cb-6172a7028f7a";
+
+              function loadTrackingScript() {
+                if (window.__vrnTrackingInitialized) return;
+                if (document.querySelector('script[src="' + trackingSrc + '"]')) return;
+
+                window.__vrnTrackingInitialized = true;
+                var script = document.createElement("script");
+                script.src = trackingSrc;
+                script.dataset.trackingId = trackingId;
+                script.async = true;
+                document.head.appendChild(script);
+              }
+
+              function scheduleTrackingScript() {
+                if (typeof window.requestIdleCallback === "function") {
+                  window.requestIdleCallback(loadTrackingScript, { timeout: 2000 });
+                } else {
+                  window.setTimeout(loadTrackingScript, 1500);
+                }
+              }
+
+              window.addEventListener("load", scheduleTrackingScript, { once: true });
+            })();
+          `}
+        </script>
       </head>
       <body>
         {children}
