@@ -59,7 +59,21 @@ class VehicleErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
 function useMounted() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(() => setMounted(true));
+    } else {
+      timeoutId = window.setTimeout(() => setMounted(true), 0);
+    }
+
+    return () => {
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, []);
   return mounted;
 }
 
