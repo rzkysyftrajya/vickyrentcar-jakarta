@@ -59,22 +59,39 @@ class VehicleErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
 function useMounted() {
   const [mounted, setMounted] = useState(false);
+  const [target, setTarget] = useState<HTMLDivElement | null>(null);
   useEffect(() => {
+    if (!target) return;
+
+    let observer: IntersectionObserver | undefined;
     let idleId: number | undefined;
     let timeoutId: number | undefined;
 
-    if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(() => setMounted(true));
-    } else {
-      timeoutId = window.setTimeout(() => setMounted(true), 0);
-    }
+    const mount = () => {
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(() => setMounted(true));
+      } else {
+        timeoutId = window.setTimeout(() => setMounted(true), 0);
+      }
+    };
+
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        observer?.disconnect();
+        mount();
+      },
+      { rootMargin: "0px 0px 400px 0px" },
+    );
+    observer.observe(target);
 
     return () => {
+      observer?.disconnect();
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
     };
-  }, []);
-  return mounted;
+  }, [target]);
+  return { mounted, setTarget };
 }
 
 export function VehicleViewer({
@@ -90,8 +107,8 @@ export function VehicleViewer({
   angle?: ViewAngle | null;
   className?: string;
 }) {
-  const mounted = useMounted();
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { mounted, setTarget } = useMounted();
   const [autoRotate, setAutoRotate] = useState(true);
   const [resetKey, setResetKey] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
@@ -116,7 +133,10 @@ export function VehicleViewer({
 
   return (
     <div
-      ref={wrapRef}
+      ref={(node) => {
+        wrapRef.current = node;
+        setTarget(node);
+      }}
       className={`relative overflow-hidden rounded-xl bg-[radial-gradient(80%_60%_at_50%_20%,color-mix(in_oklab,var(--navy)_75%,transparent),var(--background))] ${className}`}
     >
       <div className="absolute inset-0 touch-none">

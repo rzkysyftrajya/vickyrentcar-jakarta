@@ -24,7 +24,7 @@ export function WhatsAppFab() {
           type: "whatsapp_fab",
           target: "floating_whatsapp",
           timestamp: new Date().toISOString(),
-        });
+        }); 
       }
     }
   };
