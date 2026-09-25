@@ -50,6 +50,7 @@ export const Route = createFileRoute("/armada/$slug")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:image", content: ogImage },
       ],
+      links: [{ rel: "canonical", href: pageUrl }],
       scripts: [
         {
           type: "application/ld+json",

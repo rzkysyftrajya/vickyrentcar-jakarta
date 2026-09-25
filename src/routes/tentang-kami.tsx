@@ -25,6 +25,7 @@ const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const Route = createFileRoute("/tentang-kami")({
   head: () => ({
+    links: [{ rel: "canonical", href: `${SITE_URL}/tentang-kami` }],
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },

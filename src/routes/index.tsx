@@ -20,6 +20,7 @@ const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [{ rel: "canonical", href: SITE_URL }],
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
