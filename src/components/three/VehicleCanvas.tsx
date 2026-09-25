@@ -131,9 +131,3 @@ export default function VehicleCanvas({
     </Canvas>
   );
 }
-
-useGLTF.preload("/models/Alphard.glb");
-useGLTF.preload("/models/innova-zenix.glb");
-useGLTF.preload("/models/innova-reborn.glb");
-useGLTF.preload("/models/hiace-premio.glb");
-
