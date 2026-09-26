@@ -19,17 +19,21 @@ import {
   SITE_URL,
 } from "../lib/schema";
 import { LanguageProvider } from "../lib/i18n";
-import { GoogleAdsTracker } from "../components/GoogleAdsTracker";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          Page not found
+        </h2>
+
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
+
         <div className="mt-6">
           <Link
             to="/"
@@ -43,11 +47,21 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
   console.error(error);
+
   const router = useRouter();
+
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportLovableError(error, {
+      boundary: "tanstack_root_error_component",
+    });
   }, [error]);
 
   return (
@@ -56,9 +70,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
         </h1>
+
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Something went wrong on our end. You can try refreshing or head back
+          home.
         </p>
+
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -69,6 +86,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </button>
+
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
@@ -81,164 +99,273 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vicky Rentcar Jakarta — Rental Mobil Nyaman & Terpercaya" },
-      { name: "description", content: "Sewa mobil di Jakarta: Toyota Alphard, Innova Zenix, Innova Reborn, dan Hiace Premio. Unit bersih, supir ramah & berpengalaman, siap melayani 24 jam." },
-      { name: "author", content: "Vicky Rentcar Jakarta" },
-      { property: "og:site_name", content: "Vicky Rentcar Jakarta" },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL },
-      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Vicky Rentcar Jakarta — Rental Mobil Nyaman & Terpercaya" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
-      { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
-      { rel: "manifest", href: "/site.webmanifest" },
-    ],
-    scripts: [
-      {
-        src: "https://www.googletagmanager.com/gtag/js?id=AW-18452315188",
-        async: true,
-      },
-      {
-        children: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'AW-18452315188');
-        `,
-      },
-      {
-        children: `
-          (function () {
-            var lastWhatsAppConversion = 0;
+export const Route =
+  createRootRouteWithContext<{ queryClient: QueryClient }>()({
+    head: () => ({
+      meta: [
+        { charSet: "utf-8" },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
+        },
+        {
+          title:
+            "Vicky Rentcar Jakarta — Rental Mobil Nyaman & Terpercaya",
+        },
+        {
+          name: "description",
+          content:
+            "Sewa mobil di Jakarta: Toyota Alphard, Innova Zenix, Innova Reborn, dan Hiace Premio. Unit bersih, supir ramah & berpengalaman, siap melayani 24 jam.",
+        },
+        {
+          name: "author",
+          content: "Vicky Rentcar Jakarta",
+        },
+        {
+          property: "og:site_name",
+          content: "Vicky Rentcar Jakarta",
+        },
+        {
+          property: "og:type",
+          content: "website",
+        },
+        {
+          property: "og:url",
+          content: SITE_URL,
+        },
+        {
+          property: "og:image",
+          content: `${SITE_URL}/og-image.jpg`,
+        },
+        {
+          property: "og:image:width",
+          content: "1200",
+        },
+        {
+          property: "og:image:height",
+          content: "630",
+        },
+        {
+          property: "og:image:alt",
+          content:
+            "Vicky Rentcar Jakarta — Rental Mobil Nyaman & Terpercaya",
+        },
+        {
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+        {
+          name: "twitter:image",
+          content: `${SITE_URL}/og-image.jpg`,
+        },
+      ],
 
-            function gtag_report_conversion(url) {
-              var now = Date.now();
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        {
+          rel: "icon",
+          href: "/favicon.ico",
+          sizes: "48x48",
+          type: "image/x-icon",
+        },
+        {
+          rel: "icon",
+          href: "/favicon-16x16.png",
+          sizes: "16x16",
+          type: "image/png",
+        },
+        {
+          rel: "icon",
+          href: "/favicon-32x32.png",
+          sizes: "32x32",
+          type: "image/png",
+        },
+        {
+          rel: "apple-touch-icon",
+          href: "/apple-touch-icon.png",
+          sizes: "180x180",
+        },
+        {
+          rel: "manifest",
+          href: "/site.webmanifest",
+        },
+      ],
 
-              if (now - lastWhatsAppConversion < 2000) {
-                return false;
-              }
+      scripts: [
+        // Google Tag dasar
+        {
+          src: "https://www.googletagmanager.com/gtag/js?id=AW-18452315188",
+          async: true,
+        },
 
-              lastWhatsAppConversion = now;
-              var redirected = false;
+        // Konfigurasi Google Ads
+        {
+          children: `
+            window.dataLayer = window.dataLayer || [];
 
-              var callback = function () {
-                if (!redirected && url) {
-                  redirected = true;
-                  window.location.href = url;
-                }
-              };
-
-              if (typeof window.gtag === "function") {
-                window.gtag("event", "conversion", {
-                  send_to: "AW-18452315188/3jLsCN_pv4MdELT4395E",
-                  event_callback: callback
-                });
-
-                setTimeout(callback, 1500);
-              } else {
-                callback();
-              }
-
-              return false;
+            function gtag() {
+              window.dataLayer.push(arguments);
             }
 
-            window.gtag_report_conversion = gtag_report_conversion;
+            window.gtag = gtag;
 
-            document.addEventListener(
-              "click",
-              function (event) {
-                var target =
-                  event.target instanceof Element ? event.target : null;
+            gtag("js", new Date());
+            gtag("config", "AW-18452315188");
+          `,
+        },
 
-                if (!target) return;
+        // Tracking seluruh tombol WhatsApp
+        {
+          children: `
+            (function () {
+              var lastWhatsAppConversion = 0;
 
-                var link = target.closest(
-                  'a[href*="wa.me/"],' +
-                  'a[href*="api.whatsapp.com/"],' +
-                  'a[href*="web.whatsapp.com/"],' +
-                  'a[href*="wa.link/"],' +
-                  'a[href^="whatsapp://"]'
-                );
+              function trackWhatsAppConversion() {
+                var now = Date.now();
 
-                if (!link) return;
+                // Mencegah satu klik tercatat lebih dari sekali
+                if (now - lastWhatsAppConversion < 2000) {
+                  return;
+                }
 
-                event.preventDefault();
-                gtag_report_conversion(link.href);
-              },
-              true
-            );
-          })();
-        `,
-      },
-      {
-        type: "application/ld+json",
-        children: serializeSchema(buildLocalBusinessSchema()),
-      },
-      {
-        type: "application/ld+json",
-        children: serializeSchema(buildWebSiteSchema()),
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
-});
+                lastWhatsAppConversion = now;
+
+                if (typeof window.gtag === "function") {
+                  window.gtag("event", "conversion", {
+                    send_to:
+                      "AW-18452315188/3jLsCN_pv4MdELT4395E"
+                  });
+                }
+              }
+
+              document.addEventListener(
+                "click",
+                function (event) {
+                  var target =
+                    event.target instanceof Element
+                      ? event.target
+                      : null;
+
+                  if (!target) {
+                    return;
+                  }
+
+                  var link = target.closest(
+                    'a[href*="wa.me/"],' +
+                    'a[href*="api.whatsapp.com/"],' +
+                    'a[href*="web.whatsapp.com/"],' +
+                    'a[href*="wa.link/"],' +
+                    'a[href^="whatsapp://"]'
+                  );
+
+                  if (!link) {
+                    return;
+                  }
+
+                  trackWhatsAppConversion();
+                },
+                true
+              );
+            })();
+          `,
+        },
+
+        // Schema bisnis lokal
+        {
+          type: "application/ld+json",
+          children: serializeSchema(buildLocalBusinessSchema()),
+        },
+
+        // Schema website
+        {
+          type: "application/ld+json",
+          children: serializeSchema(buildWebSiteSchema()),
+        },
+      ],
+    }),
+
+    shellComponent: RootShell,
+    component: RootComponent,
+    notFoundComponent: NotFoundComponent,
+    errorComponent: ErrorComponent,
+  });
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         <HeadContent />
+
         <script>
           {`
             (function () {
-              var trackingSrc = "https://vrnadvertiser.vercel.app/track.js";
-              var trackingId = "9ab5c620-00fb-4833-88cb-6172a7028f7a";
+              var trackingSrc =
+                "https://vrnadvertiser.vercel.app/track.js";
+
+              var trackingId =
+                "9ab5c620-00fb-4833-88cb-6172a7028f7a";
 
               function loadTrackingScript() {
-                if (window.__vrnTrackingInitialized) return;
-                if (document.querySelector('script[src="' + trackingSrc + '"]')) return;
+                if (window.__vrnTrackingInitialized) {
+                  return;
+                }
+
+                if (
+                  document.querySelector(
+                    'script[src="' + trackingSrc + '"]'
+                  )
+                ) {
+                  return;
+                }
 
                 window.__vrnTrackingInitialized = true;
+
                 var script = document.createElement("script");
                 script.src = trackingSrc;
                 script.dataset.trackingId = trackingId;
                 script.async = true;
+
                 document.head.appendChild(script);
               }
 
               function scheduleTrackingScript() {
-                if (typeof window.requestIdleCallback === "function") {
-                  window.requestIdleCallback(loadTrackingScript, { timeout: 2000 });
+                if (
+                  typeof window.requestIdleCallback === "function"
+                ) {
+                  window.requestIdleCallback(
+                    loadTrackingScript,
+                    {
+                      timeout: 2000,
+                    }
+                  );
                 } else {
-                  window.setTimeout(loadTrackingScript, 1500);
+                  window.setTimeout(
+                    loadTrackingScript,
+                    1500
+                  );
                 }
               }
 
-              window.addEventListener("load", scheduleTrackingScript, { once: true });
+              window.addEventListener(
+                "load",
+                scheduleTrackingScript,
+                {
+                  once: true,
+                }
+              );
             })();
           `}
         </script>
       </head>
+
       <body>
         {children}
+
         <Analytics />
+
         <Scripts />
       </body>
     </html>
@@ -251,7 +378,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <GoogleAdsTracker />
         <Outlet />
       </LanguageProvider>
     </QueryClientProvider>
