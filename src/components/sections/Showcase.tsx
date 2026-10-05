@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  Eye,
   Users,
   Briefcase,
   Fuel,
@@ -13,42 +12,36 @@ import {
   Wind,
   Music,
 } from "lucide-react";
-import { VEHICLES, Vehicle, EXTERIOR_ANGLES } from "@/lib/vehicles";
-import { VehicleViewer } from "@/components/three/VehicleViewer";
+import { VEHICLES, Vehicle } from "@/lib/vehicles";
 import { SectionHeading } from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
 
-// Only these 4 flagship vehicles have 3D models and interactive detail on the homepage
-const SHOWCASE_3D_SLUGS = [
+const SHOWCASE_VEHICLE_SLUGS = [
   "toyota-alphard",
   "toyota-innova-reborn",
   "toyota-innova-zenix",
   "toyota-hiace-premio",
 ];
 
-type DetailTab = "Eksterior 3D" | "Spesifikasi";
+type DetailTab = "Eksterior" | "Spesifikasi";
 
 export function Showcase() {
-  const showcaseVehicles = SHOWCASE_3D_SLUGS.map((slug) =>
+  const showcaseVehicles = SHOWCASE_VEHICLE_SLUGS.map((slug) =>
     VEHICLES.find((v) => v.slug === slug),
   ).filter(Boolean) as Vehicle[];
 
   const [index, setIndex] = useState(0);
-  const [tab, setTab] = useState<DetailTab>("Eksterior 3D");
-  const [angleIndex, setAngleIndex] = useState(0);
+  const [tab, setTab] = useState<DetailTab>("Eksterior");
 
   const vehicle = showcaseVehicles[index] || showcaseVehicles[0]!;
-  const angle = EXTERIOR_ANGLES[angleIndex] ?? null;
 
   const go = (dir: number) => {
     setIndex((i) => (i + dir + showcaseVehicles.length) % showcaseVehicles.length);
-    setAngleIndex(0);
   };
 
   const selectVehicle = (i: number) => {
     setIndex(i);
-    setAngleIndex(0);
   };
 
   const specs = [
@@ -64,9 +57,9 @@ export function Showcase() {
     <section id="showcase" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Inspeksi 3D & Detail Unit"
-          title="Detail 4 Armada Pilihan dalam 360°"
-          subtitle="Putar eksterior 3D 360° dan lihat spesifikasi lengkap Alphard, Innova Reborn, Innova Zenix, dan Hiace Premio langsung di sini."
+          eyebrow="Detail Unit"
+          title="Detail 4 Armada Pilihan"
+          subtitle="Lihat foto dan spesifikasi Alphard, Innova Reborn, Innova Zenix, dan Hiace Premio langsung di sini."
         />
 
         {/* 4 Vehicle Quick Buttons */}
@@ -89,7 +82,7 @@ export function Showcase() {
         </div>
 
         <div className="mt-8 flex justify-center gap-2">
-          {(["Eksterior 3D", "Spesifikasi"] as DetailTab[]).map((t) => (
+          {(["Eksterior", "Spesifikasi"] as DetailTab[]).map((t) => (
             <button
               key={t}
               type="button"
@@ -117,37 +110,13 @@ export function Showcase() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col"
             >
-              {tab === "Eksterior 3D" && (
-                <div className="flex flex-col gap-4">
-                  <VehicleViewer
-                    url={vehicle.model}
-                    name={vehicle.name}
-                    image={vehicle.image}
-                    angle={angle}
-                    className="h-[24rem] w-full sm:h-[32rem]"
+              {tab === "Eksterior" && (
+                <div className="glass flex h-[24rem] w-full items-center justify-center overflow-hidden rounded-xl p-6 sm:h-[32rem]">
+                  <img
+                    src={vehicle.image}
+                    alt={vehicle.name}
+                    className="max-h-full max-w-full object-contain"
                   />
-                  {/* Camera angle pills */}
-                  <div className="glass rounded-xl p-3 flex items-center justify-between gap-2 overflow-x-auto">
-                    <span className="text-[0.6rem] uppercase tracking-wider text-muted-foreground shrink-0 px-2">
-                      Sudut 360°:
-                    </span>
-                    <div className="flex items-center gap-1.5">
-                      {EXTERIOR_ANGLES.slice(0, 5).map((a, i) => (
-                        <button
-                          key={a.label}
-                          type="button"
-                          onClick={() => setAngleIndex(i)}
-                          className={`rounded-lg px-2.5 py-1 text-[0.6rem] tracking-wider transition-colors shrink-0 ${
-                            i === angleIndex
-                              ? "bg-gold text-primary-foreground font-medium"
-                              : "text-muted-foreground hover:text-gold"
-                          }`}
-                        >
-                          {a.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               )}
 

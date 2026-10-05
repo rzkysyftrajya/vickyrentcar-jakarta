@@ -6,9 +6,8 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { WhatsAppIcon } from "@/components/BrandIcons";
-import { VehicleViewer } from "@/components/three/VehicleViewer";
 import { Reveal } from "@/components/Reveal";
-import { EXTERIOR_ANGLES, getVehicle, VEHICLES } from "@/lib/vehicles";
+import { getVehicle, VEHICLES } from "@/lib/vehicles";
 import { SITE, waLink } from "@/lib/site";
 import {
   SITE_URL,
@@ -78,8 +77,6 @@ const TABS = ["Eksterior", "Spesifikasi"] as const;
 function VehicleDetail() {
   const { vehicle } = Route.useLoaderData();
   const [tab, setTab] = useState<(typeof TABS)[number]>("Eksterior");
-  const [angleIndex, setAngleIndex] = useState(0);
-  const angle = EXTERIOR_ANGLES[angleIndex] ?? null;
 
   const specs = [
     { label: "Kapasitas", value: vehicle.capacity },
@@ -114,24 +111,21 @@ function VehicleDetail() {
           </Reveal>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            {TABS.map((t) => {
-              const label = t === "Eksterior" && vehicle.model ? "Eksterior 3D" : t;
-              return (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTab(t)}
-                  aria-pressed={tab === t}
-                  className={`rounded-full px-6 py-2.5 text-[0.6rem] tracking-[0.25em] uppercase transition-all duration-300 ${
-                    tab === t
-                      ? "bg-gold text-primary-foreground font-medium"
-                      : "border border-gold/25 text-muted-foreground hover:text-gold"
-                  }`}
-                >
-                  {label}
-                </button>
-              );
-            })}
+            {TABS.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setTab(t)}
+                aria-pressed={tab === t}
+                className={`rounded-full px-6 py-2.5 text-[0.6rem] tracking-[0.25em] uppercase transition-all duration-300 ${
+                  tab === t
+                    ? "bg-gold text-primary-foreground font-medium"
+                    : "border border-gold/25 text-muted-foreground hover:text-gold"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
           </div>
 
           <AnimatePresence mode="wait">
@@ -145,82 +139,54 @@ function VehicleDetail() {
             >
               {tab === "Eksterior" ? (
                 <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-                  <VehicleViewer
-                    url={vehicle.model}
-                    name={vehicle.name}
-                    image={vehicle.image}
-                    angle={angle}
-                    className="h-[26rem] w-full sm:h-[34rem]"
-                  />
+                  <div className="glass flex h-[26rem] items-center justify-center overflow-hidden rounded-xl p-6 sm:h-[34rem]">
+                    <img
+                      src={vehicle.image}
+                      alt={vehicle.name}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
                   <div className="glass rounded-xl p-7 flex flex-col justify-between">
-                    {vehicle.model ? (
-                      <div>
-                        <p className="eyebrow">Sudut Kamera 3D</p>
-                        <div className="mt-5 grid grid-cols-2 gap-3">
-                          {EXTERIOR_ANGLES.map((a, i) => (
-                            <button
-                              key={a.label}
-                              type="button"
-                              onClick={() => setAngleIndex(i)}
-                              aria-pressed={i === angleIndex}
-                              className={`rounded-lg border px-4 py-3 text-[0.6rem] tracking-[0.18em] uppercase transition-all duration-300 ${
-                                i === angleIndex
-                                  ? "border-gold bg-gold/10 text-gold"
-                                  : "border-gold/20 text-muted-foreground hover:border-gold/50 hover:text-gold"
-                              }`}
-                            >
-                              {a.label}
-                            </button>
-                          ))}
-                        </div>
-                        <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-                          Anda juga dapat memutar model secara bebas dengan drag, memperbesar dengan
-                          scroll atau pinch, dan membuka mode layar penuh.
+                    <div>
+                      <p className="eyebrow">Keunggulan Unit</p>
+                      <h3 className="mt-2 text-xl font-normal text-foreground">
+                        {vehicle.name}
+                      </h3>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {vehicle.badges.map((b: string) => (
+                          <span
+                            key={b}
+                            className="rounded-full bg-gold/10 border border-gold/30 px-3 py-1 text-[0.65rem] tracking-wider text-gold uppercase"
+                          >
+                            {b}
+                          </span>
+                        ))}
+                      </div>
+                      <ul className="mt-6 space-y-3 text-xs text-muted-foreground">
+                        <li className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-gold shrink-0" />
+                          <span>Kapasitas: <strong className="text-foreground">{vehicle.capacity}</strong></span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-gold shrink-0" />
+                          <span>Transmisi: <strong className="text-foreground">{vehicle.transmission}</strong></span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-gold shrink-0" />
+                          <span>Bahan Bakar: <strong className="text-foreground">{vehicle.fuel}</strong></span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-gold shrink-0" />
+                          <span>Pendingin: <strong className="text-foreground">{vehicle.ac}</strong></span>
+                        </li>
+                      </ul>
+                      <div className="mt-6 p-4 rounded-xl border border-gold/20 bg-gold/5">
+                        <p className="text-xs text-gold font-medium">Garansi Vicky Rentcar:</p>
+                        <p className="text-[0.7rem] text-muted-foreground mt-1">
+                          Unit bersih mengilap, wangi, bebas asap rokok, serta supir ramah & berpengalaman.
                         </p>
                       </div>
-                    ) : (
-                      <div>
-                        <p className="eyebrow">Keunggulan Unit</p>
-                        <h3 className="mt-2 text-xl font-normal text-foreground">
-                          {vehicle.name}
-                        </h3>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {vehicle.badges.map((b: string) => (
-                            <span
-                              key={b}
-                              className="rounded-full bg-gold/10 border border-gold/30 px-3 py-1 text-[0.65rem] tracking-wider text-gold uppercase"
-                            >
-                              {b}
-                            </span>
-                          ))}
-                        </div>
-                        <ul className="mt-6 space-y-3 text-xs text-muted-foreground">
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-gold shrink-0" />
-                            <span>Kapasitas: <strong className="text-foreground">{vehicle.capacity}</strong></span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-gold shrink-0" />
-                            <span>Transmisi: <strong className="text-foreground">{vehicle.transmission}</strong></span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-gold shrink-0" />
-                            <span>Bahan Bakar: <strong className="text-foreground">{vehicle.fuel}</strong></span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-gold shrink-0" />
-                            <span>Pendingin: <strong className="text-foreground">{vehicle.ac}</strong></span>
-                          </li>
-                        </ul>
-                        <div className="mt-6 p-4 rounded-xl border border-gold/20 bg-gold/5">
-                          <p className="text-xs text-gold font-medium">Garansi Vicky Rentcar:</p>
-                          <p className="text-[0.7rem] text-muted-foreground mt-1">
-                            Unit bersih mengilap, wangi, bebas asap rokok, serta supir ramah & berpengalaman.
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
+                    </div>
                     <div className="mt-6 pt-4 border-t border-gold/15">
                       <a
                         href={waLink(`Halo ${SITE.brand}, saya ingin reservasi ${vehicle.name}.`)}
