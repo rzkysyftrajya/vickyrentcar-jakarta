@@ -353,7 +353,7 @@ function KorporatPage() {
               </h1>
               <div className="gold-rule mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                Dari antar jemput tamu VIP hingga kontrak fleet bulanan — kami menyediakan solusi transportasi korporat yang profesional, fleksibel, dan transparan untuk bisnis di Jakarta.
+                Dari antar jemput tamu perusahaan hingga kontrak fleet bulanan — kami menyediakan solusi transportasi korporat yang profesional, fleksibel, dan transparan untuk bisnis di Jakarta.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a

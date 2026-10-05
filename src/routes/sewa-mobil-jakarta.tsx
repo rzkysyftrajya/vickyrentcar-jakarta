@@ -74,7 +74,7 @@ const GUIDE_GROUPS = [
     title: "Kebutuhan Perjalanan",
     options: [
       { label: "Business / Meeting", slugs: ["toyota-innova-zenix", "toyota-alphard"] },
-      { label: "Executive / VIP", slugs: ["toyota-alphard", "lexus-lm350h-2025"] },
+      { label: "Executive", slugs: ["toyota-alphard", "lexus-lm350h-2025"] },
       { label: "Rombongan / Group Travel", slugs: ["toyota-hiace-premio"] },
       {
         label: "Airport Transfer",

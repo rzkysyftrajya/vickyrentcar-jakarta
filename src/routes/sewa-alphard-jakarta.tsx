@@ -66,7 +66,7 @@ const FAQS = [
   ],
   [
     "Alphard cocok untuk kebutuhan apa?",
-    "Data kendaraan mencakup airport transfer, perjalanan bisnis, keluarga, tamu kantor atau VIP, serta mobil pernikahan.",
+    "Data kendaraan mencakup airport transfer, perjalanan bisnis, keluarga, tamu kantor, serta mobil pernikahan.",
   ],
   [
     "Apakah bisa untuk airport transfer?",

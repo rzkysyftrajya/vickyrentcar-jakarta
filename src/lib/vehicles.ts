@@ -57,30 +57,30 @@ export const EXTERIOR_GALLERY = [
 ];
 
 export const VEHICLES: Vehicle[] = [
-  // ── 1. Luxury & Executive MPV ──
+  // ── 1. Executive MPV ──
   {
     slug: "lexus-lm350h-2025",
     name: "Lexus LM350h 2025",
-    tagline: "Puncak Kemewahan & Kenyamanan Ultra-VIP",
+    tagline: "Kenyamanan Kabin & Layanan Profesional",
     category: "Executive MPV",
     priceStarting: "Best Rate Guarantee",
-    priceNote: "Konsultasi Promo VIP via WhatsApp",
+    priceNote: "Konsultasi via WhatsApp",
     description:
-      "Kemewahan kasta tertinggi dengan partisi privasi kabin, kursi pijat Ottoman elektrik, sistem audio Mark Levinson, dan keheningan kabin sempurna untuk tamu kenegaraan & eksekutif puncak.",
+      "Dilengkapi partisi privasi kabin, kursi pijat Ottoman elektrik, sistem audio Mark Levinson, dan kabin senyap untuk perjalanan bisnis, tamu perusahaan, dan instansi.",
     model: "",
     image: "/armada/Lexus-LM350H-2025.webp",
-    badges: ["Ultra VIP", "Ottoman Seat", "Hybrid Luxury"],
+    badges: ["Kabin Privat", "Ottoman Seat", "Hybrid"],
     capacity: "4–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
     transmission: "Direct-Shift e-CVT Automatic",
     fuel: "Hybrid (Bensin + Listrik)",
     ac: "Nanoe-X Climate Concierge Multi-Zone",
     entertainment: "Mark Levinson 23-Speaker Sound, 48\" Rear Screen, Smart Touch Controller",
-    services: ["Tamu Kenegaraan & VIP", "Mobil Pengantin Mewah", "Antar Jemput VVIP Bandara"],
-    fitFor: ["Eksekutif & CEO", "Tamu VIP Internasional", "Pernikahan Mewah", "Antar Jemput Bandara"],
+    services: ["Tamu Perusahaan & Instansi", "Mobil Pengantin", "Antar Jemput Bandara"],
+    fitFor: ["Perjalanan Bisnis", "Tamu Perusahaan Internasional", "Mobil Pengantin", "Antar Jemput Bandara"],
     rates: [
-      { package: "Airport Transfer VVIP", price: "Tanya Promo", description: "Termasuk Supir VIP, Tol, Parkir & Sambutan Khusus" },
-      { package: "Sewa Harian (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Berpengalaman Khusus VIP" },
+      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir Profesional, Tol, Parkir & Sambutan di Bandara" },
+      { package: "Sewa Harian (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Berpengalaman" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
@@ -139,7 +139,7 @@ export const VEHICLES: Vehicle[] = [
   {
     slug: "alphard-g-facelift",
     name: "Alphard G Facelift",
-    tagline: "Kemewahan Teruji & Kenyamanan Captain Seat",
+    tagline: "Kenyamanan Captain Seat untuk Perjalanan Harian",
     category: "Executive MPV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
@@ -147,7 +147,7 @@ export const VEHICLES: Vehicle[] = [
       "Varian Alphard Facelift tipe G dengan captain seat fleksibel, power sliding door ganda, dan ruang kabin lega untuk mobilitas eksekutif dan keluarga di Jakarta.",
     model: "",
     image: "/armada/Alphard-G-Facelift-2022-2023.webp",
-    badges: ["Executive", "Captain Seat", "Favorit VIP"],
+    badges: ["Executive", "Captain Seat", "Favorit"],
     capacity: "5–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
     transmission: "Super CVT-i Automatic",
@@ -155,7 +155,7 @@ export const VEHICLES: Vehicle[] = [
     ac: "Dual Climate Control + Nanoe Filter",
     entertainment: "Roof Monitor, DVD/Bluetooth Audio, Ambient Light",
     services: ["Antar Jemput Bandara", "Sewa Harian", "Mobil Pernikahan"],
-    fitFor: ["Antar Jemput Bandara", "Tamu VIP", "Perjalanan Keluarga", "Wedding Car"],
+    fitFor: ["Antar Jemput Bandara", "Tamu Perusahaan", "Perjalanan Keluarga", "Wedding Car"],
     rates: [
       { package: "Airport Transfer Bandara", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
@@ -173,7 +173,7 @@ export const VEHICLES: Vehicle[] = [
       "Armada Alphard tipe G dengan suspensi empuk, captain seat individual, dan supir beretika standar hotel bintang lima untuk perjalanan bisnis dan liburan.",
     model: "",
     image: "/armada/Toyota-Alphard-G-2018-2020.webp",
-    badges: ["Executive", "Nyaman", "Best Value VIP"],
+    badges: ["Executive", "Nyaman", "Best Value"],
     capacity: "5–6 penumpang",
     luggage: "3 koper besar + 2 kabin",
     transmission: "CVT Automatic",
@@ -189,19 +189,19 @@ export const VEHICLES: Vehicle[] = [
     ],
   },
 
-  // ── 2. Luxury Sedan ──
+  // ── 2. Sedan Eksekutif ──
   {
     slug: "mercedes-c300",
     name: "Mercedes-Benz C300",
-    tagline: "Sedan Mewah Dinamis & Prestisius",
+    tagline: "Sedan Dinamis & Nyaman untuk Perjalanan",
     category: "Luxury Sedan",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "Sedan premium dengan desain sporty elegan, ambient light 64 warna, dan kenyamanan suspensi khas Mercedes-Benz untuk mobilitas prestisius.",
+      "Sedan dengan desain sporty elegan, ambient light 64 warna, dan suspensi khas Mercedes-Benz yang nyaman untuk perjalanan bisnis maupun harian.",
     model: "",
     image: "/armada/Mercedes-C300.webp",
-    badges: ["Luxury Sedan", "Executive VIP", "Sporty"],
+    badges: ["Sedan Eksekutif", "Executive", "Sporty"],
     capacity: "4 penumpang",
     luggage: "2 koper besar + 2 kabin",
     transmission: "9G-TRONIC Automatic",
@@ -209,7 +209,7 @@ export const VEHICLES: Vehicle[] = [
     ac: "Thermatic Dual Zone Climate Control",
     entertainment: "11.9\" Portrait Screen, Burmester 3D Sound, Wireless Charging",
     services: ["Sewa Harian Eksekutif", "Airport Transfer", "Wedding Car"],
-    fitFor: ["Perjalanan Bisnis", "Mobil Pengantin", "City Tour VIP"],
+    fitFor: ["Perjalanan Bisnis", "Mobil Pengantin", "City Tour"],
     rates: [
       { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
@@ -224,7 +224,7 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "Sedan berkelas dengan kabin senyap berkat Active Noise Cancellation, akselerasi responsif 1.5L VTEC Turbo, dan ruang kaki belakang yang sangat lega.",
+      "Sedan dengan kabin senyap berkat Active Noise Cancellation, akselerasi responsif 1.5L VTEC Turbo, dan ruang kaki belakang yang sangat lega.",
     model: "",
     image: "/armada/New-Accord-Turbo-2024.webp",
     badges: ["Executive Sedan", "Honda Sensing", "Sunroof"],
@@ -243,29 +243,29 @@ export const VEHICLES: Vehicle[] = [
     ],
   },
 
-  // ── 3. Premium & Luxury SUV ──
+  // ── 3. Premium & Capable SUV ──
   {
     slug: "toyota-land-cruiser",
     name: "Toyota Land Cruiser",
-    tagline: "Ketangguhan Legendaris & Status Tertinggi",
+    tagline: "Ketangguhan & Kenyamanan di Berbagai Medan",
     category: "Premium SUV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV flagship Toyota dengan kemampuan segala medan, kabin kedap suara mewah, suspensi adaptif, dan wibawa tak tertandingi untuk pengawalan dan tamu VVIP.",
+      "SUV flagship Toyota dengan kemampuan segala medan, kabin kedap suara, dan suspensi adaptif untuk perjalanan dinas, pengawalan, serta tamu perusahaan dan instansi.",
     model: "",
     image: "/armada/Land-Cruiser-2020.png",
-    badges: ["Flagship VVIP", "4x4 King", "Bulletproof Feel"],
+    badges: ["Flagship", "4x4", "Kabin Kedap Suara"],
     capacity: "5–7 penumpang",
     luggage: "4 koper besar + 3 kabin",
     transmission: "10-Speed Automatic",
     fuel: "Twin-Turbo Diesel",
     ac: "4-Zone Independent Climate Control + Seat Cooler",
     entertainment: "JBL Premium Sound 14-Speaker, Rear Seat Entertainment, 12.3\" Display",
-    services: ["Pengawalan VIP / VVIP", "Kunjungan Lapangan / Proyek", "Sewa Harian"],
-    fitFor: ["Tamu VVIP & Pejabat", "Kunjungan Proyek / Luar Kota", "Eksekutif"],
+    services: ["Pengawalan & Kunjungan Resmi", "Kunjungan Lapangan / Proyek", "Sewa Harian"],
+    fitFor: ["Kunjungan Resmi & Perusahaan", "Kunjungan Proyek / Luar Kota", "Perjalanan Bisnis"],
     rates: [
-      { package: "Airport Transfer VVIP", price: "Tanya Promo", description: "Termasuk Supir Berpengalaman VVIP" },
+      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir Berpengalaman" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Khusus" },
       { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
     ],
@@ -273,22 +273,22 @@ export const VEHICLES: Vehicle[] = [
   {
     slug: "mercedes-glc300",
     name: "Mercedes-Benz GLC300",
-    tagline: "Kemewahan & Performa SUV Jerman",
+    tagline: "Performa & Kenyamanan SUV Jerman",
     category: "Premium SUV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV mewah berkarakter elegan dengan sistem modern MBUX, panoramic sunroof, suspensi halus, dan performa bertenaga untuk perjalanan berkelas di Jakarta.",
+      "SUV dengan sistem modern MBUX, panoramic sunroof, suspensi halus, dan performa bertenaga untuk perjalanan bisnis maupun harian di Jakarta.",
     model: "",
     image: "/armada/Mercedes-GLC300.webp",
-    badges: ["Luxury SUV", "Panoramic Roof", "German Luxury"],
+    badges: ["SUV Jerman", "Panoramic Roof", "Sistem MBUX"],
     capacity: "4–5 penumpang",
     luggage: "3 koper besar + 2 kabin",
     transmission: "9G-TRONIC Automatic",
     fuel: "Bensin Turbo",
     ac: "Thermotronic 3-Zone Climate Control",
     entertainment: "Burmester Surround Sound, MBUX Touchscreen, Wireless Apple CarPlay",
-    services: ["Sewa Harian VIP", "Airport Transfer", "Weekend Gateaway"],
+    services: ["Sewa Harian", "Airport Transfer", "Weekend Gateaway"],
     fitFor: ["Eksekutif", "Keluarga Modern", "Tamu Internasional", "City Trip"],
     rates: [
       { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
@@ -299,7 +299,7 @@ export const VEHICLES: Vehicle[] = [
   {
     slug: "palisade-signature",
     name: "Hyundai Palisade Signature",
-    tagline: "Flagship SUV Korea yang Megah & Lapang",
+    tagline: "SUV Korea dengan Kabin Lapang",
     category: "Premium SUV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
@@ -315,7 +315,7 @@ export const VEHICLES: Vehicle[] = [
     ac: "Triple Zone Independent AC",
     entertainment: "Infinity Premium Audio, 12.3\" Navigation, Wireless Charging",
     services: ["Sewa Harian Eksekutif", "Perjalanan Luar Kota", "Airport Transfer"],
-    fitFor: ["Keluarga Besar", "Eksekutif", "Roadtrip Nyaman", "Tamu VIP"],
+    fitFor: ["Keluarga Besar", "Perjalanan Bisnis", "Roadtrip Nyaman", "Tamu Perusahaan"],
     rates: [
       { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
       { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
@@ -351,7 +351,7 @@ export const VEHICLES: Vehicle[] = [
   {
     slug: "fortuner-gr-sport",
     name: "Toyota Fortuner GR Sport",
-    tagline: "Karakter Sporty & Wibawa Tinggi",
+    tagline: "Karakter Sporty & Nyaman",
     category: "Premium SUV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
@@ -382,10 +382,10 @@ export const VEHICLES: Vehicle[] = [
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV prestisius dengan mesin VTEC Turbo responsif, panoramic sunroof megah, dan jok kulit elektrik berkelas untuk perjalanan bisnis dan keluarga.",
+      "SUV dengan mesin VTEC Turbo responsif, panoramic sunroof, dan jok kulit elektrik untuk perjalanan bisnis dan keluarga.",
     model: "",
     image: "/armada/CRV-Turbo-Prestige-2020.webp",
-    badges: ["Panoramic Sunroof", "Turbo Power", "7-Seater Mewah"],
+    badges: ["Panoramic Sunroof", "Turbo Power", "7-Seater"],
     capacity: "5–7 penumpang",
     luggage: "3 koper besar + 2 kabin",
     transmission: "CVT with Earth Dreams Technology",
@@ -403,15 +403,15 @@ export const VEHICLES: Vehicle[] = [
   {
     slug: "mazda-cx-5-gt-kuro",
     name: "Mazda CX-5 GT Kuro",
-    tagline: "Desain KODO Eksklusif & Kemewahan Premium",
+    tagline: "Desain KODO & Kenyamanan Berkendara",
     category: "Premium SUV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
     description:
-      "SUV berdesain KODO anggun dengan kualitas kabin sekelas mobil mewah Eropa, audio Bose 10-speaker, dan kenyamanan suspensi G-Vectoring Control.",
+      "SUV berdesain KODO dengan audio Bose 10-speaker dan suspensi G-Vectoring Control untuk kenyamanan berkendara.",
     model: "",
     image: "/armada/Mazda-CX5-GT-Kuro-2023.webp",
-    badges: ["Bose 10-Speaker", "Kuro Edition", "Kabin Mewah"],
+    badges: ["Bose 10-Speaker", "Kuro Edition", "Kabin Nyaman"],
     capacity: "4–5 penumpang",
     luggage: "2 koper besar + 2 kabin",
     transmission: "6-Speed SKYACTIV-DRIVE Automatic",
@@ -617,7 +617,7 @@ export const VEHICLES: Vehicle[] = [
   {
     slug: "innova-venturer",
     name: "Toyota Innova Venturer",
-    tagline: "Edisi Tertinggi Innova Reborn yang Mewah",
+    tagline: "Innova Reborn dengan Fitur Lengkap",
     category: "Premium MPV",
     priceStarting: "Best Rate Guarantee",
     priceNote: "Konsultasi Promo Hari Ini via WhatsApp",
@@ -632,7 +632,7 @@ export const VEHICLES: Vehicle[] = [
     fuel: "2.4L Diesel / 2.0L Bensin",
     ac: "Automatic Climate Control + Rear Blower",
     entertainment: "8\" Touchscreen Audio, Premium Illumination Light, Smartphone Mirroring",
-    services: ["Perjalanan Luar Kota", "Operasional Kantor VIP", "Sewa Harian"],
+    services: ["Perjalanan Luar Kota", "Operasional Kantor", "Sewa Harian"],
     fitFor: ["Perjalanan Dinas", "Kunjungan Kerja", "Keluarga", "Luar Kota"],
     rates: [
       { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
@@ -859,7 +859,7 @@ export const TRAVEL_NEEDS: TravelNeed[] = [
     id: "vip",
     emoji: "👔",
     title: "Perjalanan Eksekutif",
-    desc: "Kenyamanan ekstra untuk tamu penting dan perjalanan khusus di Jakarta.",
+    desc: "Layanan dengan supir profesional untuk perjalanan bisnis dan tamu perusahaan di Jakarta.",
     vehicles: ["toyota-alphard"],
   },
   {

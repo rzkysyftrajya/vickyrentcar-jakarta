@@ -10,7 +10,7 @@ export function Hero() {
   const { t } = useLanguage();
   const [mousePos, setMousePos] = useState({ x: 50, y: 40 });
 
-  // Interactive mouse tracking for luxury dynamic spotlight
+  // Interactive mouse tracking for dynamic spotlight
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -49,18 +49,18 @@ export function Hero() {
     <section
       id="hero-section"
       className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-center overflow-hidden bg-background pt-28 pb-16 sm:pt-36 sm:pb-24"
-      aria-label="Hero — Rental Mobil Mewah Jakarta"
+      aria-label="Hero — Rental Mobil dengan Sopir Jakarta"
     >
-      {/* ─── Layer 1: Luxury Background Visual with Ken-Burns subtle zoom ─── */}
+      {/* ─── Layer 1: Background Visual with Ken-Burns subtle zoom ─── */}
       <div className="absolute inset-0 z-0 select-none overflow-hidden">
         <img
           src="/hero-section/frame_046.webp"
-          alt="Armada Mewah Vicky Rentcar Jakarta"
+          alt="Armada Vicky Rentcar Jakarta"
           className="h-full w-full object-cover object-center opacity-40 scale-105 transition-transform duration-[12000ms] ease-out animate-[pulse_10s_ease-in-out_infinite]"
           loading="eager"
         />
         
-        {/* Deep luxury ambient overlays */}
+        {/* Ambient overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/45" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
         
@@ -86,7 +86,7 @@ export function Hero() {
           
           {/* Left Column: Headline, Subtitle, CTAs */}
           <div className="lg:col-span-8 max-w-3xl">
-            {/* Top VIP Pill with live indicator */}
+            {/* Top service availability pill with live indicator */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-[0.68rem] sm:text-[0.72rem] font-medium tracking-[0.2em] text-gold uppercase">
-                {t("Unit Siap 24 Jam • Rental Mobil Mewah Jakarta", "24/7 Ready • Jakarta Luxury Car Rental")}
+                {t("Unit Siap 24 Jam • Rental Mobil dengan Sopir Jakarta", "24/7 Ready • Jakarta Chauffeur Car Rental")}
               </span>
             </motion.div>
 
@@ -109,7 +109,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 font-display text-4xl leading-[1.1] sm:text-6xl lg:text-7xl font-light text-foreground"
             >
-              {t("Perjalanan Eksklusif,", "Exclusive Travel,")}{" "}
+              {t("Perjalanan Nyaman,", "Comfortable Travel,")}{" "}
               <span className="gold-shimmer-text font-normal block sm:inline">
                 {t("Kenyamanan Tanpa Kompromi", "Uncompromised Comfort")}
               </span>
@@ -123,8 +123,8 @@ export function Hero() {
               className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               {t(
-                "Sewa mobil premium di Jakarta dengan supir profesional & armada terawat. Alphard, Zenix, Hiace Premio & armada terbaik siap 24 jam untuk kebutuhan bisnis, keluarga, atau tamu VIP.",
-                "Premium car rental in Jakarta with professional chauffeurs & prime fleet. Alphard, Zenix, Hiace Premio & more ready 24/7 for business, family, or VIP guests.",
+                "Sewa mobil premium di Jakarta dengan supir profesional & armada terawat. Alphard, Zenix, Hiace Premio & armada terbaik siap 24 jam untuk kebutuhan bisnis, keluarga, atau tamu perusahaan.",
+                "Premium car rental in Jakarta with professional chauffeurs & prime fleet. Alphard, Zenix, Hiace Premio & more ready 24/7 for business, family, or corporate guests.",
               )}
             </motion.p>
 
@@ -166,7 +166,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Floating VIP Live Card */}
+          {/* Right Column: Floating service availability card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}

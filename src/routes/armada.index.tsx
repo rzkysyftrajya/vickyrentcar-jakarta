@@ -61,16 +61,16 @@ export const Route = createFileRoute("/armada/")({
 });
 
 const CATEGORIES = [
-  "Semua",
-  "Executive MPV",
-  "Luxury Sedan",
-  "Premium SUV",
-  "Compact SUV",
-  "Premium MPV",
-  "Family MPV",
-  "Business MPV",
-  "Electric Vehicle",
-  "Van Rombongan",
+  { label: "Semua", value: "Semua" },
+  { label: "Executive MPV", value: "Executive MPV" },
+  { label: "Sedan Eksekutif", value: "Luxury Sedan" },
+  { label: "Premium SUV", value: "Premium SUV" },
+  { label: "Compact SUV", value: "Compact SUV" },
+  { label: "Premium MPV", value: "Premium MPV" },
+  { label: "Family MPV", value: "Family MPV" },
+  { label: "Business MPV", value: "Business MPV" },
+  { label: "Electric Vehicle", value: "Electric Vehicle" },
+  { label: "Van Rombongan", value: "Van Rombongan" },
 ] as const;
 
 const FLEET_GUARANTEES = [
@@ -135,7 +135,7 @@ function ArmadaCatalogPage() {
               </h1>
               <div className="gold-rule mx-auto mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Menyediakan 28+ pilihan unit mobil mewah, sedan eksekutif, SUV tangguh, MPV
+                Menyediakan 28+ pilihan unit mobil premium, sedan eksekutif, SUV tangguh, MPV
                 keluarga, hingga mobil listrik bebas ganjil-genap di Jakarta.
               </p>
             </Reveal>
@@ -167,12 +167,12 @@ function ArmadaCatalogPage() {
             {/* Category Filter Tabs */}
             <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
               {CATEGORIES.map((cat) => {
-                const isActive = selectedCategory === cat;
+                const isActive = selectedCategory === cat.value;
                 return (
                   <button
-                    key={cat}
+                    key={cat.value}
                     type="button"
-                    onClick={() => setSelectedCategory(cat)}
+                    onClick={() => setSelectedCategory(cat.value)}
                     aria-pressed={isActive}
                     className={`rounded-full px-4 py-2 text-xs tracking-[0.14em] uppercase transition-all duration-300 ${
                       isActive
@@ -180,7 +180,7 @@ function ArmadaCatalogPage() {
                         : "glass border border-gold/20 text-muted-foreground hover:border-gold/60 hover:text-foreground"
                     }`}
                   >
-                    {cat}
+                    {cat.label}
                   </button>
                 );
               })}
@@ -234,7 +234,7 @@ function ArmadaCatalogPage() {
                           {/* Top Header & Badges */}
                           <div className="flex flex-wrap items-center justify-between gap-3">
                             <span className="rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[0.6rem] tracking-[0.2em] text-gold uppercase">
-                              {vehicle.category}
+                              {vehicle.category === "Luxury Sedan" ? "Sedan Eksekutif" : vehicle.category}
                             </span>
                             <div className="flex flex-wrap gap-1.5">
                               {vehicle.badges.map((b) => (

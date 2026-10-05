@@ -63,7 +63,7 @@ export function Nav() {
           : "bg-transparent"
       }`}
     >
-      {/* Top micro bar for VIP trust */}
+      {/* Top micro bar for service information */}
       <div className="hidden border-b border-gold/10 bg-black/30 px-6 py-1.5 text-[0.65rem] tracking-wider text-muted-foreground md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-4">

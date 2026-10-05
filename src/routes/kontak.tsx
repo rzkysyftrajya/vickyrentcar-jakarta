@@ -63,7 +63,7 @@ export const Route = createFileRoute("/kontak")({
 
 
 const SERVICES_OPTIONS = [
-  "Airport Transfer VIP (Soekarno-Hatta / Halim)",
+  "Airport Transfer (Soekarno-Hatta / Halim)",
   "Sewa Harian Dalam Kota (12 Jam)",
   "Sewa Full Day All-In (BBM + Tol + Parkir)",
   "Corporate & Executive Chauffeur",
@@ -468,7 +468,7 @@ function KontakPage() {
             <SectionHeading
               eyebrow="Jangkauan Operasional"
               title="Area Layanan Penjemputan di Seluruh Jabodetabek"
-              subtitle="Armada kami menjangkau seluruh kawasan hunian eksklusif, pusat bisnis, hotel bintang lima, dan bandara."
+              subtitle="Armada kami menjangkau seluruh kawasan perumahan, pusat bisnis, hotel bintang lima, dan bandara."
             />
 
             <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
