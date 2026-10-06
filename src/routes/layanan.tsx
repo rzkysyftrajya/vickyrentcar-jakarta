@@ -207,7 +207,7 @@ const FAQS = [
   },
   {
     q: "Apakah Vicky Rentcar melayani sewa mobil lepas kunci (tanpa supir)?",
-    a: "Fokus utama layanan kami adalah sewa mobil dengan supir profesional agar Anda dapat menikmati perjalanan santai tanpa repot dan lelah menyetir di tengah kemacetan Jakarta.",
+    a: "Ya, sewa mobil lepas kunci tersedia sebagai opsi fleksibel bagi Anda yang ingin menyetir sendiri. Untuk perjalanan di tengah lalu lintas Jakarta, layanan dengan supir tetap menjadi pilihan yang paling populer dan direkomendasikan.",
   },
   {
     q: "Bagaimana cara melakukan penjemputan di Bandara Soekarno-Hatta atau Halim?",
@@ -233,10 +233,6 @@ function LayananPage() {
       <main className="pt-28 pb-20">
         {/* Page Hero */}
         <section className="relative overflow-hidden py-16 sm:py-24">
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-[30rem] w-[50rem] bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_70%)] blur-3xl pointer-events-none"
-          />
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="text-center max-w-3xl mx-auto">
@@ -303,7 +299,7 @@ function LayananPage() {
                             href={waLink(service.waPrompt)}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                            className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                           >
                             <WhatsAppIcon className="h-4 w-4" />
                             <span>Pesan Layanan Ini</span>
@@ -343,7 +339,7 @@ function LayananPage() {
                                     {veh.capacity} • {veh.category}
                                   </p>
                                   <p className="mt-1 text-[0.7rem] text-gold font-medium flex items-center gap-1 group-hover:underline">
-                                    <span>Tanya Promo via WhatsApp &rarr;</span>
+                                    <span>Cek Ketersediaan via WhatsApp &rarr;</span>
                                   </p>
                                 </div>
                               </Link>
@@ -476,7 +472,7 @@ function LayananPage() {
                   href={waLink(`Halo ${SITE.brand}, saya ingin konsultasi kebutuhan perjalanan khusus.`)}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-8 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   <span>Konsultasi via WhatsApp</span>
@@ -498,4 +494,3 @@ function LayananPage() {
     </div>
   );
 }
-

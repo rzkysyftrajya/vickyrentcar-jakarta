@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { useState, useEffect } from "react";
 import { ShieldCheck, Clock, Sparkles, UserCheck, ArrowRight, Phone, Star } from "lucide-react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
@@ -8,19 +7,6 @@ import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   const { t } = useLanguage();
-  const [mousePos, setMousePos] = useState({ x: 50, y: 40 });
-
-  // Interactive mouse tracking for dynamic spotlight
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      setMousePos({ x, y });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const trustPoints = [
     {
@@ -60,24 +46,7 @@ export function Hero() {
           loading="eager"
         />
         
-        {/* Ambient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/45" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-        
-        {/* ─── Layer 2: Interactive Dynamic Gold Showroom Spotlight ─── */}
-        <div
-          className="pointer-events-none absolute -inset-full opacity-60 transition-all duration-700 ease-out"
-          style={{
-            background: `radial-gradient(650px circle at ${mousePos.x}% ${mousePos.y}%, rgba(212, 175, 55, 0.14), transparent 70%)`,
-          }}
-          aria-hidden="true"
-        />
-
-        {/* Ambient static gold glow */}
-        <div
-          className="pointer-events-none absolute top-1/4 left-1/2 h-[450px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-[150px]"
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 bg-background/75" />
       </div>
 
       {/* ─── Main Hero Content ─── */}
@@ -91,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-gold/35 bg-gold/10 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+              className="inline-flex items-center gap-2.5 rounded-full border border-gold/35 bg-gold/10 px-4 py-1.5 backdrop-blur-md"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -102,16 +71,16 @@ export function Hero() {
               </span>
             </motion.div>
 
-            {/* Headline with metallic gold shimmer */}
+            {/* Main service and location headline */}
             <motion.h1
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 font-display text-4xl leading-[1.1] sm:text-6xl lg:text-7xl font-light text-foreground"
             >
-              {t("Perjalanan Nyaman,", "Comfortable Travel,")}{" "}
-              <span className="gold-shimmer-text font-normal block sm:inline">
-                {t("Kenyamanan Tanpa Kompromi", "Uncompromised Comfort")}
+              {t("Sewa Mobil Jakarta", "Car Rental in Jakarta")}{" "}
+              <span className="gold-text font-normal block sm:inline">
+                {t("dengan Driver Profesional", "with a Professional Driver")}
               </span>
             </motion.h1>
 
@@ -123,8 +92,8 @@ export function Hero() {
               className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
               {t(
-                "Sewa mobil premium di Jakarta dengan supir profesional & armada terawat. Alphard, Zenix, Hiace Premio & armada terbaik siap 24 jam untuk kebutuhan bisnis, keluarga, atau tamu perusahaan.",
-                "Premium car rental in Jakarta with professional chauffeurs & prime fleet. Alphard, Zenix, Hiace Premio & more ready 24/7 for business, family, or corporate guests.",
+                "Pilih Alphard, Innova Zenix, Innova Reborn, atau Hiace Premio untuk perjalanan bandara, bisnis, keluarga, dan luar kota. Armada terawat dengan layanan reservasi 24 jam.",
+                "Choose Alphard, Innova Zenix, Innova Reborn, or Hiace Premio for airport, business, family, and out-of-town trips. Well-maintained vehicles with 24/7 booking.",
               )}
             </motion.p>
 
@@ -140,7 +109,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => window.VRNTrack?.trackClick?.({ target: "hero_whatsapp" })}
-                className="group relative inline-flex items-center gap-2.5 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3.5 text-sm font-medium tracking-wide text-primary-foreground shadow-[0_10px_35px_-10px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_40px_-8px_rgba(212,175,55,0.7)] cursor-pointer"
+                className="group relative inline-flex items-center gap-2.5 rounded-full bg-gold px-7 py-3.5 text-sm font-medium tracking-wide text-primary-foreground shadow-[var(--shadow-gold)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--shadow-gold)] cursor-pointer"
               >
                 <WhatsAppIcon className="h-4 w-4 transition-transform group-hover:scale-110" />
                 <span>{t("Reservasi via WhatsApp", "Book via WhatsApp")}</span>
@@ -173,7 +142,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="hidden lg:flex lg:col-span-4 justify-end"
           >
-            <div className="glass relative rounded-2xl p-6 border border-gold/25 max-w-sm w-full shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+            <div className="glass relative rounded-2xl p-6 border border-gold/25 max-w-sm w-full shadow-[var(--shadow-luxe)] backdrop-blur-xl">
               <div className="flex items-center justify-between border-b border-gold/15 pb-4">
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-1">

@@ -59,7 +59,7 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[oklch(0.1431_0.0201_255.76_/_90%)] backdrop-blur-xl border-b border-gold/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+          ? "bg-background/90 backdrop-blur-xl border-b border-gold/15 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
           : "bg-transparent"
       }`}
     >
@@ -97,7 +97,7 @@ export function Nav() {
           <img
             src="/logo.webp"
             alt="Vicky Rentcar Logo"
-            className="h-9 w-auto object-contain drop-shadow-[0_0_8px_rgba(212,175,55,0.25)] transition-opacity group-hover:opacity-90"
+            className="h-9 w-auto object-contain transition-opacity group-hover:opacity-90"
           />
           <span className="flex flex-col">
             <span className="font-display text-2xl tracking-wide transition-colors group-hover:text-gold">
@@ -129,7 +129,7 @@ export function Nav() {
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
-                      className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[image:var(--gradient-gold)]"
+                      className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gold"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -156,7 +156,7 @@ export function Nav() {
               {isRentalActive && (
                 <motion.span
                   layoutId="activeNavIndicator"
-                  className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[image:var(--gradient-gold)]"
+                  className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gold"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -164,7 +164,7 @@ export function Nav() {
 
             {rentalOpen && (
               <div
-                className="absolute right-0 top-full z-50 mt-4 w-64 rounded-lg border border-gold/20 bg-[oklch(0.1431_0.0201_255.76_/_98%)] p-2 shadow-2xl backdrop-blur-xl"
+                className="absolute right-0 top-full z-50 mt-4 w-64 rounded-lg border border-gold/20 bg-background/98 p-2 shadow-2xl backdrop-blur-xl"
                 role="menu"
               >
                 {rentalLinks.map((item) => {
@@ -207,7 +207,7 @@ export function Nav() {
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
-                      className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[image:var(--gradient-gold)]"
+                      className="absolute -bottom-2 left-0 right-0 h-[2px] bg-gold"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -264,7 +264,7 @@ export function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="border-b border-gold/20 bg-[oklch(0.1431_0.0201_255.76_/_98%)] px-6 py-6 shadow-2xl backdrop-blur-2xl lg:hidden"
+            className="border-b border-gold/20 bg-background/98 px-6 py-6 shadow-2xl backdrop-blur-2xl lg:hidden"
           >
             <ul className="space-y-2">
               {navLinks.slice(0, 1).map((item) => {
@@ -364,7 +364,7 @@ export function Nav() {
                 href={waLink(`Halo ${SITE.brand}, saya ingin konsultasi sewa mobil.`)}
                 target="_blank"
                 rel="noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-gold)] py-3 text-xs tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-md"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3 text-xs tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-md"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 <span>{t("WhatsApp 24 Jam", "24/7 WhatsApp")}</span>

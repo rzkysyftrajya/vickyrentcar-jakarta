@@ -22,24 +22,10 @@ export function buildLocalBusinessSchema() {
     openingHours: "Mo-Su 00:00-24:00",
     currenciesAccepted: "IDR",
     paymentAccepted: "Cash, Bank Transfer, QRIS",
-    areaServed: "Jakarta, Tangerang, Bekasi, Depok, Bogor",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "SCBD Lot 28, Senayan",
-      addressLocality: "Jakarta Selatan",
-      addressRegion: "DKI Jakarta",
-      postalCode: "12190",
-      addressCountry: "ID",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -6.2235,
-      longitude: 106.8069,
-    },
+    areaServed: SITE.serviceArea,
     sameAs: [
       "https://www.instagram.com/vickyrentcar_jakarta",
     ],
-    hasMap: `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}`,
   };
 }
 
@@ -89,7 +75,12 @@ export function buildVehicleSchema(vehicle: Vehicle) {
       { "@type": "PropertyValue", name: "Bagasi", value: vehicle.luggage },
       { "@type": "PropertyValue", name: "Transmisi", value: vehicle.transmission },
       { "@type": "PropertyValue", name: "Bahan Bakar", value: vehicle.fuel },
-      { "@type": "PropertyValue", name: "Kategori", value: vehicle.category },
+      {
+        "@type": "PropertyValue",
+        name: "Kategori",
+        value:
+          vehicle.category === "Luxury Sedan" ? "Sedan Eksekutif" : vehicle.category,
+      },
     ],
   };
 }

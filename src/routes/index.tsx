@@ -7,14 +7,21 @@ import { Showcase } from "@/components/sections/Showcase";
 import { Fleet } from "@/components/sections/Fleet";
 import { Services } from "@/components/sections/Services";
 import { WhyUs } from "@/components/sections/WhyUs";
+import { LegalTrust } from "@/components/sections/LegalTrust";
+import { Clients } from "@/components/sections/Clients";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { GalleryTestimonials } from "@/components/sections/GalleryTestimonials";
 import { CTA } from "@/components/sections/CTA";
-import { SITE_URL, serializeSchema, buildLocalBusinessSchema, buildWebSiteSchema } from "@/lib/schema";
+import {
+  SITE_URL,
+  serializeSchema,
+  buildLocalBusinessSchema,
+  buildWebSiteSchema,
+} from "@/lib/schema";
 
-const TITLE = "Vicky Rentcar Jakarta — Rental Mobil Nyaman, Bersih & Terpercaya";
+const TITLE = "Sewa Mobil Jakarta dengan Driver | Vicky Rentcar";
 const DESCRIPTION =
-  "Sewa mobil di Jakarta: Toyota Alphard, Innova Zenix, Innova Reborn, dan Hiace Premio. Unit bersih, supir ramah & berpengalaman, siap melayani 24 jam.";
+  "Sewa mobil Jakarta dengan driver untuk bandara, bisnis, keluarga, dan luar kota. Pilih Alphard, Innova Zenix, Reborn, atau Hiace. Reservasi 24 jam via WhatsApp.";
 const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const Route = createFileRoute("/")({
@@ -51,6 +58,8 @@ function Index() {
         <Fleet />
         <Services />
         <WhyUs />
+        <LegalTrust />
+        <Clients />
         <Testimonials />
         <GalleryTestimonials />
         <CTA />
@@ -60,4 +69,3 @@ function Index() {
     </div>
   );
 }
-

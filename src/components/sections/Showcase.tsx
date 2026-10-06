@@ -72,7 +72,7 @@ export function Showcase() {
               aria-current={i === index}
               className={`rounded-full px-5 py-2.5 text-xs tracking-[0.16em] uppercase transition-all duration-300 ${
                 i === index
-                  ? "bg-[image:var(--gradient-gold)] text-primary-foreground font-medium shadow-[var(--shadow-gold)] scale-105"
+                  ? "bg-gold text-primary-foreground font-medium shadow-[var(--shadow-gold)] scale-105"
                   : "glass border border-gold/25 text-muted-foreground hover:border-gold/60 hover:text-foreground"
               }`}
             >
@@ -158,7 +158,7 @@ export function Showcase() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="glass rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-gold/25 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              className="glass rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-gold/25 shadow-[var(--shadow-luxe)]"
             >
               <div>
                 <div className="flex flex-wrap gap-1.5">
@@ -209,7 +209,7 @@ export function Showcase() {
                   href={waLink(`Halo ${SITE.brand}, saya ingin memesan armada ${vehicle.name}. Mohon info harga promo dan ketersediaan unit.`)}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-gold)] py-3 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform"
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-gold py-3 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   <span>Pesan Sekarang via WA</span>

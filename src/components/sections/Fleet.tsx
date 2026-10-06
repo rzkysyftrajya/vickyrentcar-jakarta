@@ -40,7 +40,7 @@ export function Fleet() {
                 <div className="group glass flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-gold/20 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/50 hover:shadow-[var(--shadow-gold)]">
                   <div>
                     {/* Image Box */}
-                    <div className="relative overflow-hidden rounded-xl bg-[radial-gradient(70%_60%_at_50%_60%,color-mix(in_oklab,var(--navy-deep)_80%,transparent),transparent)] p-5">
+                    <div className="relative overflow-hidden rounded-xl bg-blue-50 p-5">
                       <img
                         src={v.image}
                         alt={`${v.name} — ${v.tagline}`}
@@ -49,14 +49,6 @@ export function Fleet() {
                         height={400}
                         className="h-44 w-full object-contain transition-transform duration-700 group-hover:scale-105"
                       />
-                      {v.model && (
-                        <a
-                          href="#showcase"
-                          className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md border border-gold/30 px-3 py-1 text-[0.6rem] tracking-wider text-gold hover:bg-gold hover:text-primary-foreground transition-all"
-                        >
-                          <span>3D 360°</span>
-                        </a>
-                      )}
                     </div>
 
                     <div className="mt-5">
@@ -101,27 +93,18 @@ export function Fleet() {
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => window.VRNTrack?.trackClick?.({ target: `fleet_order_${v.slug || v.name}` })}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-[image:var(--gradient-gold)] py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-gold py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                     >
                       <WhatsAppIcon className="h-3.5 w-3.5" />
                       <span>Pesan Unit</span>
                     </a>
-                    {v.model ? (
-                      <a
-                        href="#showcase"
-                        className="rounded-full border border-gold/30 px-4 py-2.5 text-[0.65rem] tracking-wider text-gold hover:bg-gold/10 uppercase transition-colors"
-                      >
-                        Lihat 3D
-                      </a>
-                    ) : (
-                      <Link
-                        to="/armada/$slug"
-                        params={{ slug: v.slug }}
-                        className="rounded-full border border-gold/30 px-4 py-2.5 text-[0.65rem] tracking-wider text-gold hover:bg-gold/10 uppercase transition-colors"
-                      >
-                        Detail
-                      </Link>
-                    )}
+                    <Link
+                      to="/armada/$slug"
+                      params={{ slug: v.slug }}
+                      className="rounded-full border border-gold/30 px-4 py-2.5 text-[0.65rem] tracking-wider text-gold hover:bg-gold/10 uppercase transition-colors"
+                    >
+                      Detail
+                    </Link>
                   </div>
                 </div>
               </StaggerItem>

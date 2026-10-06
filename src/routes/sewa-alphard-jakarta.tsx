@@ -141,10 +141,6 @@ function SewaAlphardJakartaPage() {
       <Nav />
       <main className="pt-28 pb-20">
         <section className="relative overflow-hidden py-14 sm:py-20">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-0 h-112 w-full max-w-176 -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_70%)] blur-3xl"
-          />
           <div className="relative mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
             <Reveal>
               <p className="eyebrow">Toyota Alphard Jakarta</p>
@@ -166,7 +162,7 @@ function SewaAlphardJakartaPage() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold)"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold)"
                 >
                   <WhatsAppIcon className="h-4 w-4" /> Konsultasi Alphard via WhatsApp
                 </a>
@@ -261,7 +257,7 @@ function SewaAlphardJakartaPage() {
                         href={whatsappUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-(image:--gradient-gold) px-5 py-3 text-sm font-medium text-primary-foreground"
+                        className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-medium text-primary-foreground"
                       >
                         <WhatsAppIcon className="h-4 w-4" /> Tanya Ketersediaan
                       </a>
@@ -368,7 +364,7 @@ function SewaAlphardJakartaPage() {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-primary-foreground"
             >
               <WhatsAppIcon className="h-4 w-4" /> Kirim Detail Perjalanan
             </a>
@@ -422,7 +418,7 @@ function SewaAlphardJakartaPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-primary-foreground"
               >
                 <WhatsAppIcon className="h-4 w-4" /> Konsultasi &amp; Reservasi Alphard via WhatsApp
               </a>

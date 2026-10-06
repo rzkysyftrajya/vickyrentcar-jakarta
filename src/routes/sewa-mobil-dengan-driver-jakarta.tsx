@@ -183,10 +183,6 @@ function DriverJakartaPage() {
 
       <main className="pt-28 pb-20">
         <section className="relative overflow-hidden py-14 sm:py-20">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-0 h-112 w-full max-w-176 -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_70%)] blur-3xl"
-          />
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="max-w-3xl">
               <p className="eyebrow">Mobil + Driver Jakarta</p>
@@ -210,7 +206,7 @@ function DriverJakartaPage() {
                   )}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   Konsultasi &amp; Reservasi via WhatsApp
@@ -284,7 +280,7 @@ function DriverJakartaPage() {
               {featuredVehicles.map((vehicle) => (
                 <StaggerItem key={vehicle.slug}>
                   <article className="glass flex h-full flex-col overflow-hidden rounded-xl border border-gold/15 p-5 transition-all hover:-translate-y-1 hover:border-gold/45">
-                    <div className="rounded-lg bg-[radial-gradient(70%_60%_at_50%_60%,color-mix(in_oklab,var(--navy-deep)_80%,transparent),transparent)] p-3">
+                    <div className="rounded-lg bg-blue-50 p-3">
                       <img
                         src={vehicle.image}
                         alt={`${vehicle.name} - ${vehicle.tagline}`}
@@ -319,7 +315,7 @@ function DriverJakartaPage() {
                           )}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center justify-center gap-2 rounded-full bg-(image:--gradient-gold) px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
                         >
                           <WhatsAppIcon className="h-3.5 w-3.5" />
                           Tanya Ketersediaan
@@ -395,7 +391,7 @@ function DriverJakartaPage() {
                 )}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-(image:--gradient-gold) px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-primary-foreground shadow-(--shadow-gold) transition-transform hover:scale-[1.02]"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 Konsultasi &amp; Reservasi via WhatsApp

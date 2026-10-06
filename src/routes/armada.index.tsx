@@ -122,10 +122,6 @@ function ArmadaCatalogPage() {
       <main className="pt-28 pb-20">
         {/* Page Hero Header */}
         <section className="relative overflow-hidden py-16 sm:py-24">
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-[30rem] w-[50rem] bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_70%)] blur-3xl pointer-events-none"
-          />
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="text-center max-w-3xl mx-auto">
@@ -176,7 +172,7 @@ function ArmadaCatalogPage() {
                     aria-pressed={isActive}
                     className={`rounded-full px-4 py-2 text-xs tracking-[0.14em] uppercase transition-all duration-300 ${
                       isActive
-                        ? "bg-[image:var(--gradient-gold)] text-primary-foreground font-medium shadow-[var(--shadow-gold)]"
+                        ? "bg-gold text-primary-foreground font-medium shadow-[var(--shadow-gold)]"
                         : "glass border border-gold/20 text-muted-foreground hover:border-gold/60 hover:text-foreground"
                     }`}
                   >
@@ -218,7 +214,7 @@ function ArmadaCatalogPage() {
                         setSelectedCategory("Semua");
                         setSearchQuery("");
                       }}
-                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-6 py-2.5 text-xs tracking-widest text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-xs tracking-widest text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                     >
                       Reset Filter & Pencarian
                     </button>
@@ -249,7 +245,7 @@ function ArmadaCatalogPage() {
                           </div>
 
                           {/* Image Preview with 3D hint */}
-                          <div className="relative my-6 flex h-48 sm:h-56 items-center justify-center overflow-hidden rounded-xl bg-[radial-gradient(70%_60%_at_50%_60%,color-mix(in_oklab,var(--navy-deep)_80%,transparent),transparent)] p-4">
+                          <div className="relative my-6 flex h-48 sm:h-56 items-center justify-center overflow-hidden rounded-xl bg-blue-50 p-4">
                             <img
                               src={vehicle.image}
                               alt={`${vehicle.name} — ${vehicle.tagline}`}
@@ -315,7 +311,7 @@ function ArmadaCatalogPage() {
                                   >
                                     <span className="text-muted-foreground">{rate.package}</span>
                                     <span className="text-[0.65rem] font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-full">
-                                      Tanya Promo WA &rarr;
+                                      Cek Ketersediaan via WhatsApp &rarr;
                                     </span>
                                   </div>
                                 ))}
@@ -341,7 +337,7 @@ function ArmadaCatalogPage() {
                             )}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-5 py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                            className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[0.65rem] tracking-[0.18em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                           >
                             <WhatsAppIcon className="h-3.5 w-3.5" />
                             <span>Pesan via WhatsApp</span>
@@ -438,7 +434,7 @@ function ArmadaCatalogPage() {
                   href={waLink(`Halo ${SITE.brand}, saya ingin konsultasi pilihan armada terbaik.`)}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-8 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   <span>Tanya Ketersediaan via WhatsApp</span>

@@ -79,9 +79,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Tamu Perusahaan & Instansi", "Mobil Pengantin", "Antar Jemput Bandara"],
     fitFor: ["Perjalanan Bisnis", "Tamu Perusahaan Internasional", "Mobil Pengantin", "Antar Jemput Bandara"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir Profesional, Tol, Parkir & Sambutan di Bandara" },
-      { package: "Sewa Harian (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Berpengalaman" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir Profesional, Tol, Parkir & Sambutan di Bandara" },
+      { package: "Sewa Harian (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Unit + Supir Berpengalaman" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
   {
@@ -105,9 +105,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Bandara", "Sewa Harian / Bisnis", "Mobil Pernikahan"],
     fitFor: ["Antar Jemput Bandara", "Tamu Kantor & Bisnis", "Keluarga", "Mobil Pernikahan"],
     rates: [
-      { package: "Airport Transfer Bandara", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer Bandara", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, Tol & Parkir" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir Profesional" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
   {
@@ -131,9 +131,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Bandara", "Sewa Harian / Bisnis", "Mobil Pernikahan"],
     fitFor: ["Antar Jemput Bandara", "Tamu Kantor & Bisnis", "Keluarga", "Mobil Pernikahan", "City Tour Jakarta"],
     rates: [
-      { package: "Airport Transfer Bandara", price: "Tanya Promo", description: "Termasuk Supir, Tol, Parkir & Pantau Jadwal Terbang" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer Bandara", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, Tol, Parkir & Pantau Jadwal Terbang" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir Profesional" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
   {
@@ -157,9 +157,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Bandara", "Sewa Harian", "Mobil Pernikahan"],
     fitFor: ["Antar Jemput Bandara", "Tamu Perusahaan", "Perjalanan Keluarga", "Wedding Car"],
     rates: [
-      { package: "Airport Transfer Bandara", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Profesional" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer Bandara", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, Tol & Parkir" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir Profesional" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
   {
@@ -183,9 +183,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Bandara", "Sewa Harian Bisnis", "Wisata Jakarta"],
     fitFor: ["Antar Jemput Bandara", "Kunjungan Kerja", "Keluarga Santai"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Unit + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
 
@@ -211,9 +211,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian Eksekutif", "Airport Transfer", "Wedding Car"],
     fitFor: ["Perjalanan Bisnis", "Mobil Pengantin", "City Tour"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Unit + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -237,9 +237,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian Eksekutif", "Kunjungan Bisnis", "Airport Transfer"],
     fitFor: ["Eksekutif Perusahaan", "Dinas Kantor", "Perjalanan Nyaman"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Unit + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
 
@@ -265,9 +265,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Pengawalan & Kunjungan Resmi", "Kunjungan Lapangan / Proyek", "Sewa Harian"],
     fitFor: ["Kunjungan Resmi & Perusahaan", "Kunjungan Proyek / Luar Kota", "Perjalanan Bisnis"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir Berpengalaman" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Unit + Supir Khusus" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir Berpengalaman" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Unit + Supir Khusus" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -291,9 +291,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "Airport Transfer", "Weekend Gateaway"],
     fitFor: ["Eksekutif", "Keluarga Modern", "Tamu Internasional", "City Trip"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -317,9 +317,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian Eksekutif", "Perjalanan Luar Kota", "Airport Transfer"],
     fitFor: ["Keluarga Besar", "Perjalanan Bisnis", "Roadtrip Nyaman", "Tamu Perusahaan"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -343,9 +343,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Perjalanan Luar Kota", "Kunjungan Proyek", "Sewa Harian"],
     fitFor: ["Perjalanan Jarak Jauh", "Keluarga", "Dinas Proyek", "Wisata Alam"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -369,9 +369,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Kunjungan Dinas", "Sewa Harian", "Luar Kota"],
     fitFor: ["Operasional Kantor", "Perjalanan Dinas", "Keluarga", "Luar Kota"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -395,9 +395,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "Airport Transfer", "Liburan Keluarga"],
     fitFor: ["Keluarga", "Tamu Kantor", "City Tour", "Perjalanan Luar Kota"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -421,9 +421,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "City Tour", "Airport Transfer"],
     fitFor: ["Eksekutif Muda", "Perjalanan Santai", "Pasangan & Keluarga Kecil"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
 
@@ -449,9 +449,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Bebas Ganjil Genap Jakarta", "Airport Transfer", "Event Ramah Lingkungan"],
     fitFor: ["Perjalanan Tanpa Batas Ganjil-Genap", "Eksekutif Modern", "Event & Promosi", "Keluarga"],
     rates: [
-      { package: "Airport Transfer EV", price: "Tanya Promo", description: "Termasuk Supir & Bebas Ganjil Genap" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir + Bebas Ganjil Genap" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Charging, Tol, & Parkir" },
+      { package: "Airport Transfer EV", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Bebas Ganjil Genap" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir + Bebas Ganjil Genap" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Charging, Tol, & Parkir" },
     ],
   },
 
@@ -477,9 +477,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "City Tour", "Airport Transfer"],
     fitFor: ["Mobilitas Perkotaan", "Keluarga Muda", "Perjalanan Santai"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -503,9 +503,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "City Tour", "Airport Transfer"],
     fitFor: ["Perjalanan Santai", "Keluarga Kecil", "Wisata Jakarta"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -529,9 +529,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "City Tour", "Airport Transfer"],
     fitFor: ["Keliling Kota Jakarta", "Mobilitas Cepat", "Perjalanan Hemat"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
 
@@ -557,9 +557,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Bandara", "Sewa Harian", "Luar Kota"],
     fitFor: ["Antar Jemput Bandara", "Keluarga", "Perjalanan Santai", "City Tour Jakarta", "Tamu Kantor"],
     rates: [
-      { package: "Airport Transfer Bandara", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir Bandara" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Berpengalaman" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer Bandara", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, Tol & Parkir Bandara" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir Berpengalaman" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
   {
@@ -583,9 +583,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Bandara", "Sewa Keluarga", "City Tour"],
     fitFor: ["Keluarga Besar", "Tamu Kantor", "Antar Jemput Bandara", "Wisata Jakarta"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -609,9 +609,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian Keluarga", "Airport Transfer", "Wisata Luar Kota"],
     fitFor: ["Keluarga", "Perjalanan Wisata", "Antar Jemput Tamu"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -635,9 +635,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Perjalanan Luar Kota", "Operasional Kantor", "Sewa Harian"],
     fitFor: ["Perjalanan Dinas", "Kunjungan Kerja", "Keluarga", "Luar Kota"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -661,9 +661,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Perjalanan Luar Kota", "Operasional Kantor", "Sewa Harian"],
     fitFor: ["Kunjungan Kerja", "Mobilitas Harian", "Perjalanan Dinas", "Operasional Kantor", "Perjalanan Luar Kota"],
     rates: [
-      { package: "Airport Transfer Bandara", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir Bandara" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Berpengalaman" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer Bandara", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, Tol & Parkir Bandara" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir Berpengalaman" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
 
@@ -689,9 +689,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "Antar Jemput Bandara", "Liburan Keluarga"],
     fitFor: ["Keluarga", "Wisata Jakarta", "Perjalanan Hemat & Nyaman"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -715,9 +715,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "Luar Kota", "Airport Transfer"],
     fitFor: ["Keluarga", "Roadtrip Luar Kota", "City Tour"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -741,9 +741,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "Antar Jemput Bandara", "Operasional Bisnis"],
     fitFor: ["Keluarga", "Mobilitas Harian", "Perjalanan Dinas"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -767,9 +767,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "City Tour", "Airport Transfer"],
     fitFor: ["Keluarga Modern", "Perjalanan Wisata", "City Tour Jakarta"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
   {
@@ -793,9 +793,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Sewa Harian", "Luar Kota", "Airport Transfer"],
     fitFor: ["Keluarga", "Perjalanan Dinas", "Wisata Luar Kota"],
     rates: [
-      { package: "Airport Transfer", price: "Tanya Promo", description: "Termasuk Supir & Tol" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk BBM, Tol & Parkir" },
+      { package: "Airport Transfer", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir & Tol" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk BBM, Tol & Parkir" },
     ],
   },
 
@@ -821,9 +821,9 @@ export const VEHICLES: Vehicle[] = [
     services: ["Antar Jemput Rombongan", "Wisata Jakarta & Luar Kota", "Event & Kantor"],
     fitFor: ["Wisata Keluarga", "Gathering Kantor", "Transportasi Event", "Kunjungan Lapangan", "Perjalanan Rombongan"],
     rates: [
-      { package: "Airport Transfer Rombongan", price: "Tanya Promo", description: "Termasuk Supir, Tol & Parkir Bandara" },
-      { package: "Dalam Kota (12 Jam)", price: "Tanya Promo", description: "Termasuk Mobil + Supir Berpengalaman" },
-      { package: "Full Day All-In", price: "Tanya Promo", description: "Termasuk Supir, BBM, Tol, & Parkir" },
+      { package: "Airport Transfer Rombongan", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, Tol & Parkir Bandara" },
+      { package: "Dalam Kota (12 Jam)", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Mobil + Supir Berpengalaman" },
+      { package: "Full Day All-In", price: "Cek Ketersediaan via WhatsApp", description: "Termasuk Supir, BBM, Tol, & Parkir" },
     ],
   },
 ];

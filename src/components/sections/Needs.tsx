@@ -94,7 +94,7 @@ export function Needs() {
                       )}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-6 py-2.5 text-[0.6rem] tracking-[0.22em] text-primary-foreground uppercase transition-transform duration-300 hover:scale-105"
+                      className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-[0.6rem] tracking-[0.22em] text-primary-foreground uppercase transition-transform duration-300 hover:scale-105"
                     >
                       <WhatsAppIcon className="h-3.5 w-3.5" /> Pesan via WhatsApp
                     </a>

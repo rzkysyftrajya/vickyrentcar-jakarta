@@ -192,7 +192,7 @@ function VehicleDetail() {
                         href={waLink(`Halo ${SITE.brand}, saya ingin reservasi ${vehicle.name}.`)}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-full flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-gold)] py-3 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform"
+                        className="w-full flex items-center justify-center gap-2 rounded-full bg-gold py-3 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform"
                       >
                         <WhatsAppIcon className="h-3.5 w-3.5" />
                         <span>Booking Unit Ini</span>
@@ -231,7 +231,7 @@ function VehicleDetail() {
                       )}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-8 flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-gold)] py-3 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                      className="mt-8 flex items-center justify-center gap-2 rounded-full bg-gold py-3 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                     >
                       <WhatsAppIcon className="h-4 w-4" /> Pesan Sekarang
                     </a>
@@ -277,7 +277,9 @@ function VehicleDetail() {
                     </p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-gold/10 flex items-center justify-between text-[0.65rem] text-gold">
-                    <span>{v.category}</span>
+                    <span>
+                      {v.category === "Luxury Sedan" ? "Sedan Eksekutif" : v.category}
+                    </span>
                     <span>Detail &rarr;</span>
                   </div>
                 </Link>

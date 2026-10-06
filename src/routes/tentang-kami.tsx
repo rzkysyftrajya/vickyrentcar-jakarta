@@ -207,7 +207,7 @@ function TentangKamiPage() {
                       </ul>
                     </div>
 
-                    <div>
+                    <div id="legalitas">
                       <p className="eyebrow text-gold">Legalitas & Kredibilitas</p>
                       <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
                         Terdaftar resmi di Kemenkumham RI atas nama{" "}

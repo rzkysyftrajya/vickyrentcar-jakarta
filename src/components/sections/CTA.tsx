@@ -11,7 +11,7 @@ export function CTA() {
       className="relative overflow-hidden bg-[color-mix(in_oklab,var(--navy)_35%,var(--background))] py-24 sm:py-32"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_70%_at_50%_0%,color-mix(in_oklab,var(--gold)_16%,transparent),transparent)]"
+        className="pointer-events-none absolute inset-0 bg-gold/5"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
@@ -31,7 +31,7 @@ export function CTA() {
               target="_blank"
               rel="noreferrer"
               onClick={() => window.VRNTrack?.trackClick?.({ target: "cta_section_whatsapp" })}
-              className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-8 py-4 text-[0.65rem] tracking-[0.22em] text-primary-foreground uppercase transition-transform duration-300 hover:scale-105 shadow-[var(--shadow-gold)] font-medium"
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-[0.65rem] tracking-[0.22em] text-primary-foreground uppercase transition-transform duration-300 hover:scale-105 shadow-[var(--shadow-gold)] font-medium"
             >
               <WhatsAppIcon className="h-4 w-4" />
               <span>Hubungi via WhatsApp</span>

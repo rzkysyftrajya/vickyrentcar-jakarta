@@ -105,10 +105,6 @@ function BandingkanPage() {
       <main className="pt-28 pb-20">
         {/* Header */}
         <section className="relative overflow-hidden py-12 sm:py-16">
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-[24rem] w-[40rem] bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_70%)] blur-3xl pointer-events-none"
-          />
           <div className="relative mx-auto max-w-5xl px-5 text-center">
             <Reveal>
               <p className="eyebrow">Perbandingan Armada</p>
@@ -201,7 +197,7 @@ function BandingkanPage() {
                               />
                               <p className="text-sm font-medium text-foreground">{v.name}</p>
                               <span className="text-[0.65rem] text-gold bg-gold/10 px-2 py-0.5 rounded-full inline-block mt-1">
-                                {v.category}
+                                {v.category === "Luxury Sedan" ? "Sedan Eksekutif" : v.category}
                               </span>
                             </th>
                           ))}
@@ -283,7 +279,7 @@ function BandingkanPage() {
                             href={waLink(`Halo ${SITE.brand}, saya tertarik memesan ${v.name}.`)}
                             target="_blank"
                             rel="noreferrer"
-                            className="rounded-full bg-[image:var(--gradient-gold)] px-3 py-1.5 text-[0.6rem] text-primary-foreground font-medium uppercase inline-flex items-center gap-1"
+                            className="rounded-full bg-gold px-3 py-1.5 text-[0.6rem] text-primary-foreground font-medium uppercase inline-flex items-center gap-1"
                           >
                             <WhatsAppIcon className="h-3 w-3" />
                             Pesan
@@ -309,7 +305,7 @@ function BandingkanPage() {
                 href={waLink(`Halo ${SITE.brand}, saya butuh saran pilihan armada terbaik untuk kebutuhan saya.`)}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3 text-xs tracking-wider font-medium text-primary-foreground uppercase shadow-md transition-transform hover:scale-105"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-xs tracking-wider font-medium text-primary-foreground uppercase shadow-md transition-transform hover:scale-105"
               >
                 <WhatsAppIcon className="h-4 w-4" />
                 Konsultasi Langsung via WhatsApp

@@ -184,7 +184,7 @@ function CorporateForm() {
   const field =
     "w-full rounded-lg border border-gold/20 bg-black/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:border-gold focus:outline-none";
   const select =
-    "w-full rounded-lg border border-gold/20 bg-[oklch(0.2_0.035_256.66)] px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none";
+    "w-full rounded-lg border border-gold/20 bg-background px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none";
   const label = "block text-xs uppercase tracking-wider text-muted-foreground mb-2";
 
   return (
@@ -317,7 +317,7 @@ function CorporateForm() {
       <div className="pt-3">
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-3 rounded-full bg-[image:var(--gradient-gold)] py-4 text-xs tracking-[0.22em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform duration-300 hover:scale-[1.02]"
+          className="w-full flex items-center justify-center gap-3 rounded-full bg-gold py-4 text-xs tracking-[0.22em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform duration-300 hover:scale-[1.02]"
         >
           <Send className="h-4 w-4" />
           <span>Kirim Penawaran ke WhatsApp</span>
@@ -340,30 +340,29 @@ function KorporatPage() {
       <main className="pt-28 pb-20">
         {/* Hero */}
         <section className="relative overflow-hidden py-16 sm:py-24">
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-[30rem] w-[60rem] bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_12%,transparent),transparent_70%)] blur-3xl pointer-events-none"
-          />
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="max-w-3xl">
               <p className="eyebrow">Solusi Transportasi Bisnis</p>
               <h1 className="mt-4 text-4xl sm:text-6xl font-light leading-tight">
-                Armada Korporat untuk{" "}
-                <span className="gold-text">Perusahaan Anda</span>
+                Armada Korporat untuk <span className="gold-text">Perusahaan Anda</span>
               </h1>
               <div className="gold-rule mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                Dari antar jemput tamu perusahaan hingga kontrak fleet bulanan — kami menyediakan solusi transportasi korporat yang profesional, fleksibel, dan transparan untuk bisnis di Jakarta.
+                Dari antar jemput tamu perusahaan hingga kontrak fleet bulanan — kami menyediakan
+                solusi transportasi korporat yang profesional, fleksibel, dan transparan untuk
+                bisnis di Jakarta.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href="#form-korporat"
-                  className="rounded-full bg-[image:var(--gradient-gold)] px-8 py-3.5 text-xs tracking-[0.22em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform hover:scale-[1.02]"
+                  className="rounded-full bg-gold px-8 py-3.5 text-xs tracking-[0.22em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform hover:scale-[1.02]"
                 >
                   Ajukan Penawaran
                 </a>
                 <a
-                  href={waLink(`Halo ${SITE.brand}, saya dari perusahaan dan ingin menanyakan paket korporat.`)}
+                  href={waLink(
+                    `Halo ${SITE.brand}, saya dari perusahaan dan ingin menanyakan paket korporat.`,
+                  )}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-8 py-3.5 text-xs tracking-[0.22em] text-gold uppercase transition-colors hover:bg-gold/10"
@@ -444,17 +443,22 @@ function KorporatPage() {
                     }`}
                   >
                     {pkg.highlight && (
-                      <span className="inline-block mb-4 self-start rounded-full bg-[image:var(--gradient-gold)] px-4 py-1 text-[0.6rem] tracking-[0.25em] text-primary-foreground uppercase">
+                      <span className="inline-block mb-4 self-start rounded-full bg-gold px-4 py-1 text-[0.6rem] tracking-[0.25em] text-primary-foreground uppercase">
                         Paling Populer
                       </span>
                     )}
-                    <h3 className={`text-2xl font-light ${pkg.highlight ? "gold-text" : "text-foreground"}`}>
+                    <h3
+                      className={`text-2xl font-light ${pkg.highlight ? "gold-text" : "text-foreground"}`}
+                    >
                       {pkg.name}
                     </h3>
                     <p className="mt-1 text-xs text-muted-foreground">{pkg.duration}</p>
                     <ul className="mt-6 space-y-3 flex-1">
                       {pkg.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <li
+                          key={f}
+                          className="flex items-start gap-2 text-sm text-muted-foreground"
+                        >
                           <CheckCircle2 className="h-4 w-4 shrink-0 text-gold mt-0.5" />
                           {f}
                         </li>
@@ -468,7 +472,7 @@ function KorporatPage() {
                       rel="noreferrer"
                       className={`mt-8 flex items-center justify-center gap-2 rounded-full py-3 text-xs tracking-[0.22em] uppercase transition-all hover:scale-[1.02] ${
                         pkg.highlight
-                          ? "bg-[image:var(--gradient-gold)] text-primary-foreground shadow-[var(--shadow-gold)]"
+                          ? "bg-gold text-primary-foreground shadow-[var(--shadow-gold)]"
                           : "border border-gold/40 text-gold hover:bg-gold/10"
                       }`}
                     >
@@ -495,7 +499,9 @@ function KorporatPage() {
                 <StaggerItem key={ind.name} direction="scale">
                   <div className="glass rounded-xl p-4 text-center border border-gold/10 hover:border-gold/40 transition-colors">
                     <span className="text-2xl block">{ind.emoji}</span>
-                    <p className="mt-2 text-[0.6rem] leading-tight text-muted-foreground">{ind.name}</p>
+                    <p className="mt-2 text-[0.6rem] leading-tight text-muted-foreground">
+                      {ind.name}
+                    </p>
                   </div>
                 </StaggerItem>
               ))}
@@ -548,14 +554,15 @@ function KorporatPage() {
               {/* Form */}
               <div className="lg:col-span-7">
                 <Reveal>
-                  <div className="glass rounded-2xl border border-gold/25 p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+                  <div className="glass rounded-2xl border border-gold/25 p-6 sm:p-10 shadow-[var(--shadow-luxe)]">
                     <div className="border-b border-gold/15 pb-5">
                       <p className="eyebrow text-gold">Formulir Penawaran Korporat</p>
                       <h2 className="mt-1 text-2xl sm:text-3xl font-normal text-foreground">
                         Ajukan Kebutuhan Armada Anda
                       </h2>
                       <p className="mt-1.5 text-xs text-muted-foreground">
-                        Isi form ini dan tim kami akan segera menghubungi Anda dengan penawaran terbaik.
+                        Isi form ini dan tim kami akan segera menghubungi Anda dengan penawaran
+                        terbaik.
                       </p>
                     </div>
                     <CorporateForm />
@@ -595,7 +602,9 @@ function KorporatPage() {
                           </span>
                           <div>
                             <p className="text-sm font-medium text-foreground">{title}</p>
-                            <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                            <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                              {desc}
+                            </p>
                           </div>
                         </div>
                       ))}
@@ -608,7 +617,9 @@ function KorporatPage() {
                     <p className="eyebrow text-gold">Hubungi Langsung</p>
                     <div className="mt-4 space-y-3 text-sm">
                       <a
-                        href={waLink(`Halo ${SITE.brand}, saya ingin menanyakan paket korporat untuk perusahaan kami.`)}
+                        href={waLink(
+                          `Halo ${SITE.brand}, saya ingin menanyakan paket korporat untuk perusahaan kami.`,
+                        )}
                         target="_blank"
                         rel="noreferrer"
                         className="group flex items-center gap-3 rounded-xl border border-gold/15 bg-white/5 p-4 transition-all hover:border-gold/50 hover:bg-gold/5"

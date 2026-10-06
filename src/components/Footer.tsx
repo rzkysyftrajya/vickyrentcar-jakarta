@@ -14,7 +14,7 @@ export function Footer() {
               <img
                 src="/logo.webp"
                 alt="Vicky Rentcar Logo"
-                className="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]"
+                className="h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
               />
               <span className="flex flex-col">
                 <span className="font-display text-2xl font-normal text-foreground group-hover:text-gold transition-colors">
@@ -125,7 +125,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 shrink-0 text-gold mt-0.5" />
-                <span>{SITE.address}</span>
+                <span>Area layanan: {SITE.serviceArea}</span>
               </li>
             </ul>
 
@@ -140,6 +140,34 @@ export function Footer() {
             </a>
           </div>
         </div>
+
+        <section className="mt-12 border-t border-gold/10 pt-8" aria-labelledby="footer-location">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="eyebrow text-gold">Kunjungi Kami</p>
+              <h2 id="footer-location" className="mt-2 font-display text-2xl text-foreground">
+                Lokasi Kami
+              </h2>
+            </div>
+            <p className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground sm:max-w-md sm:justify-end sm:text-right">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+              <span>Jl. Rawa Kepa VIII No.44, Tomang, Grogol Petamburan, Jakarta Barat</span>
+            </p>
+          </div>
+          <div className="w-full max-w-sm overflow-hidden rounded-xl border border-gold/20 bg-background p-1.5">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8169131.725757749!2d97.48810527356073!3d-1.2728323838928557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f73335943849%3A0xea7313ec5800fc0c!2sVICKY%20RENTCAR%20JAKARTA!5e0!3m2!1sid!2sid!4v1791226925007!5m2!1sid!2sid"
+              title="Peta lokasi Vicky Rentcar Jakarta"
+              width="100%"
+              height="180"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="block rounded-lg"
+            />
+          </div>
+        </section>
       </div>
 
       <div className="border-t border-gold/10 bg-black/40 px-5 py-6 sm:px-8">
@@ -153,4 +181,3 @@ export function Footer() {
     </footer>
   );
 }
-

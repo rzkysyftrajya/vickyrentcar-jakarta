@@ -4,7 +4,7 @@ export const SITE = {
   phone: "+62 823-6338-9893",
   whatsappNumber: "6282363389893",
   city: "Jakarta, Indonesia",
-  address: "Sudirman Central Business District (SCBD) Lot 28, Senayan, Jakarta Selatan, DKI Jakarta 12190",
+  serviceArea: "Jakarta, Tangerang, Bekasi, Depok, Bogor",
   poolAddress: "Pool Bandara Soekarno-Hatta & Pool TB Simatupang, Jakarta",
   email: "vickyrentcarjakarta@gmail.com",
   hours: "24 Jam Setiap Hari (Layanan 24/7)",
@@ -45,4 +45,3 @@ export function createBookingWaLink(data: {
 
   return waLink(parts.join("\n"));
 }
-

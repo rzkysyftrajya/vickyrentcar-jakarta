@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Phone,
   Mail,
-  MapPin,
   Clock,
   MessageSquare,
   ShieldCheck,
@@ -60,7 +59,6 @@ export const Route = createFileRoute("/kontak")({
   }),
   component: KontakPage,
 });
-
 
 const SERVICES_OPTIONS = [
   "Airport Transfer (Soekarno-Hatta / Halim)",
@@ -122,10 +120,6 @@ function KontakPage() {
       <main className="pt-28 pb-20">
         {/* Page Hero Header */}
         <section className="relative overflow-hidden py-16 sm:py-24">
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-[30rem] w-[50rem] bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_70%)] blur-3xl pointer-events-none"
-          />
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="text-center max-w-3xl mx-auto">
@@ -135,7 +129,8 @@ function KontakPage() {
               </h1>
               <div className="gold-rule mx-auto mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Tim reservasi kami siaga 24/7 untuk memastikan penjemputan Anda berjalan tepat waktu dan tanpa kendala. Isi formulir di bawah atau hubungi hotline kami langsung.
+                Tim reservasi kami siaga 24/7 untuk memastikan penjemputan Anda berjalan tepat waktu
+                dan tanpa kendala. Isi formulir di bawah atau hubungi hotline kami langsung.
               </p>
             </Reveal>
           </div>
@@ -148,14 +143,15 @@ function KontakPage() {
               {/* Interactive Booking Form */}
               <div className="lg:col-span-7">
                 <Reveal>
-                  <div className="glass rounded-2xl border border-gold/25 p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+                  <div className="glass rounded-2xl border border-gold/25 p-6 sm:p-10 shadow-[var(--shadow-luxe)]">
                     <div className="border-b border-gold/15 pb-5">
                       <p className="eyebrow text-gold">Formulir Pemesanan Cepat</p>
                       <h2 className="mt-1 text-2xl sm:text-3xl font-normal text-foreground">
                         Detail Rencana Perjalanan
                       </h2>
                       <p className="mt-1.5 text-xs text-muted-foreground">
-                        Isi form ini untuk membuat pesan reservasi WhatsApp otomatis yang rapi dan terstruktur.
+                        Isi form ini untuk membuat pesan reservasi WhatsApp otomatis yang rapi dan
+                        terstruktur.
                       </p>
                     </div>
 
@@ -205,10 +201,8 @@ function KontakPage() {
                           </label>
                           <select
                             value={formData.service}
-                            onChange={(e) =>
-                              setFormData({ ...formData, service: e.target.value })
-                            }
-                            className="w-full rounded-lg border border-gold/20 bg-[oklch(0.2_0.035_256.66)] px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none"
+                            onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                            className="w-full rounded-lg border border-gold/20 bg-background px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none"
                           >
                             {SERVICES_OPTIONS.map((opt) => (
                               <option key={opt} value={opt} className="bg-zinc-900 text-white">
@@ -224,17 +218,22 @@ function KontakPage() {
                           </label>
                           <select
                             value={formData.vehicle}
-                            onChange={(e) =>
-                              setFormData({ ...formData, vehicle: e.target.value })
-                            }
-                            className="w-full rounded-lg border border-gold/20 bg-[oklch(0.2_0.035_256.66)] px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none"
+                            onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
+                            className="w-full rounded-lg border border-gold/20 bg-background px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none"
                           >
                             {VEHICLES.map((v) => (
-                              <option key={v.slug} value={v.name} className="bg-zinc-900 text-white">
+                              <option
+                                key={v.slug}
+                                value={v.name}
+                                className="bg-zinc-900 text-white"
+                              >
                                 {v.name} ({v.category})
                               </option>
                             ))}
-                            <option value="Konsultasi Rekomendasi Unit Terbaik" className="bg-zinc-900 text-white">
+                            <option
+                              value="Konsultasi Rekomendasi Unit Terbaik"
+                              className="bg-zinc-900 text-white"
+                            >
                               Konsultasi Unit Terbaik
                             </option>
                           </select>
@@ -277,16 +276,27 @@ function KontakPage() {
                           </label>
                           <select
                             value={formData.duration}
-                            onChange={(e) =>
-                              setFormData({ ...formData, duration: e.target.value })
-                            }
-                            className="w-full rounded-lg border border-gold/20 bg-[oklch(0.2_0.035_256.66)] px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none"
+                            onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                            className="w-full rounded-lg border border-gold/20 bg-background px-4 py-3 text-sm text-foreground focus:border-gold focus:outline-none"
                           >
-                            <option value="Drop-Off / Pick-Up" className="bg-zinc-900 text-white">Drop-Off / Pick-Up</option>
-                            <option value="12 Jam" className="bg-zinc-900 text-white">12 Jam</option>
-                            <option value="18 Jam" className="bg-zinc-900 text-white">18 Jam</option>
-                            <option value="Full Day (24 Jam)" className="bg-zinc-900 text-white">Full Day (24 Jam)</option>
-                            <option value="Multi-Hari / Kontrak Mingguan" className="bg-zinc-900 text-white">Multi-Hari</option>
+                            <option value="Drop-Off / Pick-Up" className="bg-zinc-900 text-white">
+                              Drop-Off / Pick-Up
+                            </option>
+                            <option value="12 Jam" className="bg-zinc-900 text-white">
+                              12 Jam
+                            </option>
+                            <option value="18 Jam" className="bg-zinc-900 text-white">
+                              18 Jam
+                            </option>
+                            <option value="Full Day (24 Jam)" className="bg-zinc-900 text-white">
+                              Full Day (24 Jam)
+                            </option>
+                            <option
+                              value="Multi-Hari / Kontrak Mingguan"
+                              className="bg-zinc-900 text-white"
+                            >
+                              Multi-Hari
+                            </option>
                           </select>
                         </div>
                       </div>
@@ -332,9 +342,7 @@ function KontakPage() {
                         <textarea
                           rows={3}
                           value={formData.notes}
-                          onChange={(e) =>
-                            setFormData({ ...formData, notes: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                           placeholder="cth. Mohon name board nama tamu, driver berbahasa Inggris, penerbitan invoice resmi atas nama PT"
                           className="w-full rounded-lg border border-gold/20 bg-black/40 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:border-gold focus:outline-none resize-none"
                         />
@@ -344,13 +352,14 @@ function KontakPage() {
                       <div className="pt-3">
                         <button
                           type="submit"
-                          className="w-full flex items-center justify-center gap-3 rounded-full bg-[image:var(--gradient-gold)] py-4 text-xs tracking-[0.22em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform duration-300 hover:scale-[1.02]"
+                          className="w-full flex items-center justify-center gap-3 rounded-full bg-gold py-4 text-xs tracking-[0.22em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform duration-300 hover:scale-[1.02]"
                         >
                           <Send className="h-4 w-4" />
                           <span>Kirim Reservasi ke WhatsApp (Fast Response)</span>
                         </button>
                         <p className="mt-2 text-center text-[0.65rem] text-muted-foreground">
-                          Form ini akan membuka aplikasi WhatsApp Anda dengan format pemesanan yang siap dikirim langsung ke admin.
+                          Form ini akan membuka aplikasi WhatsApp Anda dengan format pemesanan yang
+                          siap dikirim langsung ke admin.
                         </p>
                       </div>
                     </form>
@@ -435,23 +444,19 @@ function KontakPage() {
                   </div>
                 </Reveal>
 
-                {/* Pool & Office Address */}
+                {/* Operational Pool */}
                 <Reveal delay={0.25}>
                   <div className="glass rounded-2xl border border-gold/20 p-6 sm:p-8">
-                    <p className="eyebrow text-gold">Alamat Kantor & Pool</p>
+                    <p className="eyebrow text-gold">Lokasi Pool Operasional</p>
                     <div className="mt-4 space-y-3 text-xs sm:text-sm text-muted-foreground">
                       <div className="flex items-start gap-3">
-                        <MapPin className="h-5 w-5 shrink-0 text-gold mt-0.5" />
-                        <div>
-                          <strong className="text-foreground block">Head Office:</strong>
-                          <span>{SITE.address}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3 pt-2 border-t border-gold/10">
                         <Building className="h-5 w-5 shrink-0 text-gold mt-0.5" />
                         <div>
-                          <strong className="text-foreground block">Lokasi Pool Siaga:</strong>
+                          <strong className="text-foreground block">Titik operasional penjemputan:</strong>
                           <span>{SITE.poolAddress}</span>
+                          <p className="mt-1 text-muted-foreground">
+                            Pool ini merupakan titik operasional, bukan kantor layanan pelanggan.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -492,9 +497,12 @@ function KontakPage() {
                 <div className="flex items-start gap-4">
                   <CreditCard className="h-8 w-8 text-gold shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-lg font-normal text-foreground">Metode Pembayaran Fleksibel</h3>
+                    <h3 className="text-lg font-normal text-foreground">
+                      Metode Pembayaran Fleksibel
+                    </h3>
                     <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Menerima transfer Bank BCA, Mandiri, BNI, QRIS, serta sistem termin/invoice khusus korporasi.
+                      Menerima transfer Bank BCA, Mandiri, BNI, QRIS, serta sistem termin/invoice
+                      khusus korporasi.
                     </p>
                   </div>
                 </div>
@@ -504,7 +512,8 @@ function KontakPage() {
                   <div>
                     <h3 className="text-lg font-normal text-foreground">Transparansi Harga 100%</h3>
                     <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Rincian biaya jelas tanpa biaya tersembunyi. Invoice dan bukti transaksi diterbitkan secara resmi.
+                      Rincian biaya jelas tanpa biaya tersembunyi. Invoice dan bukti transaksi
+                      diterbitkan secara resmi.
                     </p>
                   </div>
                 </div>
@@ -514,7 +523,8 @@ function KontakPage() {
                   <div>
                     <h3 className="text-lg font-normal text-foreground">Konfirmasi Instan 24/7</h3>
                     <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-                      Pemesanan Anda langsung diproses oleh petugas operasional yang ramah dan sigap dalam hitungan menit.
+                      Pemesanan Anda langsung diproses oleh petugas operasional yang ramah dan sigap
+                      dalam hitungan menit.
                     </p>
                   </div>
                 </div>
@@ -529,4 +539,3 @@ function KontakPage() {
     </div>
   );
 }
-
