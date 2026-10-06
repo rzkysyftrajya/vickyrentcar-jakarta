@@ -18,9 +18,9 @@ import { Reveal, SectionHeading, Stagger, StaggerItem } from "@/components/Revea
 import { SITE, waLink } from "@/lib/site";
 import { SITE_URL, serializeSchema, buildBreadcrumbSchema } from "@/lib/schema";
 
-const TITLE = "Tentang Kami — Vicky Rentcar Jakarta | Rental Mobil Nyaman & Terpercaya";
+const TITLE = "Sewa Mobil Jakarta dengan Supir & Korporat | Vicky Rentcar";
 const DESCRIPTION =
-  "Profil PT. Vicky Rental Nusantara. Penyedia layanan rental mobil Jakarta dengan Toyota Alphard, Innova Zenix, Reborn, dan Hiace Premio yang bersih, terawat, dan supir ramah.";
+  "Sewa mobil Jakarta dengan supir dan rental mobil dengan driver untuk kebutuhan pribadi. Sewa mobil korporat Jakarta dengan layanan resmi; opsi sewa mobil lepas kunci tersedia.";
 const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const Route = createFileRoute("/tentang-kami")({
@@ -122,20 +122,20 @@ function TentangKamiPage() {
       <main className="pt-28 pb-20">
         {/* Page Hero Header */}
         <section className="relative overflow-hidden py-16 sm:py-24">
-          <div
-            aria-hidden="true"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-[28rem] w-[50rem] bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_14%,transparent),transparent_70%)] blur-3xl pointer-events-none"
-          />
 
           <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <Reveal className="text-center max-w-3xl mx-auto">
               <p className="eyebrow">Tentang Vicky Rentcar</p>
               <h1 className="mt-4 text-4xl sm:text-6xl font-light leading-tight">
-                Rental Mobil Jakarta yang <span className="gold-text">Santai & Terpercaya</span>
+                Sewa Mobil Jakarta dengan Supir untuk{" "}
+                <span className="gold-text">Pribadi & Korporat</span>
               </h1>
               <div className="gold-rule mx-auto mt-6 w-24" aria-hidden="true" />
               <p className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-                {SITE.company} hadir memberikan kemudahan transportasi di ibu kota dengan armada yang bersih, supir ramah yang paham jalanan Jakarta, dan proses sewa yang praktis.
+                {SITE.company} melayani rental mobil dengan driver Jakarta atau sewa mobil plus
+                sopir Jakarta untuk perjalanan harian, antar-jemput bandara, dan kebutuhan bisnis.
+                Tersedia sewa mobil korporat Jakarta dengan invoice resmi dan armada terawat.
+                Sebagai opsi tambahan yang fleksibel, sewa mobil lepas kunci Jakarta juga tersedia.
               </p>
             </Reveal>
           </div>
@@ -165,7 +165,7 @@ function TentangKamiPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link
                     to="/armada"
-                    className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform hover:scale-105"
+                    className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] transition-transform hover:scale-105"
                   >
                     <span>Lihat Pilihan Armada</span>
                     <span>&rarr;</span>
@@ -210,8 +210,26 @@ function TentangKamiPage() {
                     <div>
                       <p className="eyebrow text-gold">Legalitas & Kredibilitas</p>
                       <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                        Terdaftar resmi di Kemenkumham RI atas nama <strong>PT. Vicky Rental Nusantara</strong>. Mendukung penerbitan invoice resmi untuk kebutuhan kantor dan instansi.
+                        Terdaftar resmi di Kemenkumham RI atas nama{" "}
+                        <strong>PT. Vicky Rental Nusantara</strong>. Mendukung sewa mobil perusahaan
+                        Jakarta dengan invoice resmi untuk kebutuhan kantor dan instansi.
                       </p>
+                      <ul className="mt-4 space-y-2 text-xs sm:text-sm text-muted-foreground">
+                        <li>
+                          <strong className="text-foreground">Akta Pendirian:</strong>{" "}
+                          AHU-006180.AH.01.30.TAHUN 2025
+                        </li>
+                        <li>
+                          <strong className="text-foreground">KBLI:</strong> 79121 - Aktivitas
+                          Penyewaan Kendaraan Bermotor Roda Empat
+                        </li>
+                        <li>
+                          <strong className="text-foreground">NPWP Terdaftar</strong>
+                        </li>
+                        <li>
+                          <strong className="text-foreground">Berizin Resmi NIB/OSS</strong>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -278,7 +296,7 @@ function TentangKamiPage() {
                       href={waLink(`Halo ${SITE.brand}, saya ingin konsultasi sewa mobil.`)}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-7 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                      className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                     >
                       <WhatsAppIcon className="h-4 w-4" />
                       <span>Konsultasi via WhatsApp</span>
@@ -306,6 +324,30 @@ function TentangKamiPage() {
           </div>
         </section>
 
+        {/* Location */}
+        <section className="py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <SectionHeading
+              eyebrow="Kunjungi Kami"
+              title="Lokasi Kami"
+              subtitle="VICKY RENTCAR JAKARTA — Jl. Rawa Kepa VIII No.44, Tomang, Grogol Petamburan, Jakarta Barat"
+            />
+            <Reveal className="glass mt-10 overflow-hidden rounded-2xl border border-gold/20 p-2 sm:p-3">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8169131.725757749!2d97.48810527356073!3d-1.2728323838928557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f73335943849%3A0xea7313ec5800fc0c!2sVICKY%20RENTCAR%20JAKARTA!5e0!3m2!1sid!2sid!4v1791226925007!5m2!1sid!2sid"
+                title="VICKY RENTCAR JAKARTA"
+                width="100%"
+                height="350"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="block rounded-xl"
+              />
+            </Reveal>
+          </div>
+        </section>
+
         {/* Bottom CTA Banner */}
         <section className="py-20">
           <div className="mx-auto max-w-5xl px-5 sm:px-8 text-center">
@@ -322,7 +364,7 @@ function TentangKamiPage() {
                   href={waLink(`Halo ${SITE.brand}, saya ingin menanyakan reservasi mobil.`)}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[image:var(--gradient-gold)] px-8 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
+                  className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-xs tracking-[0.2em] font-medium text-primary-foreground uppercase shadow-[var(--shadow-gold)] hover:scale-105 transition-transform"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   <span>WhatsApp Reservasi 24 Jam</span>
@@ -344,4 +386,3 @@ function TentangKamiPage() {
     </div>
   );
 }
-
