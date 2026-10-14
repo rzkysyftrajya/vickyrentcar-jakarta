@@ -118,6 +118,15 @@ export const Route =
             "Sewa mobil di Jakarta: Toyota Alphard, Innova Zenix, Innova Reborn, dan Hiace Premio. Unit bersih, supir ramah & berpengalaman, siap melayani 24 jam.",
         },
         {
+          name: "keywords",
+          content:
+            "sewa mobil Jakarta, rental mobil Jakarta, rental mobil dengan sopir Jakarta, sewa mobil dengan driver Jakarta, Toyota Alphard Jakarta, Innova Zenix Jakarta, Innova Reborn Jakarta, Hiace Premio Jakarta, travel mobil Jakarta, airport transfer Jakarta, sewa mobil bandara Jakarta, jasa rental mobil Jakarta, Vicky Rentcar Jakarta",
+        },
+        {
+          name: "robots",
+          content: "index, follow",
+        },
+        {
           name: "author",
           content: "Vicky Rentcar Jakarta",
         },
