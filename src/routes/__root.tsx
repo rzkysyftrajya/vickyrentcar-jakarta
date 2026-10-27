@@ -1,3 +1,4 @@
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -19,6 +20,8 @@ import {
   SITE_URL,
 } from "../lib/schema";
 import { LanguageProvider } from "../lib/i18n";
+
+const GTM_ID = "GTM-NCCGZQFN";
 
 function NotFoundComponent() {
   return (
@@ -204,84 +207,6 @@ export const Route =
       ],
 
       scripts: [
-        // Google Tag dasar
-        {
-          src: "https://www.googletagmanager.com/gtag/js?id=AW-18452315188",
-          async: true,
-        },
-
-        // Konfigurasi Google Ads
-        {
-          children: `
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-              window.dataLayer.push(arguments);
-            }
-
-            window.gtag = gtag;
-
-            gtag("js", new Date());
-            gtag("config", "AW-18452315188");
-          `,
-        },
-
-        // Tracking seluruh tombol WhatsApp
-        {
-          children: `
-            (function () {
-              var lastWhatsAppConversion = 0;
-
-              function trackWhatsAppConversion() {
-                var now = Date.now();
-
-                // Mencegah satu klik tercatat lebih dari sekali
-                if (now - lastWhatsAppConversion < 2000) {
-                  return;
-                }
-
-                lastWhatsAppConversion = now;
-
-                if (typeof window.gtag === "function") {
-                  window.gtag("event", "conversion", {
-                    send_to:
-                      "AW-18452315188/3jLsCN_pv4MdELT4395E"
-                  });
-                }
-              }
-
-              document.addEventListener(
-                "click",
-                function (event) {
-                  var target =
-                    event.target instanceof Element
-                      ? event.target
-                      : null;
-
-                  if (!target) {
-                    return;
-                  }
-
-                  var link = target.closest(
-                    'a[href*="wa.me/"],' +
-                    'a[href*="api.whatsapp.com/"],' +
-                    'a[href*="web.whatsapp.com/"],' +
-                    'a[href*="wa.link/"],' +
-                    'a[href^="whatsapp://"]'
-                  );
-
-                  if (!link) {
-                    return;
-                  }
-
-                  trackWhatsAppConversion();
-                },
-                true
-              );
-            })();
-          `,
-        },
-
         // Schema bisnis lokal
         {
           type: "application/ld+json",
@@ -308,6 +233,27 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
 
+        {/* Google Tag Manager */}
+        <script>
+          {`
+            (function(w,d,s,l,i){
+              w[l]=w[l]||[];
+              w[l].push({
+                'gtm.start': new Date().getTime(),
+                event:'gtm.js'
+              });
+              var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),
+                  dl=l!='dataLayer'?'&l='+l:'';
+              j.async=true;
+              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
+          `}
+        </script>
+        {/* End Google Tag Manager */}
+
+        {/* VRN tracking script - tetap dipertahankan */}
         <script>
           {`
             (function () {
@@ -371,6 +317,21 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
 
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{
+              display: "none",
+              visibility: "hidden",
+            }}
+            title="Google Tag Manager"
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+
         {children}
 
         <Analytics />
