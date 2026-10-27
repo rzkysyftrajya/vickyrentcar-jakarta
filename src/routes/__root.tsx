@@ -27,7 +27,9 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h1 className="text-7xl font-bold text-foreground">
+          404
+        </h1>
 
         <h2 className="mt-4 text-xl font-semibold text-foreground">
           Page not found
@@ -207,13 +209,10 @@ export const Route =
       ],
 
       scripts: [
-        // Schema bisnis lokal
         {
           type: "application/ld+json",
           children: serializeSchema(buildLocalBusinessSchema()),
         },
-
-        // Schema website
         {
           type: "application/ld+json",
           children: serializeSchema(buildWebSiteSchema()),
@@ -292,24 +291,17 @@ function RootShell({ children }: { children: ReactNode }) {
                 ) {
                   window.requestIdleCallback(
                     loadTrackingScript,
-                    {
-                      timeout: 2000,
-                    }
+                    { timeout: 2000 }
                   );
                 } else {
-                  window.setTimeout(
-                    loadTrackingScript,
-                    1500
-                  );
+                  window.setTimeout(loadTrackingScript, 1500);
                 }
               }
 
               window.addEventListener(
                 "load",
                 scheduleTrackingScript,
-                {
-                  once: true,
-                }
+                { once: true }
               );
             })();
           `}
@@ -317,7 +309,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
 
       <body>
-        {/* Google Tag Manager (noscript) */}
+        {/* Google Tag Manager noscript */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
@@ -330,7 +322,7 @@ function RootShell({ children }: { children: ReactNode }) {
             title="Google Tag Manager"
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
+        {/* End Google Tag Manager noscript */}
 
         {children}
 
