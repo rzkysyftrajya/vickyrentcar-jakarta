@@ -1,11 +1,14 @@
+
 import { motion } from "motion/react";
 import { WhatsAppIcon } from "@/components/BrandIcons";
 import { SITE, waLink } from "@/lib/site";
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    dataLayer?: Array<Record<string, unknown>>;
+
     adtrack?: (...args: any[]) => void;
+
     VRNTrack?: {
       trackClick: (data: {
         type: string;
@@ -20,17 +23,24 @@ export function WhatsAppFab() {
   const handleClick = () => {
     if (typeof window === "undefined") return;
 
-    // Konversi Google Ads Jakarta
-    window.gtag?.("event", "conversion", {
-      send_to: "AW-18452315188/3jLsCN_pv4MdELT4395E",
+    // Google Tag Manager:
+    // Kirim satu event untuk klik tombol WhatsApp.
+    // Konversi Google Ads akan ditangani oleh GTM.
+    const dataLayer =
+      window.dataLayer ?? (window.dataLayer = []);
+
+    dataLayer.push({
+      event: "vrn_whatsapp_click",
+      whatsapp_location: "floating_button",
+      whatsapp_brand: SITE.brand,
     });
 
-    // Pemicu Event Konversi AdTrackPro
+    // Tracking AdTrackPro tetap dipertahankan.
     window.adtrack?.("conversion", {
       event: "whatsapp_click",
     });
 
-    // Pemicu Event Konversi VRNTrack
+    // Tracking VRNTrack tetap dipertahankan.
     window.VRNTrack?.trackClick({
       type: "whatsapp_fab",
       target: "floating_whatsapp",
@@ -40,7 +50,9 @@ export function WhatsAppFab() {
 
   return (
     <motion.a
-      href={waLink(`Halo ${SITE.brand}, saya ingin memesan armada.`)}
+      href={waLink(
+        `Halo ${SITE.brand}, saya ingin memesan armada.`
+      )}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Pesan via WhatsApp"
@@ -61,6 +73,7 @@ export function WhatsAppFab() {
         className="absolute inset-0 animate-ping rounded-full bg-gold/25"
         aria-hidden="true"
       />
+
       <WhatsAppIcon className="relative h-7 w-7" />
     </motion.a>
   );
