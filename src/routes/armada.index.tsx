@@ -245,7 +245,7 @@ function ArmadaCatalogPage() {
                           </div>
 
                           {/* Image Preview with 3D hint */}
-                          <div className="relative my-6 flex h-48 sm:h-56 items-center justify-center overflow-hidden rounded-xl bg-blue-50 p-4">
+                          <div className="relative my-6 flex h-48 sm:h-56 items-center justify-center overflow-hidden rounded-xl bg-muted p-4">
                             <img
                               src={vehicle.image}
                               alt={`${vehicle.name} — ${vehicle.tagline}`}

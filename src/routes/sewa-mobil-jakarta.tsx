@@ -350,7 +350,7 @@ function SewaMobilJakartaPage() {
               {featuredVehicles.map((vehicle) => (
                 <StaggerItem key={vehicle.slug}>
                   <article className="glass flex h-full flex-col overflow-hidden rounded-xl border border-gold/15 p-5 transition-all hover:-translate-y-1 hover:border-gold/45">
-                    <div className="rounded-lg bg-blue-50 p-3">
+                    <div className="rounded-lg bg-muted p-3">
                       <img
                         src={vehicle.image}
                         alt={`${vehicle.name} - ${vehicle.tagline}`}

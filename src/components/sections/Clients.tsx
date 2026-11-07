@@ -34,7 +34,7 @@ export function Clients() {
             {CLIENT_LOGOS.map((logo) => (
               <div
                 key={logo.src}
-                className="flex h-16 w-36 shrink-0 items-center justify-center sm:w-44"
+                className="flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-gold/25 bg-white p-3 shadow-[var(--shadow-luxe)] sm:w-52 sm:p-4"
               >
                 <img
                   src={logo.src}

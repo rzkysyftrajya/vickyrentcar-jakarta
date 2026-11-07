@@ -3,7 +3,7 @@ import { ArrowRight, BadgeCheck } from "lucide-react";
 
 export function LegalTrust() {
   return (
-    <section className="border-y border-gold/15 bg-blue-50/60 py-6 sm:py-7">
+    <section className="border-y border-gold/15 bg-muted py-6 sm:py-7">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div className="flex items-center gap-3">
           <BadgeCheck className="h-6 w-6 shrink-0 text-gold" aria-hidden="true" />

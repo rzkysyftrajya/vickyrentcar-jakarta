@@ -40,7 +40,7 @@ export function Fleet() {
                 <div className="group glass flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-gold/20 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-gold/50 hover:shadow-[var(--shadow-gold)]">
                   <div>
                     {/* Image Box */}
-                    <div className="relative overflow-hidden rounded-xl bg-blue-50 p-5">
+                    <div className="relative overflow-hidden rounded-xl bg-muted p-5">
                       <img
                         src={v.image}
                         alt={`${v.name} — ${v.tagline}`}
